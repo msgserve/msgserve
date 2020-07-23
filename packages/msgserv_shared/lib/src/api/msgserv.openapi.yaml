@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: MsgServ
+  description: Never mind.
+  version: 1.0.0
+  x-dart-name: MsgServBackend
+  contact:
+    url: 'https://blubb.com/'
+    email: h@poul.at
+    name: Herbert Poul
+servers:
+  - url: https
+paths:
+  /check:
+    get:
+      summary: Health check.
+      security: []
+      responses:
+        '200':
+          description: Everything OK
+      description: Health check of endpoint data
+components:
+  schemas:
+    RegisterRequest:
+      properties:
+        email:
+          type: string
+          description: 'Email address for the current user.'
+      required:
+        - email
+

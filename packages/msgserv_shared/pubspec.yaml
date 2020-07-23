@@ -1,0 +1,17 @@
+name: msgserv_shared
+description: Shared library for msgserv backend and frontend.
+# version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.8.1 <3.0.0'
+
+dependencies:
+  openapi_base: ^0.1.2
+
+dev_dependencies:
+  pedantic: ^1.9.2
+  test: ^1.15.3
+  build_runner: ^1.10.0
+  json_serializable: ^3.3.0
+  openapi_code_builder: ^0.1.1
