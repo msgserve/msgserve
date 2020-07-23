@@ -29,7 +29,6 @@ abstract class BaseBackendCommand extends Command<void> {
       if (!file.existsSync()) {
         throw StateError('File not found ${file.absolute}');
       }
-//      final config = checkedYamlDecode(
       final config = _loadYaml(
         await file.readAsString(),
         (m) => ConfigFileRoot.fromJson(m),

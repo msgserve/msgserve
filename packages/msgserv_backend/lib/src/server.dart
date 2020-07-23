@@ -19,9 +19,9 @@ class Server {
       env: env,
     );
 
-//    final db = serviceProvider.createDatabaseAccess();
-//    await db.prepareDatabase();
-//    await db.dispose();
+    final db = serviceProvider.createDatabaseAccess();
+    await db.prepareDatabase();
+    await db.dispose();
     return serviceProvider;
   }
 

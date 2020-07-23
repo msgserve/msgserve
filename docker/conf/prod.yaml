@@ -1,0 +1,19 @@
+
+http:
+  host: 0.0.0.0
+
+secrets:
+  recaptchaSecretKey: '6LfZ6agZAAAAAEZBTV_rwrEyhWQpvG5BB0qQ49fE'
+  recaptchaSiteKey: '6LfZ6agZAAAAAHc6c2nKX92mx8YZZKWIrhXUID6y'
+  emailReceiveToken: 'QeoygpKYjqi133t0VpcJ'
+
+email:
+  fromAddress: 'hello@authpass.app'
+  smtp:
+    host: 'services.tapo.at'
+database:
+  host: pgdb
+  port: 5432
+
+mailbox:
+  defaultHost: 'mail.authpass.app'

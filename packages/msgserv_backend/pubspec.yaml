@@ -15,6 +15,9 @@ dependencies:
   json_annotation: ^3.0.1
   msgserv_shared:
     path: ../msgserv_shared
+  postgres_utils:
+    path: ../../deps/postgres_utils.dart
+  uuid: ^2.2.0
 
 dev_dependencies:
   pedantic: ^1.9.2

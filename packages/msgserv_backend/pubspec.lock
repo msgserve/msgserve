@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  buffer:
+    dependency: transitive
+    description:
+      name: buffer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.7"
   build:
     dependency: transitive
     description:
@@ -372,6 +379,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.0"
+  postgres:
+    dependency: transitive
+    description:
+      name: postgres
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.1"
+  postgres_utils:
+    dependency: "direct main"
+    description:
+      path: "../../deps/postgres_utils.dart"
+      relative: true
+    source: path
+    version: "0.0.0"
   pub_semver:
     dependency: transitive
     description:
@@ -547,6 +568,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.0+5"
+  uuid:
+    dependency: "direct main"
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.0"
   vm_service:
     dependency: transitive
     description:

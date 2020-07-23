@@ -1,0 +1,3 @@
+[submodule "deps/postgres_utils.dart"]
+	path = deps/postgres_utils.dart
+	url = ../../authpass/postgres_utils.dart

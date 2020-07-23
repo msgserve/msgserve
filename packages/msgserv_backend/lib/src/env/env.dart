@@ -1,6 +1,7 @@
 import 'package:logging/logging.dart';
 import 'package:msgserv_backend/src/env/config.dart';
 import 'package:msgserv_backend/src/server.dart';
+import 'package:postgres_utils/postgres_utils.dart';
 
 final _logger = Logger('env');
 //
@@ -12,13 +13,7 @@ final _logger = Logger('env');
 
 class EmptySecrets implements SecretsConfig {
   @override
-  String get recaptchaSecretKey => '';
-
-  @override
-  String get recaptchaSiteKey => '';
-
-  @override
-  String get emailReceiveToken => '';
+  String get exampleToken => '';
 
   @override
   Map<String, dynamic> toJson() => throw UnimplementedError();
@@ -31,7 +26,7 @@ class BuildInfo {
   static const number =
       String.fromEnvironment('BUILD_NUMBER', defaultValue: '-1');
 
-  static String asString() => 'AuthPass Backend '
+  static String asString() => 'MsgServ Backend '
       '(Build $number from $date @ $host)';
 }
 
@@ -77,5 +72,5 @@ class DevEnv extends Env {
         fromAddress: 'fake@address.com',
       ),
       secrets: EmptySecrets(),
-      database: DatabaseConfig.defaults());
+      database: DatabaseConfig.fromEnvironment());
 }
