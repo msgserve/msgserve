@@ -18,6 +18,12 @@ paths:
       responses:
         '200':
           description: Everything OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  dbVersion:
+                    type: integer
       description: Health check of endpoint data
 components:
   schemas:

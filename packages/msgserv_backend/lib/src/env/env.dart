@@ -64,13 +64,15 @@ class DevEnv extends Env {
 
   @override
   final config = ConfigFileRoot(
-      mailbox: MailboxConfig(
-        defaultHost: 'localhost',
-      ),
-      http: HttpConfig.defaults(),
-      email: EmailConfig(
-        fromAddress: 'fake@address.com',
-      ),
-      secrets: EmptySecrets(),
-      database: DatabaseConfig.fromEnvironment());
+    mailbox: MailboxConfig(
+      defaultHost: 'localhost',
+    ),
+    http: HttpConfig.defaults(),
+    email: EmailConfig(
+      fromAddress: 'fake@address.com',
+    ),
+    secrets: EmptySecrets(),
+    database: DatabaseConfig.fromEnvironment(
+        defaults: DatabaseConfig.defaults.copyWith(port: 21783)),
+  );
 }

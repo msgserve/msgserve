@@ -23,27 +23,56 @@ class RegisterRequest implements _i2.OpenApiContent {
   String toString() => toJson().toString();
 }
 
-class _CheckGetResponse200 extends CheckGetResponse {
+@_i1.JsonSerializable()
+class CheckGetResponseBody200 implements _i2.OpenApiContent {
+  CheckGetResponseBody200({this.dbVersion});
+
+  factory CheckGetResponseBody200.fromJson(Map<String, dynamic> jsonMap) =>
+      _$CheckGetResponseBody200FromJson(jsonMap);
+
+  @_i1.JsonKey(name: 'dbVersion')
+  final int dbVersion;
+
+  Map<String, dynamic> toJson() => _$CheckGetResponseBody200ToJson(this);
+  @override
+  String toString() => toJson().toString();
+}
+
+class _CheckGetResponse200 extends CheckGetResponse
+    implements _i2.OpenApiResponseBodyJson {
   /// /// Everything OK
-  _CheckGetResponse200.response200() : status = 200;
+  _CheckGetResponse200.response200(this.body)
+      : status = 200,
+        bodyJson = body.toJson();
 
   @override
   final int status;
 
-  @override
-  final _i2.OpenApiContentType contentType = null;
+  final CheckGetResponseBody200 body;
 
   @override
-  Map<String, Object> propertiesToString() =>
-      {'status': status, 'contentType': contentType};
+  final Map<String, dynamic> bodyJson;
+
+  @override
+  final _i2.OpenApiContentType contentType =
+      _i2.OpenApiContentType.parse('application/json');
+
+  @override
+  Map<String, Object> propertiesToString() => {
+        'status': status,
+        'body': body,
+        'bodyJson': bodyJson,
+        'contentType': contentType
+      };
 }
 
 abstract class CheckGetResponse extends _i2.OpenApiResponse
-    implements _i2.HasSuccessResponse<void> {
+    implements _i2.HasSuccessResponse<CheckGetResponseBody200> {
   CheckGetResponse();
 
   /// /// Everything OK
-  factory CheckGetResponse.response200() => _CheckGetResponse200.response200();
+  factory CheckGetResponse.response200(CheckGetResponseBody200 body) =>
+      _CheckGetResponse200.response200(body);
 
   void map({@_i3.required _i2.ResponseMap<_CheckGetResponse200> on200}) {
     if (this is _CheckGetResponse200) {
@@ -55,9 +84,9 @@ abstract class CheckGetResponse extends _i2.OpenApiResponse
 
   /// status 200:  Everything OK
   @override
-  void requireSuccess() {
+  CheckGetResponseBody200 requireSuccess() {
     if (this is _CheckGetResponse200) {
-      return;
+      return (this as _CheckGetResponse200).body;
     } else {
       throw StateError('Expected success response, but got $this');
     }
@@ -102,7 +131,8 @@ class _MsgServBackendClientImpl extends _i2.OpenApiClientBase
     final request = _i2.OpenApiClientRequest('get', '/check', []);
     return await sendRequest(request, {
       '200': (_i2.OpenApiClientResponse response) async =>
-          _CheckGetResponse200.response200()
+          _CheckGetResponse200.response200(CheckGetResponseBody200.fromJson(
+              await response.responseBodyJson()))
     });
   }
 }

@@ -32,7 +32,7 @@ class Server {
     final serviceProvider = await prepareServiceProviderAndDatabase();
 
     final server = OpenApiShelfServer(
-        MsgServBackendRouter(AuthPassEndpointProvider(serviceProvider)));
+        MsgServBackendRouter(MsgServEndointProvider(serviceProvider)));
     final process = await server.startServer(
       address: env.config.http.host,
       port: env.config.http.port,
@@ -42,20 +42,21 @@ class Server {
   }
 }
 
-class AuthPassEndpointProvider extends ApiEndpointProvider<MsgServBackendImpl> {
-  AuthPassEndpointProvider(this.serviceProvider);
+class MsgServEndointProvider extends ApiEndpointProvider<MsgServBackendImpl> {
+  MsgServEndointProvider(this.serviceProvider);
 
   final ServiceProvider serviceProvider;
 
   @override
   Future<U> invoke<U>(request, callback) async {
-    return await callback(MsgServBackendImpl());
-//    final db = serviceProvider.createDatabaseAccess();
-//    try {
-//      return await db.run((conn) async {
-//        return await callback(AuthPassCloudImpl(
-//          serviceProvider,
-//          request,
+//    return await callback(MsgServBackendImpl(serviceProvider: serviceProvider));
+    final db = serviceProvider.createDatabaseAccess();
+    try {
+      return await db.run((conn) async {
+        return await callback(MsgServBackendImpl(
+          serviceProvider: serviceProvider,
+          db: conn,
+          request: request,
 //          conn,
 //          UserRepository(conn),
 //          EmailRepository(
@@ -63,10 +64,10 @@ class AuthPassEndpointProvider extends ApiEndpointProvider<MsgServBackendImpl> {
 //            cryptoService: serviceProvider.cryptoService,
 //            env: serviceProvider.env,
 //          ),
-//        ));
-//      });
-//    } finally {
-//      await db.dispose();
-//    }
+        ));
+      });
+    } finally {
+      await db.dispose();
+    }
   }
 }
