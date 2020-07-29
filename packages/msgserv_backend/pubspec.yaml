@@ -24,3 +24,9 @@ dev_dependencies:
   test: ^1.15.3
   build_runner: ^1.10.0
   json_serializable: ^3.3.0
+
+dependency_overrides:
+  openapi_base:
+    path: /Users/herbert/dev/authpass-cloud/deps/openapi_dart/packages/openapi_base
+  openapi_code_builder:
+    path: /Users/herbert/dev/authpass-cloud/deps/openapi_dart/packages/openapi_code_builder

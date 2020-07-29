@@ -25,13 +25,36 @@ paths:
                   dbVersion:
                     type: integer
       description: Health check of endpoint data
+  /event:
+    post:
+      summary: Report event, or fetch config.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        '200':
+          description: Configuration update
+
 components:
   schemas:
-    RegisterRequest:
+    Event:
       properties:
-        email:
+        ts:
           type: string
-          description: 'Email address for the current user.'
+          format: date-time
+          description: 'Timestamp of the event'
+        context:
+          type: object
+          additionalProperties: true
       required:
-        - email
-
+        - ts
+        - context
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+security:
+  - apiKey: []

@@ -8,17 +8,42 @@ import 'package:openapi_base/openapi_base.dart' as _i2;
 part 'msgserv.openapi.g.dart';
 
 @_i1.JsonSerializable()
-class RegisterRequest implements _i2.OpenApiContent {
-  RegisterRequest({@_i3.required this.email}) : assert(email != null);
+class EventContext implements _i2.OpenApiContent {
+  EventContext();
 
-  factory RegisterRequest.fromJson(Map<String, dynamic> jsonMap) =>
-      _$RegisterRequestFromJson(jsonMap);
+  factory EventContext.fromJson(Map<String, dynamic> jsonMap) =>
+      _$EventContextFromJson(jsonMap)
+        .._additionalProperties.addEntries(
+            jsonMap.entries.where((e) => !const <String>{}.contains(e.key)));
 
-  /// Email address for the current user.
-  @_i1.JsonKey(name: 'email')
-  final String email;
+  final Map<String, Object> _additionalProperties = <String, Object>{};
 
-  Map<String, dynamic> toJson() => _$RegisterRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      Map.from(_additionalProperties)..addAll(_$EventContextToJson(this));
+  @override
+  String toString() => toJson().toString();
+  void operator []=(String key, Object value) =>
+      _additionalProperties[key] = value;
+  Object operator [](String key) => _additionalProperties[key];
+}
+
+@_i1.JsonSerializable()
+class Event implements _i2.OpenApiContent {
+  Event({@_i3.required this.ts, @_i3.required this.context})
+      : assert(ts != null),
+        assert(context != null);
+
+  factory Event.fromJson(Map<String, dynamic> jsonMap) =>
+      _$EventFromJson(jsonMap);
+
+  /// Timestamp of the event
+  @_i1.JsonKey(name: 'ts')
+  final DateTime ts;
+
+  @_i1.JsonKey(name: 'context')
+  final EventContext context;
+
+  Map<String, dynamic> toJson() => _$EventToJson(this);
   @override
   String toString() => toJson().toString();
 }
@@ -93,11 +118,57 @@ abstract class CheckGetResponse extends _i2.OpenApiResponse
   }
 }
 
+class _EventPostResponse200 extends EventPostResponse {
+  /// /// Configuration update
+  _EventPostResponse200.response200() : status = 200;
+
+  @override
+  final int status;
+
+  @override
+  final _i2.OpenApiContentType contentType = null;
+
+  @override
+  Map<String, Object> propertiesToString() =>
+      {'status': status, 'contentType': contentType};
+}
+
+abstract class EventPostResponse extends _i2.OpenApiResponse
+    implements _i2.HasSuccessResponse<void> {
+  EventPostResponse();
+
+  /// /// Configuration update
+  factory EventPostResponse.response200() =>
+      _EventPostResponse200.response200();
+
+  void map({@_i3.required _i2.ResponseMap<_EventPostResponse200> on200}) {
+    if (this is _EventPostResponse200) {
+      on200((this as _EventPostResponse200));
+    } else {
+      throw StateError('Invalid instance type $this');
+    }
+  }
+
+  /// status 200:  Configuration update
+  @override
+  void requireSuccess() {
+    if (this is _EventPostResponse200) {
+      return;
+    } else {
+      throw StateError('Expected success response, but got $this');
+    }
+  }
+}
+
 abstract class MsgServBackend implements _i2.ApiEndpoint {
   /// Health check.
   /// Health check of endpoint data
   /// get: /check
   Future<CheckGetResponse> checkGet();
+
+  /// Report event, or fetch config.
+  /// post: /event
+  Future<EventPostResponse> eventPost(Event body);
 }
 
 abstract class MsgServBackendClient implements _i2.OpenApiClient {
@@ -110,6 +181,11 @@ abstract class MsgServBackendClient implements _i2.OpenApiClient {
   /// get: /check
   ///
   Future<CheckGetResponse> checkGet();
+
+  /// Report event, or fetch config.
+  /// post: /event
+  ///
+  Future<EventPostResponse> eventPost(Event body);
 }
 
 class _MsgServBackendClientImpl extends _i2.OpenApiClientBase
@@ -135,6 +211,25 @@ class _MsgServBackendClientImpl extends _i2.OpenApiClientBase
               await response.responseBodyJson()))
     });
   }
+
+  /// Report event, or fetch config.
+  /// post: /event
+  ///
+  @override
+  Future<EventPostResponse> eventPost(Event body) async {
+    final request = _i2.OpenApiClientRequest('post', '/event', [
+      _i2.SecurityRequirement(schemes: [
+        _i2.SecurityRequirementScheme(
+            scheme: SecuritySchemes.apiKey, scopes: [])
+      ])
+    ]);
+    request.setHeader('content-type', 'application/json');
+    request.setBody(_i2.OpenApiClientRequestBodyJson(body.toJson()));
+    return await sendRequest(request, {
+      '200': (_i2.OpenApiClientResponse response) async =>
+          _EventPostResponse200.response200()
+    });
+  }
 }
 
 class MsgServBackendUrlResolve with _i2.OpenApiUrlEncodeMixin {
@@ -144,6 +239,19 @@ class MsgServBackendUrlResolve with _i2.OpenApiUrlEncodeMixin {
   ///
   _i2.OpenApiClientRequest checkGet() {
     final request = _i2.OpenApiClientRequest('get', '/check', []);
+    return request;
+  }
+
+  /// Report event, or fetch config.
+  /// post: /event
+  ///
+  _i2.OpenApiClientRequest eventPost() {
+    final request = _i2.OpenApiClientRequest('post', '/event', [
+      _i2.SecurityRequirement(schemes: [
+        _i2.SecurityRequirementScheme(
+            scheme: SecuritySchemes.apiKey, scopes: [])
+      ])
+    ]);
     return request;
   }
 }
@@ -159,7 +267,25 @@ class MsgServBackendRouter extends _i2.OpenApiServerRouterBase {
       return await impl.invoke(
           request, (MsgServBackend impl) async => impl.checkGet());
     }, security: []);
+    addRoute('/event', 'post', (_i2.OpenApiRequest request) async {
+      return await impl.invoke(
+          request,
+          (MsgServBackend impl) async =>
+              impl.eventPost(Event.fromJson(await request.readJsonBody())));
+    }, security: [
+      _i2.SecurityRequirement(schemes: [
+        _i2.SecurityRequirementScheme(
+            scheme: SecuritySchemes.apiKey, scopes: [])
+      ])
+    ]);
   }
 }
 
-class SecuritySchemes {}
+class SecuritySchemes {
+  static final apiKey = _i2.SecuritySchemeApiKey(
+      name: 'X-API-KEY',
+      readFromRequest: (_i2.OpenApiRequest request) =>
+          request.headerParameter('X-API-KEY'),
+      writeToRequest: (_i2.OpenApiClientRequest request, String value) =>
+          request.addHeaderParameter('X-API-KEY', [value]));
+}

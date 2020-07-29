@@ -21,4 +21,9 @@ class MsgServBackendImpl extends MsgServBackend {
     return CheckGetResponse.response200(
         CheckGetResponseBody200(dbVersion: lastVersion));
   }
+
+  @override
+  Future<EventPostResponse> eventPost(Event body) {
+    throw UnimplementedError();
+  }
 }

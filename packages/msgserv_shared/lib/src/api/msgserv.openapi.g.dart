@@ -6,15 +6,25 @@ part of 'msgserv.openapi.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RegisterRequest _$RegisterRequestFromJson(Map<String, dynamic> json) {
-  return RegisterRequest(
-    email: json['email'] as String,
+EventContext _$EventContextFromJson(Map<String, dynamic> json) {
+  return EventContext();
+}
+
+Map<String, dynamic> _$EventContextToJson(EventContext instance) =>
+    <String, dynamic>{};
+
+Event _$EventFromJson(Map<String, dynamic> json) {
+  return Event(
+    ts: json['ts'] == null ? null : DateTime.parse(json['ts'] as String),
+    context: json['context'] == null
+        ? null
+        : EventContext.fromJson(json['context'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$RegisterRequestToJson(RegisterRequest instance) =>
-    <String, dynamic>{
-      'email': instance.email,
+Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
+      'ts': instance.ts?.toIso8601String(),
+      'context': instance.context,
     };
 
 CheckGetResponseBody200 _$CheckGetResponseBody200FromJson(
