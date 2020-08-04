@@ -59,7 +59,13 @@ components:
         messages:
           type: array
           items:
-            $ref: '#/components/schemas/Message'
+            properties:
+              type:
+                type: string
+              dialog:
+                $ref: '#/components/schemas/MessageBanner'
+              survey:
+                $ref: '#/components/schemas/MessageSurvey'
       required:
         - messages
     Message:
@@ -88,6 +94,19 @@ components:
         - body
         - expression
         - actions
+    MessageBanner:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+      properties:
+        title:
+          type: string
+    MessageSurvey:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+      properties:
+        question:
+          type: string
+
     MessageAction:
       properties:
         key:

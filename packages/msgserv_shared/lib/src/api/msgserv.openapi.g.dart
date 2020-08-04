@@ -27,118 +27,23 @@ Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
       'context': instance.context,
     };
 
-MessageConfigMessagesCampaignState _$MessageConfigMessagesCampaignStateFromJson(
-    Map<String, dynamic> json) {
-  return MessageConfigMessagesCampaignState();
+CampaignState _$CampaignStateFromJson(Map<String, dynamic> json) {
+  return CampaignState();
 }
 
-Map<String, dynamic> _$MessageConfigMessagesCampaignStateToJson(
-        MessageConfigMessagesCampaignState instance) =>
+Map<String, dynamic> _$CampaignStateToJson(CampaignState instance) =>
     <String, dynamic>{};
 
-MessageConfigMessagesCampaign _$MessageConfigMessagesCampaignFromJson(
-    Map<String, dynamic> json) {
-  return MessageConfigMessagesCampaign(
+Campaign _$CampaignFromJson(Map<String, dynamic> json) {
+  return Campaign(
     state: json['state'] == null
         ? null
-        : MessageConfigMessagesCampaignState.fromJson(
-            json['state'] as Map<String, dynamic>),
+        : CampaignState.fromJson(json['state'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$MessageConfigMessagesCampaignToJson(
-        MessageConfigMessagesCampaign instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CampaignToJson(Campaign instance) => <String, dynamic>{
       'state': instance.state,
-    };
-
-MessageConfigMessagesActions _$MessageConfigMessagesActionsFromJson(
-    Map<String, dynamic> json) {
-  return MessageConfigMessagesActions(
-    key: json['key'] as String,
-    label: json['label'] as String,
-    actionExpression: json['actionExpression'] as String,
-  );
-}
-
-Map<String, dynamic> _$MessageConfigMessagesActionsToJson(
-        MessageConfigMessagesActions instance) =>
-    <String, dynamic>{
-      'key': instance.key,
-      'label': instance.label,
-      'actionExpression': instance.actionExpression,
-    };
-
-MessageConfigMessages _$MessageConfigMessagesFromJson(
-    Map<String, dynamic> json) {
-  return MessageConfigMessages(
-    uuid: const ApiUuidJsonConverter().fromJson(json['uuid'] as String),
-    key: json['key'] as String,
-    body: json['body'] as String,
-    expression: json['expression'] as String,
-    campaign: json['campaign'] == null
-        ? null
-        : MessageConfigMessagesCampaign.fromJson(
-            json['campaign'] as Map<String, dynamic>),
-    actions: (json['actions'] as List)
-        ?.map((e) => e == null
-            ? null
-            : MessageConfigMessagesActions.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
-}
-
-Map<String, dynamic> _$MessageConfigMessagesToJson(
-        MessageConfigMessages instance) =>
-    <String, dynamic>{
-      'uuid': const ApiUuidJsonConverter().toJson(instance.uuid),
-      'key': instance.key,
-      'body': instance.body,
-      'expression': instance.expression,
-      'campaign': instance.campaign,
-      'actions': instance.actions,
-    };
-
-MessageConfig _$MessageConfigFromJson(Map<String, dynamic> json) {
-  return MessageConfig(
-    messages: (json['messages'] as List)
-        ?.map((e) => e == null
-            ? null
-            : MessageConfigMessages.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
-}
-
-Map<String, dynamic> _$MessageConfigToJson(MessageConfig instance) =>
-    <String, dynamic>{
-      'messages': instance.messages,
-    };
-
-Message _$MessageFromJson(Map<String, dynamic> json) {
-  return Message(
-    uuid: const ApiUuidJsonConverter().fromJson(json['uuid'] as String),
-    key: json['key'] as String,
-    body: json['body'] as String,
-    expression: json['expression'] as String,
-    campaign: json['campaign'] == null
-        ? null
-        : MessageConfigMessagesCampaign.fromJson(
-            json['campaign'] as Map<String, dynamic>),
-    actions: (json['actions'] as List)
-        ?.map((e) => e == null
-            ? null
-            : MessageConfigMessagesActions.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
-}
-
-Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
-      'uuid': const ApiUuidJsonConverter().toJson(instance.uuid),
-      'key': instance.key,
-      'body': instance.body,
-      'expression': instance.expression,
-      'campaign': instance.campaign,
-      'actions': instance.actions,
     };
 
 MessageAction _$MessageActionFromJson(Map<String, dynamic> json) {
@@ -156,17 +61,124 @@ Map<String, dynamic> _$MessageActionToJson(MessageAction instance) =>
       'actionExpression': instance.actionExpression,
     };
 
-Campaign _$CampaignFromJson(Map<String, dynamic> json) {
-  return Campaign(
-    state: json['state'] == null
+Message _$MessageFromJson(Map<String, dynamic> json) {
+  return Message(
+    uuid: const ApiUuidJsonConverter().fromJson(json['uuid'] as String),
+    key: json['key'] as String,
+    body: json['body'] as String,
+    expression: json['expression'] as String,
+    campaign: json['campaign'] == null
         ? null
-        : MessageConfigMessagesCampaignState.fromJson(
-            json['state'] as Map<String, dynamic>),
+        : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
+    actions: (json['actions'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MessageAction.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
-Map<String, dynamic> _$CampaignToJson(Campaign instance) => <String, dynamic>{
-      'state': instance.state,
+Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
+      'uuid': const ApiUuidJsonConverter().toJson(instance.uuid),
+      'key': instance.key,
+      'body': instance.body,
+      'expression': instance.expression,
+      'campaign': instance.campaign,
+      'actions': instance.actions,
+    };
+
+MessageBanner _$MessageBannerFromJson(Map<String, dynamic> json) {
+  return MessageBanner(
+    uuid: const ApiUuidJsonConverter().fromJson(json['uuid'] as String),
+    key: json['key'] as String,
+    body: json['body'] as String,
+    expression: json['expression'] as String,
+    campaign: json['campaign'] == null
+        ? null
+        : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
+    actions: (json['actions'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MessageAction.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    title: json['title'] as String,
+  );
+}
+
+Map<String, dynamic> _$MessageBannerToJson(MessageBanner instance) =>
+    <String, dynamic>{
+      'uuid': const ApiUuidJsonConverter().toJson(instance.uuid),
+      'key': instance.key,
+      'body': instance.body,
+      'expression': instance.expression,
+      'campaign': instance.campaign,
+      'actions': instance.actions,
+      'title': instance.title,
+    };
+
+MessageSurvey _$MessageSurveyFromJson(Map<String, dynamic> json) {
+  return MessageSurvey(
+    uuid: const ApiUuidJsonConverter().fromJson(json['uuid'] as String),
+    key: json['key'] as String,
+    body: json['body'] as String,
+    expression: json['expression'] as String,
+    campaign: json['campaign'] == null
+        ? null
+        : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
+    actions: (json['actions'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MessageAction.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    question: json['question'] as String,
+  );
+}
+
+Map<String, dynamic> _$MessageSurveyToJson(MessageSurvey instance) =>
+    <String, dynamic>{
+      'uuid': const ApiUuidJsonConverter().toJson(instance.uuid),
+      'key': instance.key,
+      'body': instance.body,
+      'expression': instance.expression,
+      'campaign': instance.campaign,
+      'actions': instance.actions,
+      'question': instance.question,
+    };
+
+MessageConfigMessages _$MessageConfigMessagesFromJson(
+    Map<String, dynamic> json) {
+  return MessageConfigMessages(
+    type: json['type'] as String,
+    dialog: json['dialog'] == null
+        ? null
+        : MessageBanner.fromJson(json['dialog'] as Map<String, dynamic>),
+    survey: json['survey'] == null
+        ? null
+        : MessageSurvey.fromJson(json['survey'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MessageConfigMessagesToJson(
+        MessageConfigMessages instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'dialog': instance.dialog,
+      'survey': instance.survey,
+    };
+
+MessageConfig _$MessageConfigFromJson(Map<String, dynamic> json) {
+  return MessageConfig(
+    messages: (json['messages'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MessageConfigMessages.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$MessageConfigToJson(MessageConfig instance) =>
+    <String, dynamic>{
+      'messages': instance.messages,
     };
 
 CheckGetResponseBody200 _$CheckGetResponseBody200FromJson(

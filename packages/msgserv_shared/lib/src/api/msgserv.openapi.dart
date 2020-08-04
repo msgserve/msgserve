@@ -49,19 +49,18 @@ class Event implements OpenApiContent {
 }
 
 @_i1.JsonSerializable()
-class MessageConfigMessagesCampaignState implements OpenApiContent {
-  MessageConfigMessagesCampaignState();
+class CampaignState implements OpenApiContent {
+  CampaignState();
 
-  factory MessageConfigMessagesCampaignState.fromJson(
-          Map<String, dynamic> jsonMap) =>
-      _$MessageConfigMessagesCampaignStateFromJson(jsonMap)
+  factory CampaignState.fromJson(Map<String, dynamic> jsonMap) =>
+      _$CampaignStateFromJson(jsonMap)
         .._additionalProperties.addEntries(
             jsonMap.entries.where((e) => !const <String>{}.contains(e.key)));
 
   final Map<String, Object> _additionalProperties = <String, Object>{};
 
-  Map<String, dynamic> toJson() => Map.from(_additionalProperties)
-    ..addAll(_$MessageConfigMessagesCampaignStateToJson(this));
+  Map<String, dynamic> toJson() =>
+      Map.from(_additionalProperties)..addAll(_$CampaignStateToJson(this));
   @override
   String toString() => toJson().toString();
   void operator []=(String key, Object value) =>
@@ -70,25 +69,23 @@ class MessageConfigMessagesCampaignState implements OpenApiContent {
 }
 
 @_i1.JsonSerializable()
-class MessageConfigMessagesCampaign implements OpenApiContent {
-  MessageConfigMessagesCampaign({@_i2.required this.state})
-      : assert(state != null);
+class Campaign implements OpenApiContent {
+  Campaign({@_i2.required this.state}) : assert(state != null);
 
-  factory MessageConfigMessagesCampaign.fromJson(
-          Map<String, dynamic> jsonMap) =>
-      _$MessageConfigMessagesCampaignFromJson(jsonMap);
+  factory Campaign.fromJson(Map<String, dynamic> jsonMap) =>
+      _$CampaignFromJson(jsonMap);
 
   @_i1.JsonKey(name: 'state')
-  final MessageConfigMessagesCampaignState state;
+  final CampaignState state;
 
-  Map<String, dynamic> toJson() => _$MessageConfigMessagesCampaignToJson(this);
+  Map<String, dynamic> toJson() => _$CampaignToJson(this);
   @override
   String toString() => toJson().toString();
 }
 
 @_i1.JsonSerializable()
-class MessageConfigMessagesActions implements OpenApiContent {
-  MessageConfigMessagesActions(
+class MessageAction implements OpenApiContent {
+  MessageAction(
       {@_i2.required this.key,
       @_i2.required this.label,
       @_i2.required this.actionExpression})
@@ -96,8 +93,8 @@ class MessageConfigMessagesActions implements OpenApiContent {
         assert(label != null),
         assert(actionExpression != null);
 
-  factory MessageConfigMessagesActions.fromJson(Map<String, dynamic> jsonMap) =>
-      _$MessageConfigMessagesActionsFromJson(jsonMap);
+  factory MessageAction.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MessageActionFromJson(jsonMap);
 
   @_i1.JsonKey(name: 'key')
   final String key;
@@ -109,67 +106,7 @@ class MessageConfigMessagesActions implements OpenApiContent {
   @_i1.JsonKey(name: 'actionExpression')
   final String actionExpression;
 
-  Map<String, dynamic> toJson() => _$MessageConfigMessagesActionsToJson(this);
-  @override
-  String toString() => toJson().toString();
-}
-
-@_i1.JsonSerializable()
-class MessageConfigMessages implements OpenApiContent {
-  MessageConfigMessages(
-      {@_i2.required this.uuid,
-      @_i2.required this.key,
-      @_i2.required this.body,
-      @_i2.required this.expression,
-      this.campaign,
-      @_i2.required this.actions})
-      : assert(uuid != null),
-        assert(key != null),
-        assert(body != null),
-        assert(expression != null),
-        assert(actions != null);
-
-  factory MessageConfigMessages.fromJson(Map<String, dynamic> jsonMap) =>
-      _$MessageConfigMessagesFromJson(jsonMap);
-
-  /// Globally unique ID.
-  @_i1.JsonKey(name: 'uuid')
-  @ApiUuidJsonConverter()
-  final ApiUuid uuid;
-
-  /// Unique, user friendly key for this message.
-  @_i1.JsonKey(name: 'key')
-  final String key;
-
-  @_i1.JsonKey(name: 'body')
-  final String body;
-
-  /// Boolean expression which evaluates whether this message should be shown.
-  @_i1.JsonKey(name: 'expression')
-  final String expression;
-
-  @_i1.JsonKey(name: 'campaign')
-  final MessageConfigMessagesCampaign campaign;
-
-  @_i1.JsonKey(name: 'actions')
-  final List<MessageConfigMessagesActions> actions;
-
-  Map<String, dynamic> toJson() => _$MessageConfigMessagesToJson(this);
-  @override
-  String toString() => toJson().toString();
-}
-
-@_i1.JsonSerializable()
-class MessageConfig implements OpenApiContent {
-  MessageConfig({@_i2.required this.messages}) : assert(messages != null);
-
-  factory MessageConfig.fromJson(Map<String, dynamic> jsonMap) =>
-      _$MessageConfigFromJson(jsonMap);
-
-  @_i1.JsonKey(name: 'messages')
-  final List<MessageConfigMessages> messages;
-
-  Map<String, dynamic> toJson() => _$MessageConfigToJson(this);
+  Map<String, dynamic> toJson() => _$MessageActionToJson(this);
   @override
   String toString() => toJson().toString();
 }
@@ -209,10 +146,10 @@ class Message implements OpenApiContent {
   final String expression;
 
   @_i1.JsonKey(name: 'campaign')
-  final MessageConfigMessagesCampaign campaign;
+  final Campaign campaign;
 
   @_i1.JsonKey(name: 'actions')
-  final List<MessageConfigMessagesActions> actions;
+  final List<MessageAction> actions;
 
   Map<String, dynamic> toJson() => _$MessageToJson(this);
   @override
@@ -220,44 +157,149 @@ class Message implements OpenApiContent {
 }
 
 @_i1.JsonSerializable()
-class MessageAction implements OpenApiContent {
-  MessageAction(
-      {@_i2.required this.key,
-      @_i2.required this.label,
-      @_i2.required this.actionExpression})
-      : assert(key != null),
-        assert(label != null),
-        assert(actionExpression != null);
+class MessageBanner implements OpenApiContent, Message {
+  MessageBanner(
+      {@_i2.required this.uuid,
+      @_i2.required this.key,
+      @_i2.required this.body,
+      @_i2.required this.expression,
+      this.campaign,
+      @_i2.required this.actions,
+      this.title})
+      : assert(uuid != null),
+        assert(key != null),
+        assert(body != null),
+        assert(expression != null),
+        assert(actions != null);
 
-  factory MessageAction.fromJson(Map<String, dynamic> jsonMap) =>
-      _$MessageActionFromJson(jsonMap);
+  factory MessageBanner.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MessageBannerFromJson(jsonMap);
 
+  /// Globally unique ID.
+  @_i1.JsonKey(name: 'uuid')
+  @override
+  @ApiUuidJsonConverter()
+  final ApiUuid uuid;
+
+  /// Unique, user friendly key for this message.
   @_i1.JsonKey(name: 'key')
+  @override
   final String key;
 
-  @_i1.JsonKey(name: 'label')
-  final String label;
+  @_i1.JsonKey(name: 'body')
+  @override
+  final String body;
 
-  /// Expression which is evaluated when the action is activted/pressed.
-  @_i1.JsonKey(name: 'actionExpression')
-  final String actionExpression;
+  /// Boolean expression which evaluates whether this message should be shown.
+  @_i1.JsonKey(name: 'expression')
+  @override
+  final String expression;
 
-  Map<String, dynamic> toJson() => _$MessageActionToJson(this);
+  @_i1.JsonKey(name: 'campaign')
+  @override
+  final Campaign campaign;
+
+  @_i1.JsonKey(name: 'actions')
+  @override
+  final List<MessageAction> actions;
+
+  @_i1.JsonKey(name: 'title')
+  final String title;
+
+  @override
+  Map<String, dynamic> toJson() => _$MessageBannerToJson(this);
   @override
   String toString() => toJson().toString();
 }
 
 @_i1.JsonSerializable()
-class Campaign implements OpenApiContent {
-  Campaign({@_i2.required this.state}) : assert(state != null);
+class MessageSurvey implements OpenApiContent, Message {
+  MessageSurvey(
+      {@_i2.required this.uuid,
+      @_i2.required this.key,
+      @_i2.required this.body,
+      @_i2.required this.expression,
+      this.campaign,
+      @_i2.required this.actions,
+      this.question})
+      : assert(uuid != null),
+        assert(key != null),
+        assert(body != null),
+        assert(expression != null),
+        assert(actions != null);
 
-  factory Campaign.fromJson(Map<String, dynamic> jsonMap) =>
-      _$CampaignFromJson(jsonMap);
+  factory MessageSurvey.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MessageSurveyFromJson(jsonMap);
 
-  @_i1.JsonKey(name: 'state')
-  final MessageConfigMessagesCampaignState state;
+  /// Globally unique ID.
+  @_i1.JsonKey(name: 'uuid')
+  @override
+  @ApiUuidJsonConverter()
+  final ApiUuid uuid;
 
-  Map<String, dynamic> toJson() => _$CampaignToJson(this);
+  /// Unique, user friendly key for this message.
+  @_i1.JsonKey(name: 'key')
+  @override
+  final String key;
+
+  @_i1.JsonKey(name: 'body')
+  @override
+  final String body;
+
+  /// Boolean expression which evaluates whether this message should be shown.
+  @_i1.JsonKey(name: 'expression')
+  @override
+  final String expression;
+
+  @_i1.JsonKey(name: 'campaign')
+  @override
+  final Campaign campaign;
+
+  @_i1.JsonKey(name: 'actions')
+  @override
+  final List<MessageAction> actions;
+
+  @_i1.JsonKey(name: 'question')
+  final String question;
+
+  @override
+  Map<String, dynamic> toJson() => _$MessageSurveyToJson(this);
+  @override
+  String toString() => toJson().toString();
+}
+
+@_i1.JsonSerializable()
+class MessageConfigMessages implements OpenApiContent {
+  MessageConfigMessages({this.type, this.dialog, this.survey});
+
+  factory MessageConfigMessages.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MessageConfigMessagesFromJson(jsonMap);
+
+  @_i1.JsonKey(name: 'type')
+  final String type;
+
+  @_i1.JsonKey(name: 'dialog')
+  final MessageBanner dialog;
+
+  @_i1.JsonKey(name: 'survey')
+  final MessageSurvey survey;
+
+  Map<String, dynamic> toJson() => _$MessageConfigMessagesToJson(this);
+  @override
+  String toString() => toJson().toString();
+}
+
+@_i1.JsonSerializable()
+class MessageConfig implements OpenApiContent {
+  MessageConfig({@_i2.required this.messages}) : assert(messages != null);
+
+  factory MessageConfig.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MessageConfigFromJson(jsonMap);
+
+  @_i1.JsonKey(name: 'messages')
+  final List<MessageConfigMessages> messages;
+
+  Map<String, dynamic> toJson() => _$MessageConfigToJson(this);
   @override
   String toString() => toJson().toString();
 }
