@@ -1,28 +1,40 @@
-import 'package:msgserv_backend/src/db/entities/campaign.dart';
+import 'package:msgserv_backend/src/db/entities/campaign.dart' as c;
+import 'package:msgserv_shared/msgserv_shared.dart';
+import 'package:msgserv_shared/msgserv_shared.dart';
+import 'package:msgserv_shared/msgserv_shared.dart';
 import 'package:openapi_base/openapi_base.dart';
 
 /// Configuration which only apply for oeamtc voucher.
 /// In the future this should be in the database.
 
 void createConfig() {
-  final p = Project(
+  final p = c.Project(
     uuid: ApiUuid.parse('382aa309-0c8d-4767-9003-2fe2a2a7255c'),
     apiKey: 'todo',
     jwtConfig: [
-      ProjectJwt(
+      c.ProjectJwt(
         property: 'jwt',
         publicKey: 'TODO',
       ),
     ],
   );
-  final eniCampaign = Campaign(
+  final eniCampaign = c.Campaign(
     voucherMaxCount: 1000,
     voucherPerSubject: 1,
     redemptionExpression: '',
     subjectExpression: '',
   );
+  final dialogs = [
+    MessageBanner(
+      uuid: null,
+      body: null,
+      expression: null,
+      actions: [],
+      key: null,
+    ),
+  ];
   final messages = [
-    Message(
+    c.Message(
       key: 'teaser',
       title: 'Gewinne ENI Gutscheine im September',
       body: 'TODO',
@@ -33,7 +45,7 @@ void createConfig() {
           (context.jwt.age != null && context.jwt.age < 20)
       ''',
     ),
-    Message(
+    c.Message(
       key: 'gratulation',
       title: 'Gratulation!',
       body:
