@@ -10,7 +10,7 @@ dependencies:
   meta: ^1.2.2
   logging: ^0.11.4
   logging_appenders: ^0.4.2+3
-  openapi_base: ^0.1.2
+  openapi_base: ^0.1.4
   args: ^1.6.0
   json_annotation: ^3.0.1
   msgserv_shared:
@@ -25,7 +25,7 @@ dev_dependencies:
   build_runner: ^1.10.0
   json_serializable: ^3.3.0
 
-#dependency_overrides:
+dependency_overrides:
 #  openapi_base:
 #    path: /Users/herbert/dev/authpass-cloud/deps/openapi_dart/packages/openapi_base
 #  openapi_code_builder:

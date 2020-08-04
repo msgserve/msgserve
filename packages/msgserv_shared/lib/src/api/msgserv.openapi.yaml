@@ -36,7 +36,10 @@ paths:
       responses:
         '200':
           description: Configuration update
-
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageConfig'
 components:
   schemas:
     Event:
@@ -51,6 +54,60 @@ components:
       required:
         - ts
         - context
+    MessageConfig:
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+      required:
+        - messages
+    Message:
+      properties:
+        uuid:
+          description: Globally unique ID.
+          type: string
+          format: uuid
+        key:
+          description: Unique, user friendly key for this message.
+          type: string
+        body:
+          type: string
+        expression:
+          description: Boolean expression which evaluates whether this message should be shown.
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageAction'
+      required:
+        - uuid
+        - key
+        - body
+        - expression
+        - actions
+    MessageAction:
+      properties:
+        key:
+          type: string
+        label:
+          type: string
+        actionExpression:
+          description: Expression which is evaluated when the action is activted/pressed.
+          type: string
+      required:
+        - key
+        - label
+        - actionExpression
+    Campaign:
+      properties:
+        state:
+          type: object
+          additionalProperties: true
+      required:
+        - state
   securitySchemes:
     apiKey:
       type: apiKey
