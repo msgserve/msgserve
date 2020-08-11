@@ -20,10 +20,12 @@ class MsgServApi {
   MsgServBackendClient get _client => _clientCached ??=
       MsgServBackendClient(Uri.parse(opts.endpointUrl), requestSender);
 
-  void sendEvent() {
-    _client.eventPost(
+  Future<MessageConfig> sendEvent() async {
+    final response = await _client.eventPost(
       Event(ts: clock.now().toUtc(), context: EventContext()),
     );
+    final config = response.requireSuccess();
+    return config;
   }
 
   void dispose() {
