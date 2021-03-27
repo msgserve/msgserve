@@ -6,9 +6,9 @@ import 'package:openapi_base/openapi_base.dart';
 
 class MsgServBackendImpl extends MsgServBackend {
   MsgServBackendImpl({
-    @required this.serviceProvider,
-    @required this.db,
-    @required this.request,
+    required this.serviceProvider,
+    required this.db,
+    required this.request,
   });
 
   final ServiceProvider serviceProvider;

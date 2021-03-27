@@ -5,7 +5,7 @@ import 'package:postgres_utils/postgres_utils.dart';
 
 /// Example implementation of a table.
 class DummyTable extends TableBase with TableConstants {
-  DummyTable({@required this.cryptoService}) : assert(cryptoService != null);
+  DummyTable({required this.cryptoService}) : assert(cryptoService != null);
 
   static const _TABLE_DUMMY = 'dummy';
   static const _COLUMN_LABEL = 'label';

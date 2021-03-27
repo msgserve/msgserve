@@ -21,17 +21,17 @@ abstract class BaseBackendCommand extends Command<void> {
   }
 
   Future<Env> loadEnv() async {
-    final configFile = argResults[ARG_CONFIG] as String;
+    final configFile = argResults![ARG_CONFIG] as String?;
     if (configFile == '') {
       return DevEnv();
     } else {
-      final file = File(configFile);
+      final file = File(configFile!);
       if (!file.existsSync()) {
         throw StateError('File not found ${file.absolute}');
       }
       final config = _loadYaml(
         await file.readAsString(),
-        (m) => ConfigFileRoot.fromJson(m),
+        (m) => ConfigFileRoot.fromJson(m!),
         sourceUrl: file.path,
       );
 
@@ -39,9 +39,10 @@ abstract class BaseBackendCommand extends Command<void> {
     }
   }
 
-  T _loadYaml<T>(String yamlContent, T Function(Map map) constructor,
-      {String sourceUrl}) {
-    final yamlMap = loadYaml(yamlContent, sourceUrl: sourceUrl) as Map;
+  T _loadYaml<T>(String yamlContent, T Function(Map? map) constructor,
+      {required String sourceUrl}) {
+    final yamlMap =
+        loadYaml(yamlContent, sourceUrl: Uri.parse(sourceUrl)) as Map?;
     return constructor(yamlMap);
   }
 }

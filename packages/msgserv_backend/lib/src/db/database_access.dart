@@ -12,8 +12,8 @@ class DatabaseTransaction extends DatabaseTransactionBase<AuthPassTables> {
 class DatabaseAccess
     extends DatabaseAccessBase<DatabaseTransaction, AuthPassTables> {
   DatabaseAccess({
-    @required CryptoService cryptoService,
-    @required DatabaseConfig config,
+    required CryptoService cryptoService,
+    required DatabaseConfig config,
   })  : assert(config != null),
         assert(cryptoService != null),
         super(
@@ -31,7 +31,7 @@ class DatabaseAccess
 
 class AuthPassTables extends TablesBase {
   AuthPassTables({
-    @required CryptoService cryptoService,
+    required CryptoService cryptoService,
   }) : dummy = DummyTable(cryptoService: cryptoService);
 
   final DummyTable dummy;

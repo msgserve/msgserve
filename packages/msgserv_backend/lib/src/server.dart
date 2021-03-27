@@ -10,7 +10,7 @@ import 'package:openapi_base/openapi_base.dart';
 final _logger = Logger('server');
 
 class Server {
-  Server({@required this.env}) : assert(env != null);
+  Server({required this.env}) : assert(env != null);
 
   final Env env;
 

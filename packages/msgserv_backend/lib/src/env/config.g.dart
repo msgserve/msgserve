@@ -15,23 +15,15 @@ ConfigFileRoot _$ConfigFileRootFromJson(Map json) {
           'http',
           (v) => v == null
               ? null
-              : HttpConfig.fromJson((v as Map)?.map(
-                  (k, e) => MapEntry(k as String, e),
-                ))),
-      email: $checkedConvert(json, 'email',
-          (v) => v == null ? null : EmailConfig.fromJson(v as Map)),
-      secrets: $checkedConvert(json, 'secrets',
-          (v) => v == null ? null : SecretsConfig.fromJson(v as Map)),
+              : HttpConfig.fromJson(Map<String, dynamic>.from(v as Map))),
+      email:
+          $checkedConvert(json, 'email', (v) => EmailConfig.fromJson(v as Map)),
+      secrets: $checkedConvert(
+          json, 'secrets', (v) => SecretsConfig.fromJson(v as Map)),
       database: $checkedConvert(json, 'database',
           (v) => DatabaseConfig.fromJson(Map<String, dynamic>.from(v as Map))),
-      mailbox: $checkedConvert(
-          json,
-          'mailbox',
-          (v) => v == null
-              ? null
-              : MailboxConfig.fromJson((v as Map)?.map(
-                  (k, e) => MapEntry(k as String, e),
-                ))),
+      mailbox: $checkedConvert(json, 'mailbox',
+          (v) => MailboxConfig.fromJson(Map<String, dynamic>.from(v as Map))),
     );
     return val;
   });
@@ -48,7 +40,7 @@ Map<String, dynamic> _$ConfigFileRootToJson(ConfigFileRoot instance) =>
 
 MailboxConfig _$MailboxConfigFromJson(Map<String, dynamic> json) {
   return MailboxConfig(
-    defaultHost: json['defaultHost'] as String,
+    defaultHost: json['defaultHost'] as String?,
   );
 }
 
@@ -60,8 +52,8 @@ Map<String, dynamic> _$MailboxConfigToJson(MailboxConfig instance) =>
 HttpConfig _$HttpConfigFromJson(Map json) {
   return $checkedNew('HttpConfig', json, () {
     final val = HttpConfig(
-      host: $checkedConvert(json, 'host', (v) => v as String) ?? 'localhost',
-      port: $checkedConvert(json, 'port', (v) => v as int) ?? 8080,
+      host: $checkedConvert(json, 'host', (v) => v as String?) ?? 'localhost',
+      port: $checkedConvert(json, 'port', (v) => v as int?) ?? 8080,
     );
     return val;
   });
@@ -78,7 +70,7 @@ EmailConfig _$EmailConfigFromJson(Map json) {
     $checkKeys(json, requiredKeys: const ['fromAddress']);
     final val = EmailConfig(
       fromAddress: $checkedConvert(json, 'fromAddress', (v) => v as String),
-      fromName: $checkedConvert(json, 'fromName', (v) => v as String),
+      fromName: $checkedConvert(json, 'fromName', (v) => v as String?),
       smtp: $checkedConvert(json, 'smtp',
           (v) => v == null ? null : EmailSmtpConfig.fromJson(v as Map)),
     );
@@ -98,14 +90,14 @@ EmailSmtpConfig _$EmailSmtpConfigFromJson(Map json) {
     $checkKeys(json, requiredKeys: const ['host']);
     final val = EmailSmtpConfig(
       host: $checkedConvert(json, 'host', (v) => v as String),
-      port: $checkedConvert(json, 'port', (v) => v as int) ?? 25,
-      ssl: $checkedConvert(json, 'ssl', (v) => v as bool) ?? false,
-      username: $checkedConvert(json, 'username', (v) => v as String),
-      password: $checkedConvert(json, 'password', (v) => v as String),
+      port: $checkedConvert(json, 'port', (v) => v as int?) ?? 25,
+      ssl: $checkedConvert(json, 'ssl', (v) => v as bool?) ?? false,
+      username: $checkedConvert(json, 'username', (v) => v as String?),
+      password: $checkedConvert(json, 'password', (v) => v as String?),
       allowInsecure:
-          $checkedConvert(json, 'allowInsecure', (v) => v as bool) ?? false,
+          $checkedConvert(json, 'allowInsecure', (v) => v as bool?) ?? false,
       ignoreBadCertificate:
-          $checkedConvert(json, 'ignoreBadCertificate', (v) => v as bool) ??
+          $checkedConvert(json, 'ignoreBadCertificate', (v) => v as bool?) ??
               false,
     );
     return val;
@@ -126,7 +118,7 @@ Map<String, dynamic> _$EmailSmtpConfigToJson(EmailSmtpConfig instance) =>
 SecretsConfig _$SecretsConfigFromJson(Map json) {
   return $checkedNew('SecretsConfig', json, () {
     final val = SecretsConfig(
-      exampleToken: $checkedConvert(json, 'exampleToken', (v) => v as String),
+      exampleToken: $checkedConvert(json, 'exampleToken', (v) => v as String?),
     );
     return val;
   });

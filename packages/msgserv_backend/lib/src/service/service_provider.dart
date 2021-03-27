@@ -5,7 +5,7 @@ import 'package:msgserv_backend/src/service/crypto_service.dart';
 
 class ServiceProvider {
   ServiceProvider({
-    @required this.env,
+    required this.env,
   }) : assert(env != null);
 
   final Env env;

@@ -60,7 +60,7 @@ class HealthCheckCommand extends Command<void> {
 
   @override
   Future<void> run() async {
-    final baseUri = argResults['url'] as String;
+    final baseUri = argResults!['url'] as String;
     final requestSender = HttpRequestSender();
     try {
       final client = MsgServBackendClient(Uri.parse(baseUri), requestSender);

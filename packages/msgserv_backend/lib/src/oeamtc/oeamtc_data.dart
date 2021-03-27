@@ -24,15 +24,15 @@ void createConfig() {
     redemptionExpression: '',
     subjectExpression: '',
   );
-  final dialogs = [
-    MessageBanner(
-      uuid: null,
-      body: null,
-      expression: null,
-      actions: [],
-      key: null,
-    ),
-  ];
+  // final dialogs = [
+  //   MessageBanner(
+  //     uuid: null,
+  //     body: null,
+  //     expression: null,
+  //     actions: [],
+  //     key: null,
+  //   ),
+  // ];
   final messages = [
     c.Message(
       key: 'teaser',
