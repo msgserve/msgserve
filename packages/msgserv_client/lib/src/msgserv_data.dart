@@ -7,7 +7,7 @@ part 'msgserv_data.g.dart';
 @freezed
 abstract class MsgServData with _$MsgServData {
   const factory MsgServData({
-    @required String property,
+    required String property,
   }) = _MsgServData;
 
   factory MsgServData.fromJson(Map<String, dynamic> json) =>

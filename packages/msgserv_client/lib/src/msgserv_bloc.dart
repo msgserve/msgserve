@@ -8,12 +8,12 @@ typedef CustomActionHandler = Future<bool> Function(
 
 class MsgServBloc {
   MsgServBloc({
-    @required this.opts,
+    required this.opts,
     this.packageInfo,
     this.headers,
   }) : assert(opts != null);
 
   final MsgServOpts opts;
-  final MsgServPackageInfo packageInfo;
-  final Map<String, String> headers;
+  final MsgServPackageInfo? packageInfo;
+  final Map<String, String>? headers;
 }

@@ -6,17 +6,17 @@ import 'package:openapi_base/openapi_base.dart';
 
 class MsgServApi {
   MsgServApi({
-    @required this.opts,
-    @required this.packageInfo,
+    required this.opts,
+    required this.packageInfo,
     this.headers,
   }) : requestSender = HttpRequestSender();
 
   final MsgServOpts opts;
   final MsgServPackageInfo packageInfo;
-  final Map<String, String> headers;
+  final Map<String, String>? headers;
   final HttpRequestSender requestSender;
 
-  MsgServBackendClient _clientCached;
+  MsgServBackendClient? _clientCached;
   MsgServBackendClient get _client => _clientCached ??=
       MsgServBackendClient(Uri.parse(opts.endpointUrl), requestSender);
 

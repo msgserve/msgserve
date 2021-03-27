@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import 'package:package_info/package_info.dart';
 
 class MsgServOpts {
-  MsgServOpts({this.endpointUrl});
+  MsgServOpts({required this.endpointUrl});
 
   /// base path to the API endpoint.
   /// Must not end in '/'
@@ -11,10 +11,10 @@ class MsgServOpts {
 
 class MsgServPackageInfo {
   const MsgServPackageInfo({
-    @required this.appName,
-    @required this.packageName,
-    @required this.version,
-    @required this.buildNumber,
+    required this.appName,
+    required this.packageName,
+    required this.version,
+    required this.buildNumber,
   })  : assert(appName != null),
         assert(packageName != null),
         assert(version != null),

@@ -8,7 +8,7 @@ enum MsgServEventType {
 }
 
 class MsgServEvent {
-  MsgServEvent({@required this.type, @required this.message})
+  MsgServEvent({required this.type, required this.message})
       : assert(type != null),
         assert(message != null);
 
@@ -28,9 +28,9 @@ abstract class MsgServEventWithAction implements MsgServEvent {
 class MsgServEventTriggerCustom extends MsgServEvent
     implements MsgServEventWithAction {
   MsgServEventTriggerCustom({
-    @required Message message,
-    @required this.action,
-    @required this.uri,
+    required Message message,
+    required this.action,
+    required this.uri,
   })  : assert(uri != null),
         assert(action != null),
         super(type: MsgServEventType.dismissed, message: message);

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'msgserv_data.dart';
 
@@ -8,31 +8,43 @@ part of 'msgserv_data.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 MsgServData _$MsgServDataFromJson(Map<String, dynamic> json) {
   return _MsgServData.fromJson(json);
 }
 
+/// @nodoc
 class _$MsgServDataTearOff {
   const _$MsgServDataTearOff();
 
-// ignore: unused_element
-  _MsgServData call({@required String property}) {
+  _MsgServData call({required String property}) {
     return _MsgServData(
       property: property,
     );
   }
+
+  MsgServData fromJson(Map<String, Object> json) {
+    return MsgServData.fromJson(json);
+  }
 }
 
-// ignore: unused_element
+/// @nodoc
 const $MsgServData = _$MsgServDataTearOff();
 
+/// @nodoc
 mixin _$MsgServData {
-  String get property;
+  String get property => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
-  $MsgServDataCopyWith<MsgServData> get copyWith;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MsgServDataCopyWith<MsgServData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
 abstract class $MsgServDataCopyWith<$Res> {
   factory $MsgServDataCopyWith(
           MsgServData value, $Res Function(MsgServData) then) =
@@ -40,6 +52,7 @@ abstract class $MsgServDataCopyWith<$Res> {
   $Res call({String property});
 }
 
+/// @nodoc
 class _$MsgServDataCopyWithImpl<$Res> implements $MsgServDataCopyWith<$Res> {
   _$MsgServDataCopyWithImpl(this._value, this._then);
 
@@ -49,14 +62,18 @@ class _$MsgServDataCopyWithImpl<$Res> implements $MsgServDataCopyWith<$Res> {
 
   @override
   $Res call({
-    Object property = freezed,
+    Object? property = freezed,
   }) {
     return _then(_value.copyWith(
-      property: property == freezed ? _value.property : property as String,
+      property: property == freezed
+          ? _value.property
+          : property // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
+/// @nodoc
 abstract class _$MsgServDataCopyWith<$Res>
     implements $MsgServDataCopyWith<$Res> {
   factory _$MsgServDataCopyWith(
@@ -66,6 +83,7 @@ abstract class _$MsgServDataCopyWith<$Res>
   $Res call({String property});
 }
 
+/// @nodoc
 class __$MsgServDataCopyWithImpl<$Res> extends _$MsgServDataCopyWithImpl<$Res>
     implements _$MsgServDataCopyWith<$Res> {
   __$MsgServDataCopyWithImpl(
@@ -77,17 +95,22 @@ class __$MsgServDataCopyWithImpl<$Res> extends _$MsgServDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object property = freezed,
+    Object? property = freezed,
   }) {
     return _then(_MsgServData(
-      property: property == freezed ? _value.property : property as String,
+      property: property == freezed
+          ? _value.property
+          : property // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_MsgServData with DiagnosticableTreeMixin implements _MsgServData {
-  const _$_MsgServData({@required this.property}) : assert(property != null);
+  const _$_MsgServData({required this.property});
 
   factory _$_MsgServData.fromJson(Map<String, dynamic> json) =>
       _$_$_MsgServDataFromJson(json);
@@ -121,6 +144,7 @@ class _$_MsgServData with DiagnosticableTreeMixin implements _MsgServData {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(property);
 
+  @JsonKey(ignore: true)
   @override
   _$MsgServDataCopyWith<_MsgServData> get copyWith =>
       __$MsgServDataCopyWithImpl<_MsgServData>(this, _$identity);
@@ -132,13 +156,15 @@ class _$_MsgServData with DiagnosticableTreeMixin implements _MsgServData {
 }
 
 abstract class _MsgServData implements MsgServData {
-  const factory _MsgServData({@required String property}) = _$_MsgServData;
+  const factory _MsgServData({required String property}) = _$_MsgServData;
 
   factory _MsgServData.fromJson(Map<String, dynamic> json) =
       _$_MsgServData.fromJson;
 
   @override
-  String get property;
+  String get property => throw _privateConstructorUsedError;
   @override
-  _$MsgServDataCopyWith<_MsgServData> get copyWith;
+  @JsonKey(ignore: true)
+  _$MsgServDataCopyWith<_MsgServData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
