@@ -15,15 +15,13 @@ Map<String, dynamic> _$EventContextToJson(EventContext instance) =>
 
 Event _$EventFromJson(Map<String, dynamic> json) {
   return Event(
-    ts: json['ts'] == null ? null : DateTime.parse(json['ts'] as String),
-    context: json['context'] == null
-        ? null
-        : EventContext.fromJson(json['context'] as Map<String, dynamic>),
+    ts: DateTime.parse(json['ts'] as String),
+    context: EventContext.fromJson(json['context'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
-      'ts': instance.ts?.toIso8601String(),
+      'ts': instance.ts.toIso8601String(),
       'context': instance.context,
     };
 
@@ -36,9 +34,7 @@ Map<String, dynamic> _$CampaignStateToJson(CampaignState instance) =>
 
 Campaign _$CampaignFromJson(Map<String, dynamic> json) {
   return Campaign(
-    state: json['state'] == null
-        ? null
-        : CampaignState.fromJson(json['state'] as Map<String, dynamic>),
+    state: CampaignState.fromJson(json['state'] as Map<String, dynamic>),
   );
 }
 
@@ -70,11 +66,9 @@ Message _$MessageFromJson(Map<String, dynamic> json) {
     campaign: json['campaign'] == null
         ? null
         : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
-    (actions: (json['actions'] as List?)
-        ?.map((e) => e == null
-            ? null
-            : MessageAction.fromJson(e as Map<String, dynamic>))
-        ?.toList())!,
+    actions: (json['actions'] as List<dynamic>)
+        .map((e) => MessageAction.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -96,11 +90,9 @@ MessageBanner _$MessageBannerFromJson(Map<String, dynamic> json) {
     campaign: json['campaign'] == null
         ? null
         : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
-    (actions: (json['actions'] as List?)
-        ?.map((e) => e == null
-            ? null
-            : MessageAction.fromJson(e as Map<String, dynamic>))
-        ?.toList())!,
+    actions: (json['actions'] as List<dynamic>)
+        .map((e) => MessageAction.fromJson(e as Map<String, dynamic>))
+        .toList(),
     title: json['title'] as String?,
   );
 }
@@ -125,11 +117,9 @@ MessageSurvey _$MessageSurveyFromJson(Map<String, dynamic> json) {
     campaign: json['campaign'] == null
         ? null
         : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
-    (actions: (json['actions'] as List?)
-        ?.map((e) => e == null
-            ? null
-            : MessageAction.fromJson(e as Map<String, dynamic>))
-        ?.toList())!,
+    actions: (json['actions'] as List<dynamic>)
+        .map((e) => MessageAction.fromJson(e as Map<String, dynamic>))
+        .toList(),
     question: json['question'] as String?,
   );
 }
@@ -168,11 +158,9 @@ Map<String, dynamic> _$MessageConfigMessagesToJson(
 
 MessageConfig _$MessageConfigFromJson(Map<String, dynamic> json) {
   return MessageConfig(
-    (messages: (json['messages'] as List?)
-        ?.map((e) => e == null
-            ? null
-            : MessageConfigMessages.fromJson(e as Map<String, dynamic>))
-        ?.toList())!,
+    messages: (json['messages'] as List<dynamic>)
+        .map((e) => MessageConfigMessages.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

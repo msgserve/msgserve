@@ -3,7 +3,6 @@
 // ignore_for_file: prefer_initializing_formals
 
 import 'package:json_annotation/json_annotation.dart' as _i1;
-import 'package:meta/meta.dart' as _i2;
 import 'package:openapi_base/openapi_base.dart';
 part 'msgserv.openapi.g.dart';
 
@@ -13,8 +12,9 @@ class EventContext implements OpenApiContent {
 
   factory EventContext.fromJson(Map<String, dynamic> jsonMap) =>
       _$EventContextFromJson(jsonMap)
-        .._additionalProperties.addEntries(
-            jsonMap.entries.where((e) => !const <String>{}.contains(e.key)) as Iterable<MapEntry<String, Object>>);
+        .._additionalProperties.addEntries(jsonMap.entries
+            .where((e) => !const <String>{}.contains(e.key))
+            .cast<MapEntry<String, Object>>());
 
   final Map<String, Object> _additionalProperties = <String, Object>{};
 
@@ -29,9 +29,7 @@ class EventContext implements OpenApiContent {
 
 @_i1.JsonSerializable()
 class Event implements OpenApiContent {
-  Event({required this.ts, required this.context})
-      : assert(ts != null),
-        assert(context != null);
+  Event({required this.ts, required this.context});
 
   factory Event.fromJson(Map<String, dynamic> jsonMap) =>
       _$EventFromJson(jsonMap);
@@ -54,8 +52,9 @@ class CampaignState implements OpenApiContent {
 
   factory CampaignState.fromJson(Map<String, dynamic> jsonMap) =>
       _$CampaignStateFromJson(jsonMap)
-        .._additionalProperties.addEntries(
-            jsonMap.entries.where((e) => !const <String>{}.contains(e.key)) as Iterable<MapEntry<String, Object>>);
+        .._additionalProperties.addEntries(jsonMap.entries
+            .where((e) => !const <String>{}.contains(e.key))
+            .cast<MapEntry<String, Object>>());
 
   final Map<String, Object> _additionalProperties = <String, Object>{};
 
@@ -70,7 +69,7 @@ class CampaignState implements OpenApiContent {
 
 @_i1.JsonSerializable()
 class Campaign implements OpenApiContent {
-  Campaign({required this.state}) : assert(state != null);
+  Campaign({required this.state});
 
   factory Campaign.fromJson(Map<String, dynamic> jsonMap) =>
       _$CampaignFromJson(jsonMap);
@@ -86,12 +85,7 @@ class Campaign implements OpenApiContent {
 @_i1.JsonSerializable()
 class MessageAction implements OpenApiContent {
   MessageAction(
-      {required this.key,
-      required this.label,
-      required this.actionExpression})
-      : assert(key != null),
-        assert(label != null),
-        assert(actionExpression != null);
+      {required this.key, required this.label, required this.actionExpression});
 
   factory MessageAction.fromJson(Map<String, dynamic> jsonMap) =>
       _$MessageActionFromJson(jsonMap);
@@ -119,12 +113,7 @@ class Message implements OpenApiContent {
       required this.body,
       required this.expression,
       this.campaign,
-      required this.actions})
-      : assert(uuid != null),
-        assert(key != null),
-        assert(body != null),
-        assert(expression != null),
-        assert(actions != null);
+      required this.actions});
 
   factory Message.fromJson(Map<String, dynamic> jsonMap) =>
       _$MessageFromJson(jsonMap);
@@ -165,12 +154,7 @@ class MessageBanner implements OpenApiContent, Message {
       required this.expression,
       this.campaign,
       required this.actions,
-      this.title})
-      : assert(uuid != null),
-        assert(key != null),
-        assert(body != null),
-        assert(expression != null),
-        assert(actions != null);
+      this.title});
 
   factory MessageBanner.fromJson(Map<String, dynamic> jsonMap) =>
       _$MessageBannerFromJson(jsonMap);
@@ -221,12 +205,7 @@ class MessageSurvey implements OpenApiContent, Message {
       required this.expression,
       this.campaign,
       required this.actions,
-      this.question})
-      : assert(uuid != null),
-        assert(key != null),
-        assert(body != null),
-        assert(expression != null),
-        assert(actions != null);
+      this.question});
 
   factory MessageSurvey.fromJson(Map<String, dynamic> jsonMap) =>
       _$MessageSurveyFromJson(jsonMap);
@@ -291,7 +270,7 @@ class MessageConfigMessages implements OpenApiContent {
 
 @_i1.JsonSerializable()
 class MessageConfig implements OpenApiContent {
-  MessageConfig({required this.messages}) : assert(messages != null);
+  MessageConfig({required this.messages});
 
   factory MessageConfig.fromJson(Map<String, dynamic> jsonMap) =>
       _$MessageConfigFromJson(jsonMap);
@@ -556,3 +535,5 @@ class SecuritySchemes {
       writeToRequest: (OpenApiClientRequest request, String value) =>
           request.addHeaderParameter('X-API-KEY', [value]));
 }
+
+T _throwStateError<T>(String message) => throw StateError(message);
