@@ -70,11 +70,11 @@ Message _$MessageFromJson(Map<String, dynamic> json) {
     campaign: json['campaign'] == null
         ? null
         : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
-    actions: (json['actions'] as List)
+    (actions: (json['actions'] as List?)
         ?.map((e) => e == null
             ? null
             : MessageAction.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+        ?.toList())!,
   );
 }
 
@@ -96,12 +96,12 @@ MessageBanner _$MessageBannerFromJson(Map<String, dynamic> json) {
     campaign: json['campaign'] == null
         ? null
         : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
-    actions: (json['actions'] as List)
+    (actions: (json['actions'] as List?)
         ?.map((e) => e == null
             ? null
             : MessageAction.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    title: json['title'] as String,
+        ?.toList())!,
+    title: json['title'] as String?,
   );
 }
 
@@ -125,12 +125,12 @@ MessageSurvey _$MessageSurveyFromJson(Map<String, dynamic> json) {
     campaign: json['campaign'] == null
         ? null
         : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
-    actions: (json['actions'] as List)
+    (actions: (json['actions'] as List?)
         ?.map((e) => e == null
             ? null
             : MessageAction.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    question: json['question'] as String,
+        ?.toList())!,
+    question: json['question'] as String?,
   );
 }
 
@@ -148,7 +148,7 @@ Map<String, dynamic> _$MessageSurveyToJson(MessageSurvey instance) =>
 MessageConfigMessages _$MessageConfigMessagesFromJson(
     Map<String, dynamic> json) {
   return MessageConfigMessages(
-    type: json['type'] as String,
+    type: json['type'] as String?,
     dialog: json['dialog'] == null
         ? null
         : MessageBanner.fromJson(json['dialog'] as Map<String, dynamic>),
@@ -168,11 +168,11 @@ Map<String, dynamic> _$MessageConfigMessagesToJson(
 
 MessageConfig _$MessageConfigFromJson(Map<String, dynamic> json) {
   return MessageConfig(
-    messages: (json['messages'] as List)
+    (messages: (json['messages'] as List?)
         ?.map((e) => e == null
             ? null
             : MessageConfigMessages.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+        ?.toList())!,
   );
 }
 
@@ -184,7 +184,7 @@ Map<String, dynamic> _$MessageConfigToJson(MessageConfig instance) =>
 CheckGetResponseBody200 _$CheckGetResponseBody200FromJson(
     Map<String, dynamic> json) {
   return CheckGetResponseBody200(
-    dbVersion: json['dbVersion'] as int,
+    dbVersion: json['dbVersion'] as int?,
   );
 }
 

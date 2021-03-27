@@ -14,7 +14,7 @@ class EventContext implements OpenApiContent {
   factory EventContext.fromJson(Map<String, dynamic> jsonMap) =>
       _$EventContextFromJson(jsonMap)
         .._additionalProperties.addEntries(
-            jsonMap.entries.where((e) => !const <String>{}.contains(e.key)));
+            jsonMap.entries.where((e) => !const <String>{}.contains(e.key)) as Iterable<MapEntry<String, Object>>);
 
   final Map<String, Object> _additionalProperties = <String, Object>{};
 
@@ -24,12 +24,12 @@ class EventContext implements OpenApiContent {
   String toString() => toJson().toString();
   void operator []=(String key, Object value) =>
       _additionalProperties[key] = value;
-  Object operator [](String key) => _additionalProperties[key];
+  Object? operator [](String key) => _additionalProperties[key];
 }
 
 @_i1.JsonSerializable()
 class Event implements OpenApiContent {
-  Event({@_i2.required this.ts, @_i2.required this.context})
+  Event({required this.ts, required this.context})
       : assert(ts != null),
         assert(context != null);
 
@@ -55,7 +55,7 @@ class CampaignState implements OpenApiContent {
   factory CampaignState.fromJson(Map<String, dynamic> jsonMap) =>
       _$CampaignStateFromJson(jsonMap)
         .._additionalProperties.addEntries(
-            jsonMap.entries.where((e) => !const <String>{}.contains(e.key)));
+            jsonMap.entries.where((e) => !const <String>{}.contains(e.key)) as Iterable<MapEntry<String, Object>>);
 
   final Map<String, Object> _additionalProperties = <String, Object>{};
 
@@ -65,12 +65,12 @@ class CampaignState implements OpenApiContent {
   String toString() => toJson().toString();
   void operator []=(String key, Object value) =>
       _additionalProperties[key] = value;
-  Object operator [](String key) => _additionalProperties[key];
+  Object? operator [](String key) => _additionalProperties[key];
 }
 
 @_i1.JsonSerializable()
 class Campaign implements OpenApiContent {
-  Campaign({@_i2.required this.state}) : assert(state != null);
+  Campaign({required this.state}) : assert(state != null);
 
   factory Campaign.fromJson(Map<String, dynamic> jsonMap) =>
       _$CampaignFromJson(jsonMap);
@@ -86,9 +86,9 @@ class Campaign implements OpenApiContent {
 @_i1.JsonSerializable()
 class MessageAction implements OpenApiContent {
   MessageAction(
-      {@_i2.required this.key,
-      @_i2.required this.label,
-      @_i2.required this.actionExpression})
+      {required this.key,
+      required this.label,
+      required this.actionExpression})
       : assert(key != null),
         assert(label != null),
         assert(actionExpression != null);
@@ -114,12 +114,12 @@ class MessageAction implements OpenApiContent {
 @_i1.JsonSerializable()
 class Message implements OpenApiContent {
   Message(
-      {@_i2.required this.uuid,
-      @_i2.required this.key,
-      @_i2.required this.body,
-      @_i2.required this.expression,
+      {required this.uuid,
+      required this.key,
+      required this.body,
+      required this.expression,
       this.campaign,
-      @_i2.required this.actions})
+      required this.actions})
       : assert(uuid != null),
         assert(key != null),
         assert(body != null),
@@ -146,7 +146,7 @@ class Message implements OpenApiContent {
   final String expression;
 
   @_i1.JsonKey(name: 'campaign')
-  final Campaign campaign;
+  final Campaign? campaign;
 
   @_i1.JsonKey(name: 'actions')
   final List<MessageAction> actions;
@@ -159,12 +159,12 @@ class Message implements OpenApiContent {
 @_i1.JsonSerializable()
 class MessageBanner implements OpenApiContent, Message {
   MessageBanner(
-      {@_i2.required this.uuid,
-      @_i2.required this.key,
-      @_i2.required this.body,
-      @_i2.required this.expression,
+      {required this.uuid,
+      required this.key,
+      required this.body,
+      required this.expression,
       this.campaign,
-      @_i2.required this.actions,
+      required this.actions,
       this.title})
       : assert(uuid != null),
         assert(key != null),
@@ -197,14 +197,14 @@ class MessageBanner implements OpenApiContent, Message {
 
   @_i1.JsonKey(name: 'campaign')
   @override
-  final Campaign campaign;
+  final Campaign? campaign;
 
   @_i1.JsonKey(name: 'actions')
   @override
   final List<MessageAction> actions;
 
   @_i1.JsonKey(name: 'title')
-  final String title;
+  final String? title;
 
   @override
   Map<String, dynamic> toJson() => _$MessageBannerToJson(this);
@@ -215,12 +215,12 @@ class MessageBanner implements OpenApiContent, Message {
 @_i1.JsonSerializable()
 class MessageSurvey implements OpenApiContent, Message {
   MessageSurvey(
-      {@_i2.required this.uuid,
-      @_i2.required this.key,
-      @_i2.required this.body,
-      @_i2.required this.expression,
+      {required this.uuid,
+      required this.key,
+      required this.body,
+      required this.expression,
       this.campaign,
-      @_i2.required this.actions,
+      required this.actions,
       this.question})
       : assert(uuid != null),
         assert(key != null),
@@ -253,14 +253,14 @@ class MessageSurvey implements OpenApiContent, Message {
 
   @_i1.JsonKey(name: 'campaign')
   @override
-  final Campaign campaign;
+  final Campaign? campaign;
 
   @_i1.JsonKey(name: 'actions')
   @override
   final List<MessageAction> actions;
 
   @_i1.JsonKey(name: 'question')
-  final String question;
+  final String? question;
 
   @override
   Map<String, dynamic> toJson() => _$MessageSurveyToJson(this);
@@ -276,13 +276,13 @@ class MessageConfigMessages implements OpenApiContent {
       _$MessageConfigMessagesFromJson(jsonMap);
 
   @_i1.JsonKey(name: 'type')
-  final String type;
+  final String? type;
 
   @_i1.JsonKey(name: 'dialog')
-  final MessageBanner dialog;
+  final MessageBanner? dialog;
 
   @_i1.JsonKey(name: 'survey')
-  final MessageSurvey survey;
+  final MessageSurvey? survey;
 
   Map<String, dynamic> toJson() => _$MessageConfigMessagesToJson(this);
   @override
@@ -291,7 +291,7 @@ class MessageConfigMessages implements OpenApiContent {
 
 @_i1.JsonSerializable()
 class MessageConfig implements OpenApiContent {
-  MessageConfig({@_i2.required this.messages}) : assert(messages != null);
+  MessageConfig({required this.messages}) : assert(messages != null);
 
   factory MessageConfig.fromJson(Map<String, dynamic> jsonMap) =>
       _$MessageConfigFromJson(jsonMap);
@@ -312,7 +312,7 @@ class CheckGetResponseBody200 implements OpenApiContent {
       _$CheckGetResponseBody200FromJson(jsonMap);
 
   @_i1.JsonKey(name: 'dbVersion')
-  final int dbVersion;
+  final int? dbVersion;
 
   Map<String, dynamic> toJson() => _$CheckGetResponseBody200ToJson(this);
   @override
@@ -355,7 +355,7 @@ abstract class CheckGetResponse extends OpenApiResponse
   factory CheckGetResponse.response200(CheckGetResponseBody200 body) =>
       _CheckGetResponse200.response200(body);
 
-  void map({@_i2.required ResponseMap<_CheckGetResponse200> on200}) {
+  void map({required ResponseMap<_CheckGetResponse200> on200}) {
     if (this is _CheckGetResponse200) {
       on200((this as _CheckGetResponse200));
     } else {
@@ -410,7 +410,7 @@ abstract class EventPostResponse extends OpenApiResponse
   factory EventPostResponse.response200(MessageConfig body) =>
       _EventPostResponse200.response200(body);
 
-  void map({@_i2.required ResponseMap<_EventPostResponse200> on200}) {
+  void map({required ResponseMap<_EventPostResponse200> on200}) {
     if (this is _EventPostResponse200) {
       on200((this as _EventPostResponse200));
     } else {
