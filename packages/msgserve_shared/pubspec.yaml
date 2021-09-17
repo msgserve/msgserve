@@ -1,0 +1,23 @@
+name: msgserve_shared
+description: Shared library for msgserv backend and frontend.
+# version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  openapi_base: ^0.2.0
+
+dev_dependencies:
+  pedantic: ^1.11.0
+  test: ^1.16.8
+  build_runner: ^1.10.2
+  json_serializable: ^4.1.0
+  openapi_code_builder: ^0.1.4
+
+#dependency_overrides:
+#  openapi_base:
+#    path: /Users/herbert/dev/authpass-cloud/deps/openapi_dart/packages/openapi_base
+#  openapi_code_builder:
+#    path: /Users/herbert/dev/authpass-cloud/deps/openapi_dart/packages/openapi_code_builder

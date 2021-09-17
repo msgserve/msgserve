@@ -32,10 +32,10 @@ jobs:
       run: cd docker && docker-compose push backend
     - name: extract executable from image
       run: |
-        image=$( docker create docker.pkg.github.com/msgsrv/msgserv/msgserv-backend )
-        docker cp ${image}:/msgserv_backend.exe .
+        image=$( docker create docker.pkg.github.com/msgserve/msgserve/msgserve-backend )
+        docker cp ${image}:/msgserve_backend.exe .
         docker rm ${image}
     - uses: actions/upload-artifact@v2
       with:
-        name: msgserv_backend_${{ steps.buildnumber.outputs.buildnumber }}
-        path: msgserv_backend.exe
+        name: msgserve_backend_${{ steps.buildnumber.outputs.buildnumber }}
+        path: msgserve_backend.exe
