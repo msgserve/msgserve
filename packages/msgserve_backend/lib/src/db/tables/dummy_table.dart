@@ -1,11 +1,10 @@
-import 'package:meta/meta.dart';
 import 'package:msgserve_backend/src/db/database_access.dart';
 import 'package:msgserve_backend/src/service/crypto_service.dart';
 import 'package:postgres_utils/postgres_utils.dart';
 
 /// Example implementation of a table.
 class DummyTable extends TableBase with TableConstants {
-  DummyTable({required this.cryptoService}) : assert(cryptoService != null);
+  DummyTable({required this.cryptoService});
 
   static const _TABLE_DUMMY = 'dummy';
   static const _COLUMN_LABEL = 'label';

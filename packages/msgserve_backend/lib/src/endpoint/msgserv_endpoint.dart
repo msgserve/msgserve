@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:msgserve_backend/src/db/database_access.dart';
 import 'package:msgserve_backend/src/service/service_provider.dart';
 import 'package:msgserve_shared/msgserv_shared.dart';

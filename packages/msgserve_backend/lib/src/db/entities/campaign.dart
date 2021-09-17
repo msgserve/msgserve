@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:openapi_base/openapi_base.dart';
 
 class Project {
