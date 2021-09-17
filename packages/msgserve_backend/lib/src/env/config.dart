@@ -58,7 +58,7 @@ class EmailConfig {
     required this.fromAddress,
     this.fromName,
     this.smtp,
-  }) : assert(fromAddress != null);
+  });
   factory EmailConfig.fromJson(Map json) => _$EmailConfigFromJson(json);
   Map<String, dynamic> toJson() => _$EmailConfigToJson(this);
 
