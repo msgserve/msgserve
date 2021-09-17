@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
-
 import 'dart:typed_data';
 
-import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 import 'package:uuid/uuid_util.dart';
 
@@ -15,7 +13,7 @@ enum TokenType {
 class CryptoService {
   final Random _random = Random.secure();
   final Uuid _uuid =
-      Uuid(options: <String, dynamic>{'grng': UuidUtil.cryptoRNG});
+      const Uuid(options: <String, dynamic>{'grng': UuidUtil.cryptoRNG});
 
   static const _ADDRESS_LENGTH = 32;
 //  static const _ADDRESS_CHARACTERS = 'abcdefghijklmnopqrstuvwxyz0123456789._-+';

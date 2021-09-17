@@ -1,6 +1,5 @@
 import 'package:logging/logging.dart';
 import 'package:logging_appenders/logging_appenders.dart';
-import 'package:meta/meta.dart';
 import 'package:msgserve_backend/src/endpoint/msgserv_endpoint.dart';
 import 'package:msgserve_backend/src/env/env.dart';
 import 'package:msgserve_backend/src/service/service_provider.dart';
