@@ -1,1 +1,0 @@
-library msgserv_client;
