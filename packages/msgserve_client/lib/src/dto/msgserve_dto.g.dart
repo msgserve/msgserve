@@ -6,49 +6,49 @@ part of 'msgserve_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MsgServConfig _$MsgServConfigFromJson(Map<String, dynamic> json) =>
-    MsgServConfig(
+MsgServeConfig _$MsgServeConfigFromJson(Map<String, dynamic> json) =>
+    MsgServeConfig(
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       campaigns: (json['campaigns'] as List<dynamic>)
-          .map((e) => MsgServCampaign.fromJson(e as Map<String, dynamic>))
+          .map((e) => MsgServeCampaign.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$MsgServConfigToJson(MsgServConfig instance) =>
+Map<String, dynamic> _$MsgServeConfigToJson(MsgServeConfig instance) =>
     <String, dynamic>{
       'updatedAt': instance.updatedAt.toIso8601String(),
       'campaigns': instance.campaigns,
     };
 
-MsgServInterstitialArtifact _$MsgServInterstitialArtifactFromJson(
+MsgServeInterstitialArtifact _$MsgServeInterstitialArtifactFromJson(
         Map<String, dynamic> json) =>
-    MsgServInterstitialArtifact(
+    MsgServeInterstitialArtifact(
       graphics: (json['graphics'] as List<dynamic>)
           .map((e) =>
-              MsgServInterstitialGraphic.fromJson(e as Map<String, dynamic>))
+              MsgServeInterstitialGraphic.fromJson(e as Map<String, dynamic>))
           .toList(),
       targetUrl: json['targetUrl'] as String,
     );
 
-Map<String, dynamic> _$MsgServInterstitialArtifactToJson(
-        MsgServInterstitialArtifact instance) =>
+Map<String, dynamic> _$MsgServeInterstitialArtifactToJson(
+        MsgServeInterstitialArtifact instance) =>
     <String, dynamic>{
       'targetUrl': instance.targetUrl,
       'graphics': instance.graphics,
     };
 
-MsgServInterstitialGraphic _$MsgServInterstitialGraphicFromJson(
+MsgServeInterstitialGraphic _$MsgServeInterstitialGraphicFromJson(
         Map<String, dynamic> json) =>
-    MsgServInterstitialGraphic(
+    MsgServeInterstitialGraphic(
       url: json['url'] as String,
-      fill: _$enumDecode(_$MsgServFillEnumMap, json['fill']),
+      fill: _$enumDecode(_$MsgServeFillEnumMap, json['fill']),
     );
 
-Map<String, dynamic> _$MsgServInterstitialGraphicToJson(
-        MsgServInterstitialGraphic instance) =>
+Map<String, dynamic> _$MsgServeInterstitialGraphicToJson(
+        MsgServeInterstitialGraphic instance) =>
     <String, dynamic>{
       'url': instance.url,
-      'fill': _$MsgServFillEnumMap[instance.fill],
+      'fill': _$MsgServeFillEnumMap[instance.fill],
     };
 
 K _$enumDecode<K, V>(
@@ -77,9 +77,9 @@ K _$enumDecode<K, V>(
   ).key;
 }
 
-const _$MsgServFillEnumMap = {
-  MsgServFill.contain: 'contain',
-  MsgServFill.cover: 'cover',
+const _$MsgServeFillEnumMap = {
+  MsgServeFill.contain: 'contain',
+  MsgServeFill.cover: 'cover',
 };
 
 _$_MsgServCampaign _$$_MsgServCampaignFromJson(Map<String, dynamic> json) =>
@@ -88,7 +88,7 @@ _$_MsgServCampaign _$$_MsgServCampaignFromJson(Map<String, dynamic> json) =>
       key: json['key'] as String,
       interstitial: json['interstitial'] == null
           ? null
-          : MsgServInterstitialArtifact.fromJson(
+          : MsgServeInterstitialArtifact.fromJson(
               json['interstitial'] as Map<String, dynamic>),
       dateStart: json['dateStart'] == null
           ? null

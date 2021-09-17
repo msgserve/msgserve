@@ -10,8 +10,8 @@ import 'package:rxdart/rxdart.dart';
 
 final _logger = Logger('msgserv_interstitial');
 
-class MsgServInterstitial extends StatefulWidget {
-  const MsgServInterstitial({
+class MsgServeInterstitial extends StatefulWidget {
+  const MsgServeInterstitial({
     Key? key,
     required this.label,
     required this.child,
@@ -21,10 +21,10 @@ class MsgServInterstitial extends StatefulWidget {
   final Widget child;
 
   @override
-  _MsgServInterstitialState createState() => _MsgServInterstitialState();
+  _MsgServeInterstitialState createState() => _MsgServeInterstitialState();
 }
 
-class _MsgServInterstitialState extends State<MsgServInterstitial>
+class _MsgServeInterstitialState extends State<MsgServeInterstitial>
     with SingleTickerProviderStateMixin, StreamSubscriberMixin {
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: 400),
@@ -35,9 +35,9 @@ class _MsgServInterstitialState extends State<MsgServInterstitial>
     curve: Curves.easeIn,
   );
 
-  MsgServCampaignDisplay? _campaignDisplay;
+  MsgServeCampaignDisplay? _campaignDisplay;
   bool _showInterstitial = false;
-  late MsgServBloc _msgServBloc;
+  late MsgServeBloc _msgServBloc;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _MsgServInterstitialState extends State<MsgServInterstitial>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _msgServBloc = context.watch<MsgServBloc>();
+    _msgServBloc = context.watch<MsgServeBloc>();
     _updateCampaign();
   }
 
@@ -160,12 +160,12 @@ class _MsgServInterstitialState extends State<MsgServInterstitial>
   }
 }
 
-extension on MsgServFill {
+extension on MsgServeFill {
   BoxFit toBoxFit() {
     switch (this) {
-      case MsgServFill.contain:
+      case MsgServeFill.contain:
         return BoxFit.contain;
-      case MsgServFill.cover:
+      case MsgServeFill.cover:
         return BoxFit.cover;
     }
   }
@@ -179,14 +179,14 @@ class _InterstitialWidget extends HookWidget {
     required this.onClose,
   }) : super(key: key);
 
-  final MsgServInterstitialArtifact artifact;
+  final MsgServeInterstitialArtifact artifact;
   final VoidCallback onTap;
   final VoidCallback onClose;
 
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
-    final msgServBloc = context.watch<MsgServBloc>();
+    final msgServBloc = context.watch<MsgServeBloc>();
     final future = useMemoized(
         () => msgServBloc.prepareFilesFor(artifact.graphics), [artifact]);
     final graphicsSnapshot = useFuture(future);

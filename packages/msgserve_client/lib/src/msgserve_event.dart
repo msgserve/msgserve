@@ -1,21 +1,21 @@
 import 'package:msgserve_client/src/dto/msgserve_dto.dart';
 
-enum MsgServEventType {
+enum MsgServeEventType {
   shown,
   trigger,
   dismissed,
   campaignTrigger,
 }
 
-extension MsgServEventTypeToString on MsgServEventType {
+extension MsgServeEventTypeToString on MsgServeEventType {
   String toStringBare() => toString().substring(toString().indexOf('.') + 1);
 }
 
-class MsgServEvent {
-  MsgServEvent({required this.type, required this.campaign});
+class MsgServeEvent {
+  MsgServeEvent({required this.type, required this.campaign});
 
-  final MsgServEventType type;
-  final MsgServCampaign campaign;
+  final MsgServeEventType type;
+  final MsgServeCampaign campaign;
 
   @override
   String toString() {
@@ -23,11 +23,11 @@ class MsgServEvent {
   }
 }
 
-abstract class MsgServCampaignAction {
+abstract class MsgServeCampaignAction {
   String get key;
 }
 
-abstract class MsgServCampaignActionWithUrl {
+abstract class MsgServeCampaignActionWithUrl {
   String? get url;
 }
 
@@ -43,12 +43,12 @@ class AppEvent {
 }
 
 /// triggered when the `trigger` expression of a campaign executes.
-class MsgServCampaignTriggered extends MsgServEvent {
-  MsgServCampaignTriggered({
+class MsgServeCampaignTriggered extends MsgServeEvent {
+  MsgServeCampaignTriggered({
     required this.appEvent,
-    required MsgServCampaign campaign,
+    required MsgServeCampaign campaign,
   }) : super(
-          type: MsgServEventType.campaignTrigger,
+          type: MsgServeEventType.campaignTrigger,
           campaign: campaign,
         );
 
@@ -56,33 +56,33 @@ class MsgServCampaignTriggered extends MsgServEvent {
   // final MsgServCampaign campaign;
 }
 
-abstract class MsgServEventWithAction implements MsgServEvent {
-  MsgServCampaignAction? get action;
+abstract class MsgServeEventWithAction implements MsgServeEvent {
+  MsgServeCampaignAction? get action;
 }
 
 /// event executed when the user presses an action on a campaign.
-class MsgServEventTriggerCustom extends MsgServEvent
-    implements MsgServEventWithAction {
-  MsgServEventTriggerCustom({
-    required MsgServCampaign campaign,
+class MsgServeEventTriggerCustom extends MsgServeEvent
+    implements MsgServeEventWithAction {
+  MsgServeEventTriggerCustom({
+    required MsgServeCampaign campaign,
     required this.action,
     required this.uri,
-  }) : super(type: MsgServEventType.dismissed, campaign: campaign);
+  }) : super(type: MsgServeEventType.dismissed, campaign: campaign);
 
   @override
-  final MsgServCampaignAction action;
+  final MsgServeCampaignAction action;
   final Uri uri;
 }
 
-class MsgServEventDismissed extends MsgServEvent
-    implements MsgServEventWithAction {
-  MsgServEventDismissed({
-    required MsgServCampaign campaign,
+class MsgServeEventDismissed extends MsgServeEvent
+    implements MsgServeEventWithAction {
+  MsgServeEventDismissed({
+    required MsgServeCampaign campaign,
     this.action,
-  }) : super(type: MsgServEventType.dismissed, campaign: campaign);
+  }) : super(type: MsgServeEventType.dismissed, campaign: campaign);
 
   @override
-  final MsgServCampaignAction? action;
+  final MsgServeCampaignAction? action;
 
   @override
   String toString() {

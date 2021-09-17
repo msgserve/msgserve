@@ -13,18 +13,18 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-MsgServCampaign _$MsgServCampaignFromJson(Map<String, dynamic> json) {
+MsgServeCampaign _$MsgServeCampaignFromJson(Map<String, dynamic> json) {
   return _MsgServCampaign.fromJson(json);
 }
 
 /// @nodoc
-class _$MsgServCampaignTearOff {
-  const _$MsgServCampaignTearOff();
+class _$MsgServeCampaignTearOff {
+  const _$MsgServeCampaignTearOff();
 
   _MsgServCampaign call(
       {required String id,
       required String key,
-      required MsgServInterstitialArtifact? interstitial,
+      required MsgServeInterstitialArtifact? interstitial,
       required DateTime? dateStart,
       required DateTime? dateEnd,
       required String? filter,
@@ -40,19 +40,19 @@ class _$MsgServCampaignTearOff {
     );
   }
 
-  MsgServCampaign fromJson(Map<String, Object> json) {
-    return MsgServCampaign.fromJson(json);
+  MsgServeCampaign fromJson(Map<String, Object> json) {
+    return MsgServeCampaign.fromJson(json);
   }
 }
 
 /// @nodoc
-const $MsgServCampaign = _$MsgServCampaignTearOff();
+const $MsgServeCampaign = _$MsgServeCampaignTearOff();
 
 /// @nodoc
-mixin _$MsgServCampaign {
+mixin _$MsgServeCampaign {
   String get id => throw _privateConstructorUsedError;
   String get key => throw _privateConstructorUsedError;
-  MsgServInterstitialArtifact? get interstitial =>
+  MsgServeInterstitialArtifact? get interstitial =>
       throw _privateConstructorUsedError;
   DateTime? get dateStart => throw _privateConstructorUsedError;
   DateTime? get dateEnd => throw _privateConstructorUsedError;
@@ -61,19 +61,19 @@ mixin _$MsgServCampaign {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MsgServCampaignCopyWith<MsgServCampaign> get copyWith =>
+  $MsgServeCampaignCopyWith<MsgServeCampaign> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MsgServCampaignCopyWith<$Res> {
-  factory $MsgServCampaignCopyWith(
-          MsgServCampaign value, $Res Function(MsgServCampaign) then) =
-      _$MsgServCampaignCopyWithImpl<$Res>;
+abstract class $MsgServeCampaignCopyWith<$Res> {
+  factory $MsgServeCampaignCopyWith(
+          MsgServeCampaign value, $Res Function(MsgServeCampaign) then) =
+      _$MsgServeCampaignCopyWithImpl<$Res>;
   $Res call(
       {String id,
       String key,
-      MsgServInterstitialArtifact? interstitial,
+      MsgServeInterstitialArtifact? interstitial,
       DateTime? dateStart,
       DateTime? dateEnd,
       String? filter,
@@ -81,13 +81,13 @@ abstract class $MsgServCampaignCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MsgServCampaignCopyWithImpl<$Res>
-    implements $MsgServCampaignCopyWith<$Res> {
-  _$MsgServCampaignCopyWithImpl(this._value, this._then);
+class _$MsgServeCampaignCopyWithImpl<$Res>
+    implements $MsgServeCampaignCopyWith<$Res> {
+  _$MsgServeCampaignCopyWithImpl(this._value, this._then);
 
-  final MsgServCampaign _value;
+  final MsgServeCampaign _value;
   // ignore: unused_field
-  final $Res Function(MsgServCampaign) _then;
+  final $Res Function(MsgServeCampaign) _then;
 
   @override
   $Res call({
@@ -111,7 +111,7 @@ class _$MsgServCampaignCopyWithImpl<$Res>
       interstitial: interstitial == freezed
           ? _value.interstitial
           : interstitial // ignore: cast_nullable_to_non_nullable
-              as MsgServInterstitialArtifact?,
+              as MsgServeInterstitialArtifact?,
       dateStart: dateStart == freezed
           ? _value.dateStart
           : dateStart // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ class _$MsgServCampaignCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$MsgServCampaignCopyWith<$Res>
-    implements $MsgServCampaignCopyWith<$Res> {
+    implements $MsgServeCampaignCopyWith<$Res> {
   factory _$MsgServCampaignCopyWith(
           _MsgServCampaign value, $Res Function(_MsgServCampaign) then) =
       __$MsgServCampaignCopyWithImpl<$Res>;
@@ -142,7 +142,7 @@ abstract class _$MsgServCampaignCopyWith<$Res>
   $Res call(
       {String id,
       String key,
-      MsgServInterstitialArtifact? interstitial,
+      MsgServeInterstitialArtifact? interstitial,
       DateTime? dateStart,
       DateTime? dateEnd,
       String? filter,
@@ -151,7 +151,7 @@ abstract class _$MsgServCampaignCopyWith<$Res>
 
 /// @nodoc
 class __$MsgServCampaignCopyWithImpl<$Res>
-    extends _$MsgServCampaignCopyWithImpl<$Res>
+    extends _$MsgServeCampaignCopyWithImpl<$Res>
     implements _$MsgServCampaignCopyWith<$Res> {
   __$MsgServCampaignCopyWithImpl(
       _MsgServCampaign _value, $Res Function(_MsgServCampaign) _then)
@@ -182,7 +182,7 @@ class __$MsgServCampaignCopyWithImpl<$Res>
       interstitial: interstitial == freezed
           ? _value.interstitial
           : interstitial // ignore: cast_nullable_to_non_nullable
-              as MsgServInterstitialArtifact?,
+              as MsgServeInterstitialArtifact?,
       dateStart: dateStart == freezed
           ? _value.dateStart
           : dateStart // ignore: cast_nullable_to_non_nullable
@@ -223,7 +223,7 @@ class _$_MsgServCampaign implements _MsgServCampaign {
   @override
   final String key;
   @override
-  final MsgServInterstitialArtifact? interstitial;
+  final MsgServeInterstitialArtifact? interstitial;
   @override
   final DateTime? dateStart;
   @override
@@ -235,7 +235,7 @@ class _$_MsgServCampaign implements _MsgServCampaign {
 
   @override
   String toString() {
-    return 'MsgServCampaign(id: $id, key: $key, interstitial: $interstitial, dateStart: $dateStart, dateEnd: $dateEnd, filter: $filter, trigger: $trigger)';
+    return 'MsgServeCampaign(id: $id, key: $key, interstitial: $interstitial, dateStart: $dateStart, dateEnd: $dateEnd, filter: $filter, trigger: $trigger)';
   }
 
   @override
@@ -283,11 +283,11 @@ class _$_MsgServCampaign implements _MsgServCampaign {
   }
 }
 
-abstract class _MsgServCampaign implements MsgServCampaign {
+abstract class _MsgServCampaign implements MsgServeCampaign {
   const factory _MsgServCampaign(
       {required String id,
       required String key,
-      required MsgServInterstitialArtifact? interstitial,
+      required MsgServeInterstitialArtifact? interstitial,
       required DateTime? dateStart,
       required DateTime? dateEnd,
       required String? filter,
@@ -301,7 +301,7 @@ abstract class _MsgServCampaign implements MsgServCampaign {
   @override
   String get key => throw _privateConstructorUsedError;
   @override
-  MsgServInterstitialArtifact? get interstitial =>
+  MsgServeInterstitialArtifact? get interstitial =>
       throw _privateConstructorUsedError;
   @override
   DateTime? get dateStart => throw _privateConstructorUsedError;

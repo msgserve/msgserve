@@ -5,55 +5,55 @@ part 'msgserve_dto.g.dart';
 part 'msgserve_dto.freezed.dart';
 
 @JsonSerializable()
-class MsgServConfig {
-  MsgServConfig({required this.updatedAt, required this.campaigns});
-  factory MsgServConfig.fromJson(Map<String, dynamic> json) =>
-      _$MsgServConfigFromJson(json);
-  Map<String, dynamic> toJson() => _$MsgServConfigToJson(this);
+class MsgServeConfig {
+  MsgServeConfig({required this.updatedAt, required this.campaigns});
+  factory MsgServeConfig.fromJson(Map<String, dynamic> json) =>
+      _$MsgServeConfigFromJson(json);
+  Map<String, dynamic> toJson() => _$MsgServeConfigToJson(this);
 
   final DateTime updatedAt;
-  final List<MsgServCampaign> campaigns;
+  final List<MsgServeCampaign> campaigns;
 
-  MsgServConfig copyWith({
+  MsgServeConfig copyWith({
     DateTime? updatedAt,
-    List<MsgServCampaign>? campaigns,
+    List<MsgServeCampaign>? campaigns,
   }) =>
-      MsgServConfig(
+      MsgServeConfig(
         updatedAt: updatedAt ?? this.updatedAt,
         campaigns: campaigns ?? this.campaigns,
       );
 }
 
 @freezed
-class MsgServCampaign with _$MsgServCampaign {
-  const factory MsgServCampaign({
+class MsgServeCampaign with _$MsgServeCampaign {
+  const factory MsgServeCampaign({
     required String id,
     required String key,
-    required MsgServInterstitialArtifact? interstitial,
+    required MsgServeInterstitialArtifact? interstitial,
     required DateTime? dateStart,
     required DateTime? dateEnd,
     required String? filter,
     required String? trigger,
   }) = _MsgServCampaign;
 
-  factory MsgServCampaign.fromJson(Map<String, dynamic> json) =>
-      _$MsgServCampaignFromJson(json);
+  factory MsgServeCampaign.fromJson(Map<String, dynamic> json) =>
+      _$MsgServeCampaignFromJson(json);
 }
 
 @JsonSerializable()
-class MsgServInterstitialArtifact extends MsgServCampaignAction
-    implements MsgServCampaignActionWithUrl {
-  MsgServInterstitialArtifact({
+class MsgServeInterstitialArtifact extends MsgServeCampaignAction
+    implements MsgServeCampaignActionWithUrl {
+  MsgServeInterstitialArtifact({
     required this.graphics,
     required this.targetUrl,
   });
 
-  factory MsgServInterstitialArtifact.fromJson(Map<String, dynamic> json) =>
-      _$MsgServInterstitialArtifactFromJson(json);
-  Map<String, dynamic> toJson() => _$MsgServInterstitialArtifactToJson(this);
+  factory MsgServeInterstitialArtifact.fromJson(Map<String, dynamic> json) =>
+      _$MsgServeInterstitialArtifactFromJson(json);
+  Map<String, dynamic> toJson() => _$MsgServeInterstitialArtifactToJson(this);
 
   final String targetUrl;
-  final List<MsgServInterstitialGraphic> graphics;
+  final List<MsgServeInterstitialGraphic> graphics;
 
   @override
   String get key => 'click';
@@ -61,36 +61,36 @@ class MsgServInterstitialArtifact extends MsgServCampaignAction
   @override
   String? get url => targetUrl;
 
-  MsgServCampaignAction get actionOpen => this;
+  MsgServeCampaignAction get actionOpen => this;
 
-  MsgServCampaignAction get actionDismiss => _DismissAction();
+  MsgServeCampaignAction get actionDismiss => _DismissAction();
 }
 
-class _DismissAction extends MsgServCampaignAction {
+class _DismissAction extends MsgServeCampaignAction {
   @override
   String get key => 'dismiss';
 }
 
-abstract class MsgServGraphic {
+abstract class MsgServeGraphic {
   String get url;
 }
 
 @JsonSerializable()
-class MsgServInterstitialGraphic implements MsgServGraphic {
-  MsgServInterstitialGraphic({
+class MsgServeInterstitialGraphic implements MsgServeGraphic {
+  MsgServeInterstitialGraphic({
     required this.url,
     required this.fill,
   });
 
-  factory MsgServInterstitialGraphic.fromJson(Map<String, dynamic> json) =>
-      _$MsgServInterstitialGraphicFromJson(json);
-  Map<String, dynamic> toJson() => _$MsgServInterstitialGraphicToJson(this);
+  factory MsgServeInterstitialGraphic.fromJson(Map<String, dynamic> json) =>
+      _$MsgServeInterstitialGraphicFromJson(json);
+  Map<String, dynamic> toJson() => _$MsgServeInterstitialGraphicToJson(this);
   @override
   final String url;
-  final MsgServFill fill;
+  final MsgServeFill fill;
 }
 
-enum MsgServFill {
+enum MsgServeFill {
   contain,
   cover,
 }

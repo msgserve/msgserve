@@ -13,22 +13,22 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-MsgServData _$MsgServDataFromJson(Map<String, dynamic> json) {
-  return _MsgServData.fromJson(json);
+MsgServeData _$MsgServeDataFromJson(Map<String, dynamic> json) {
+  return _MsgServeData.fromJson(json);
 }
 
 /// @nodoc
-class _$MsgServDataTearOff {
-  const _$MsgServDataTearOff();
+class _$MsgServeDataTearOff {
+  const _$MsgServeDataTearOff();
 
-  _MsgServData call(
+  _MsgServeData call(
       {required String deviceId,
       required DateTime firstLaunch,
       Map<String, String> cachedImages = const <String, String>{},
-      required List<MsgServHistory> seen,
+      required List<MsgServeHistory> seen,
       required DateTime lastConfigFetchedAt,
-      MsgServConfig? lastConfig}) {
-    return _MsgServData(
+      MsgServeConfig? lastConfig}) {
+    return _MsgServeData(
       deviceId: deviceId,
       firstLaunch: firstLaunch,
       cachedImages: cachedImages,
@@ -38,50 +38,50 @@ class _$MsgServDataTearOff {
     );
   }
 
-  MsgServData fromJson(Map<String, Object> json) {
-    return MsgServData.fromJson(json);
+  MsgServeData fromJson(Map<String, Object> json) {
+    return MsgServeData.fromJson(json);
   }
 }
 
 /// @nodoc
-const $MsgServData = _$MsgServDataTearOff();
+const $MsgServeData = _$MsgServeDataTearOff();
 
 /// @nodoc
-mixin _$MsgServData {
+mixin _$MsgServeData {
   String get deviceId => throw _privateConstructorUsedError;
   DateTime get firstLaunch => throw _privateConstructorUsedError;
   Map<String, String> get cachedImages => throw _privateConstructorUsedError;
-  List<MsgServHistory> get seen => throw _privateConstructorUsedError;
+  List<MsgServeHistory> get seen => throw _privateConstructorUsedError;
   DateTime get lastConfigFetchedAt => throw _privateConstructorUsedError;
-  MsgServConfig? get lastConfig => throw _privateConstructorUsedError;
+  MsgServeConfig? get lastConfig => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MsgServDataCopyWith<MsgServData> get copyWith =>
+  $MsgServeDataCopyWith<MsgServeData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MsgServDataCopyWith<$Res> {
-  factory $MsgServDataCopyWith(
-          MsgServData value, $Res Function(MsgServData) then) =
-      _$MsgServDataCopyWithImpl<$Res>;
+abstract class $MsgServeDataCopyWith<$Res> {
+  factory $MsgServeDataCopyWith(
+          MsgServeData value, $Res Function(MsgServeData) then) =
+      _$MsgServeDataCopyWithImpl<$Res>;
   $Res call(
       {String deviceId,
       DateTime firstLaunch,
       Map<String, String> cachedImages,
-      List<MsgServHistory> seen,
+      List<MsgServeHistory> seen,
       DateTime lastConfigFetchedAt,
-      MsgServConfig? lastConfig});
+      MsgServeConfig? lastConfig});
 }
 
 /// @nodoc
-class _$MsgServDataCopyWithImpl<$Res> implements $MsgServDataCopyWith<$Res> {
-  _$MsgServDataCopyWithImpl(this._value, this._then);
+class _$MsgServeDataCopyWithImpl<$Res> implements $MsgServeDataCopyWith<$Res> {
+  _$MsgServeDataCopyWithImpl(this._value, this._then);
 
-  final MsgServData _value;
+  final MsgServeData _value;
   // ignore: unused_field
-  final $Res Function(MsgServData) _then;
+  final $Res Function(MsgServeData) _then;
 
   @override
   $Res call({
@@ -108,7 +108,7 @@ class _$MsgServDataCopyWithImpl<$Res> implements $MsgServDataCopyWith<$Res> {
       seen: seen == freezed
           ? _value.seen
           : seen // ignore: cast_nullable_to_non_nullable
-              as List<MsgServHistory>,
+              as List<MsgServeHistory>,
       lastConfigFetchedAt: lastConfigFetchedAt == freezed
           ? _value.lastConfigFetchedAt
           : lastConfigFetchedAt // ignore: cast_nullable_to_non_nullable
@@ -116,36 +116,36 @@ class _$MsgServDataCopyWithImpl<$Res> implements $MsgServDataCopyWith<$Res> {
       lastConfig: lastConfig == freezed
           ? _value.lastConfig
           : lastConfig // ignore: cast_nullable_to_non_nullable
-              as MsgServConfig?,
+              as MsgServeConfig?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$MsgServDataCopyWith<$Res>
-    implements $MsgServDataCopyWith<$Res> {
-  factory _$MsgServDataCopyWith(
-          _MsgServData value, $Res Function(_MsgServData) then) =
-      __$MsgServDataCopyWithImpl<$Res>;
+abstract class _$MsgServeDataCopyWith<$Res>
+    implements $MsgServeDataCopyWith<$Res> {
+  factory _$MsgServeDataCopyWith(
+          _MsgServeData value, $Res Function(_MsgServeData) then) =
+      __$MsgServeDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {String deviceId,
       DateTime firstLaunch,
       Map<String, String> cachedImages,
-      List<MsgServHistory> seen,
+      List<MsgServeHistory> seen,
       DateTime lastConfigFetchedAt,
-      MsgServConfig? lastConfig});
+      MsgServeConfig? lastConfig});
 }
 
 /// @nodoc
-class __$MsgServDataCopyWithImpl<$Res> extends _$MsgServDataCopyWithImpl<$Res>
-    implements _$MsgServDataCopyWith<$Res> {
-  __$MsgServDataCopyWithImpl(
-      _MsgServData _value, $Res Function(_MsgServData) _then)
-      : super(_value, (v) => _then(v as _MsgServData));
+class __$MsgServeDataCopyWithImpl<$Res> extends _$MsgServeDataCopyWithImpl<$Res>
+    implements _$MsgServeDataCopyWith<$Res> {
+  __$MsgServeDataCopyWithImpl(
+      _MsgServeData _value, $Res Function(_MsgServeData) _then)
+      : super(_value, (v) => _then(v as _MsgServeData));
 
   @override
-  _MsgServData get _value => super._value as _MsgServData;
+  _MsgServeData get _value => super._value as _MsgServeData;
 
   @override
   $Res call({
@@ -156,7 +156,7 @@ class __$MsgServDataCopyWithImpl<$Res> extends _$MsgServDataCopyWithImpl<$Res>
     Object? lastConfigFetchedAt = freezed,
     Object? lastConfig = freezed,
   }) {
-    return _then(_MsgServData(
+    return _then(_MsgServeData(
       deviceId: deviceId == freezed
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
@@ -172,7 +172,7 @@ class __$MsgServDataCopyWithImpl<$Res> extends _$MsgServDataCopyWithImpl<$Res>
       seen: seen == freezed
           ? _value.seen
           : seen // ignore: cast_nullable_to_non_nullable
-              as List<MsgServHistory>,
+              as List<MsgServeHistory>,
       lastConfigFetchedAt: lastConfigFetchedAt == freezed
           ? _value.lastConfigFetchedAt
           : lastConfigFetchedAt // ignore: cast_nullable_to_non_nullable
@@ -180,15 +180,15 @@ class __$MsgServDataCopyWithImpl<$Res> extends _$MsgServDataCopyWithImpl<$Res>
       lastConfig: lastConfig == freezed
           ? _value.lastConfig
           : lastConfig // ignore: cast_nullable_to_non_nullable
-              as MsgServConfig?,
+              as MsgServeConfig?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MsgServData with DiagnosticableTreeMixin implements _MsgServData {
-  const _$_MsgServData(
+class _$_MsgServeData with DiagnosticableTreeMixin implements _MsgServeData {
+  const _$_MsgServeData(
       {required this.deviceId,
       required this.firstLaunch,
       this.cachedImages = const <String, String>{},
@@ -196,8 +196,8 @@ class _$_MsgServData with DiagnosticableTreeMixin implements _MsgServData {
       required this.lastConfigFetchedAt,
       this.lastConfig});
 
-  factory _$_MsgServData.fromJson(Map<String, dynamic> json) =>
-      _$$_MsgServDataFromJson(json);
+  factory _$_MsgServeData.fromJson(Map<String, dynamic> json) =>
+      _$$_MsgServeDataFromJson(json);
 
   @override
   final String deviceId;
@@ -207,22 +207,22 @@ class _$_MsgServData with DiagnosticableTreeMixin implements _MsgServData {
   @override
   final Map<String, String> cachedImages;
   @override
-  final List<MsgServHistory> seen;
+  final List<MsgServeHistory> seen;
   @override
   final DateTime lastConfigFetchedAt;
   @override
-  final MsgServConfig? lastConfig;
+  final MsgServeConfig? lastConfig;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MsgServData(deviceId: $deviceId, firstLaunch: $firstLaunch, cachedImages: $cachedImages, seen: $seen, lastConfigFetchedAt: $lastConfigFetchedAt, lastConfig: $lastConfig)';
+    return 'MsgServeData(deviceId: $deviceId, firstLaunch: $firstLaunch, cachedImages: $cachedImages, seen: $seen, lastConfigFetchedAt: $lastConfigFetchedAt, lastConfig: $lastConfig)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'MsgServData'))
+      ..add(DiagnosticsProperty('type', 'MsgServeData'))
       ..add(DiagnosticsProperty('deviceId', deviceId))
       ..add(DiagnosticsProperty('firstLaunch', firstLaunch))
       ..add(DiagnosticsProperty('cachedImages', cachedImages))
@@ -234,7 +234,7 @@ class _$_MsgServData with DiagnosticableTreeMixin implements _MsgServData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MsgServData &&
+        (other is _MsgServeData &&
             (identical(other.deviceId, deviceId) ||
                 const DeepCollectionEquality()
                     .equals(other.deviceId, deviceId)) &&
@@ -266,26 +266,26 @@ class _$_MsgServData with DiagnosticableTreeMixin implements _MsgServData {
 
   @JsonKey(ignore: true)
   @override
-  _$MsgServDataCopyWith<_MsgServData> get copyWith =>
-      __$MsgServDataCopyWithImpl<_MsgServData>(this, _$identity);
+  _$MsgServeDataCopyWith<_MsgServeData> get copyWith =>
+      __$MsgServeDataCopyWithImpl<_MsgServeData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MsgServDataToJson(this);
+    return _$$_MsgServeDataToJson(this);
   }
 }
 
-abstract class _MsgServData implements MsgServData {
-  const factory _MsgServData(
+abstract class _MsgServeData implements MsgServeData {
+  const factory _MsgServeData(
       {required String deviceId,
       required DateTime firstLaunch,
       Map<String, String> cachedImages,
-      required List<MsgServHistory> seen,
+      required List<MsgServeHistory> seen,
       required DateTime lastConfigFetchedAt,
-      MsgServConfig? lastConfig}) = _$_MsgServData;
+      MsgServeConfig? lastConfig}) = _$_MsgServeData;
 
-  factory _MsgServData.fromJson(Map<String, dynamic> json) =
-      _$_MsgServData.fromJson;
+  factory _MsgServeData.fromJson(Map<String, dynamic> json) =
+      _$_MsgServeData.fromJson;
 
   @override
   String get deviceId => throw _privateConstructorUsedError;
@@ -294,31 +294,31 @@ abstract class _MsgServData implements MsgServData {
   @override
   Map<String, String> get cachedImages => throw _privateConstructorUsedError;
   @override
-  List<MsgServHistory> get seen => throw _privateConstructorUsedError;
+  List<MsgServeHistory> get seen => throw _privateConstructorUsedError;
   @override
   DateTime get lastConfigFetchedAt => throw _privateConstructorUsedError;
   @override
-  MsgServConfig? get lastConfig => throw _privateConstructorUsedError;
+  MsgServeConfig? get lastConfig => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MsgServDataCopyWith<_MsgServData> get copyWith =>
+  _$MsgServeDataCopyWith<_MsgServeData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-MsgServHistory _$MsgServHistoryFromJson(Map<String, dynamic> json) {
-  return _MsgServHistory.fromJson(json);
+MsgServeHistory _$MsgServeHistoryFromJson(Map<String, dynamic> json) {
+  return _MsgServeHistory.fromJson(json);
 }
 
 /// @nodoc
-class _$MsgServHistoryTearOff {
-  const _$MsgServHistoryTearOff();
+class _$MsgServeHistoryTearOff {
+  const _$MsgServeHistoryTearOff();
 
-  _MsgServHistory call(
+  _MsgServeHistory call(
       {@JsonKey(name: 'id') required String campaignId,
       @JsonKey(name: 'key') required String campaignKey,
       DateTime? closedAt,
       String? action}) {
-    return _MsgServHistory(
+    return _MsgServeHistory(
       campaignId: campaignId,
       campaignKey: campaignKey,
       closedAt: closedAt,
@@ -326,18 +326,20 @@ class _$MsgServHistoryTearOff {
     );
   }
 
-  MsgServHistory fromJson(Map<String, Object> json) {
-    return MsgServHistory.fromJson(json);
+  MsgServeHistory fromJson(Map<String, Object> json) {
+    return MsgServeHistory.fromJson(json);
   }
 }
 
 /// @nodoc
-const $MsgServHistory = _$MsgServHistoryTearOff();
+const $MsgServeHistory = _$MsgServeHistoryTearOff();
 
 /// @nodoc
-mixin _$MsgServHistory {
+mixin _$MsgServeHistory {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  String get campaignId => throw _privateConstructorUsedError;
+  String get campaignId =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
   String get campaignKey => throw _privateConstructorUsedError;
   DateTime? get closedAt => throw _privateConstructorUsedError;
@@ -347,15 +349,15 @@ mixin _$MsgServHistory {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MsgServHistoryCopyWith<MsgServHistory> get copyWith =>
+  $MsgServeHistoryCopyWith<MsgServeHistory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MsgServHistoryCopyWith<$Res> {
-  factory $MsgServHistoryCopyWith(
-          MsgServHistory value, $Res Function(MsgServHistory) then) =
-      _$MsgServHistoryCopyWithImpl<$Res>;
+abstract class $MsgServeHistoryCopyWith<$Res> {
+  factory $MsgServeHistoryCopyWith(
+          MsgServeHistory value, $Res Function(MsgServeHistory) then) =
+      _$MsgServeHistoryCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String campaignId,
       @JsonKey(name: 'key') String campaignKey,
@@ -364,13 +366,13 @@ abstract class $MsgServHistoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MsgServHistoryCopyWithImpl<$Res>
-    implements $MsgServHistoryCopyWith<$Res> {
-  _$MsgServHistoryCopyWithImpl(this._value, this._then);
+class _$MsgServeHistoryCopyWithImpl<$Res>
+    implements $MsgServeHistoryCopyWith<$Res> {
+  _$MsgServeHistoryCopyWithImpl(this._value, this._then);
 
-  final MsgServHistory _value;
+  final MsgServeHistory _value;
   // ignore: unused_field
-  final $Res Function(MsgServHistory) _then;
+  final $Res Function(MsgServeHistory) _then;
 
   @override
   $Res call({
@@ -401,11 +403,11 @@ class _$MsgServHistoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MsgServHistoryCopyWith<$Res>
-    implements $MsgServHistoryCopyWith<$Res> {
-  factory _$MsgServHistoryCopyWith(
-          _MsgServHistory value, $Res Function(_MsgServHistory) then) =
-      __$MsgServHistoryCopyWithImpl<$Res>;
+abstract class _$MsgServeHistoryCopyWith<$Res>
+    implements $MsgServeHistoryCopyWith<$Res> {
+  factory _$MsgServeHistoryCopyWith(
+          _MsgServeHistory value, $Res Function(_MsgServeHistory) then) =
+      __$MsgServeHistoryCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'id') String campaignId,
@@ -415,15 +417,15 @@ abstract class _$MsgServHistoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MsgServHistoryCopyWithImpl<$Res>
-    extends _$MsgServHistoryCopyWithImpl<$Res>
-    implements _$MsgServHistoryCopyWith<$Res> {
-  __$MsgServHistoryCopyWithImpl(
-      _MsgServHistory _value, $Res Function(_MsgServHistory) _then)
-      : super(_value, (v) => _then(v as _MsgServHistory));
+class __$MsgServeHistoryCopyWithImpl<$Res>
+    extends _$MsgServeHistoryCopyWithImpl<$Res>
+    implements _$MsgServeHistoryCopyWith<$Res> {
+  __$MsgServeHistoryCopyWithImpl(
+      _MsgServeHistory _value, $Res Function(_MsgServeHistory) _then)
+      : super(_value, (v) => _then(v as _MsgServeHistory));
 
   @override
-  _MsgServHistory get _value => super._value as _MsgServHistory;
+  _MsgServeHistory get _value => super._value as _MsgServeHistory;
 
   @override
   $Res call({
@@ -432,7 +434,7 @@ class __$MsgServHistoryCopyWithImpl<$Res>
     Object? closedAt = freezed,
     Object? action = freezed,
   }) {
-    return _then(_MsgServHistory(
+    return _then(_MsgServeHistory(
       campaignId: campaignId == freezed
           ? _value.campaignId
           : campaignId // ignore: cast_nullable_to_non_nullable
@@ -455,22 +457,22 @@ class __$MsgServHistoryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MsgServHistory
+class _$_MsgServeHistory
     with DiagnosticableTreeMixin
-    implements _MsgServHistory {
-  const _$_MsgServHistory(
+    implements _MsgServeHistory {
+  const _$_MsgServeHistory(
       {@JsonKey(name: 'id') required this.campaignId,
       @JsonKey(name: 'key') required this.campaignKey,
       this.closedAt,
       this.action});
 
-  factory _$_MsgServHistory.fromJson(Map<String, dynamic> json) =>
-      _$$_MsgServHistoryFromJson(json);
+  factory _$_MsgServeHistory.fromJson(Map<String, dynamic> json) =>
+      _$$_MsgServeHistoryFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   final String campaignId;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
   final String campaignKey;
   @override
@@ -482,14 +484,14 @@ class _$_MsgServHistory
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MsgServHistory(campaignId: $campaignId, campaignKey: $campaignKey, closedAt: $closedAt, action: $action)';
+    return 'MsgServeHistory(campaignId: $campaignId, campaignKey: $campaignKey, closedAt: $closedAt, action: $action)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'MsgServHistory'))
+      ..add(DiagnosticsProperty('type', 'MsgServeHistory'))
       ..add(DiagnosticsProperty('campaignId', campaignId))
       ..add(DiagnosticsProperty('campaignKey', campaignKey))
       ..add(DiagnosticsProperty('closedAt', closedAt))
@@ -499,7 +501,7 @@ class _$_MsgServHistory
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MsgServHistory &&
+        (other is _MsgServeHistory &&
             (identical(other.campaignId, campaignId) ||
                 const DeepCollectionEquality()
                     .equals(other.campaignId, campaignId)) &&
@@ -523,29 +525,29 @@ class _$_MsgServHistory
 
   @JsonKey(ignore: true)
   @override
-  _$MsgServHistoryCopyWith<_MsgServHistory> get copyWith =>
-      __$MsgServHistoryCopyWithImpl<_MsgServHistory>(this, _$identity);
+  _$MsgServeHistoryCopyWith<_MsgServeHistory> get copyWith =>
+      __$MsgServeHistoryCopyWithImpl<_MsgServeHistory>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MsgServHistoryToJson(this);
+    return _$$_MsgServeHistoryToJson(this);
   }
 }
 
-abstract class _MsgServHistory implements MsgServHistory {
-  const factory _MsgServHistory(
+abstract class _MsgServeHistory implements MsgServeHistory {
+  const factory _MsgServeHistory(
       {@JsonKey(name: 'id') required String campaignId,
       @JsonKey(name: 'key') required String campaignKey,
       DateTime? closedAt,
-      String? action}) = _$_MsgServHistory;
+      String? action}) = _$_MsgServeHistory;
 
-  factory _MsgServHistory.fromJson(Map<String, dynamic> json) =
-      _$_MsgServHistory.fromJson;
+  factory _MsgServeHistory.fromJson(Map<String, dynamic> json) =
+      _$_MsgServeHistory.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
   String get campaignId => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
   String get campaignKey => throw _privateConstructorUsedError;
   @override
@@ -556,6 +558,6 @@ abstract class _MsgServHistory implements MsgServHistory {
   String? get action => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MsgServHistoryCopyWith<_MsgServHistory> get copyWith =>
+  _$MsgServeHistoryCopyWith<_MsgServeHistory> get copyWith =>
       throw _privateConstructorUsedError;
 }

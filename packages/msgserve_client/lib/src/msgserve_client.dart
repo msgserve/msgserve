@@ -20,15 +20,15 @@ import 'package:uuid/uuid.dart';
 
 final _logger = Logger('msgserv_client');
 
-class MsgServApi {
-  MsgServApi({
+class MsgServeApi {
+  MsgServeApi({
     required this.opts,
     required this.packageInfo,
     this.headers,
   });
 
-  final MsgServOpts opts;
-  final MsgServPackageInfo packageInfo;
+  final MsgServeOpts opts;
+  final MsgServePackageInfo packageInfo;
   final Map<String, String>? headers;
 
   Client? _client;
@@ -44,20 +44,20 @@ class MsgServApi {
         queryParameters: queryParameters);
   }
 
-  Map<String, String> _toQueryParameters(MsgServPackageInfo packageInfo) {
+  Map<String, String> _toQueryParameters(MsgServePackageInfo packageInfo) {
     return <String, String>{
       'package': packageInfo.packageName,
       'platform': _operatingSystem(),
     };
   }
 
-  String _toUserAgent(MsgServPackageInfo packageInfo) {
+  String _toUserAgent(MsgServePackageInfo packageInfo) {
     return 'diac (${_operatingSystem()}, '
         '${packageInfo.packageName}'
         '@${packageInfo.version}+${packageInfo.buildNumber})';
   }
 
-  Future<MsgServConfig?> fetchConfig() async {
+  Future<MsgServeConfig?> fetchConfig() async {
     final uri = await _uri(['campaigns.json'],
         queryParameters: _toQueryParameters(packageInfo));
     try {
@@ -76,7 +76,7 @@ class MsgServApi {
       }
       _logger.finest('Got response ${response.statusCode},'
           ' ${body.length}');
-      return MsgServConfig.fromJson(
+      return MsgServeConfig.fromJson(
         json.decode(body) as Map<String, dynamic>,
       );
     } catch (e, stackTrace) {
@@ -87,12 +87,12 @@ class MsgServApi {
   }
 }
 
-class MsgServClient with StreamSubscriberBase {
-  MsgServClient({required this.opts})
+class MsgServeClient with StreamSubscriberBase {
+  MsgServeClient({required this.opts})
       : store = SimpleJsonPersistence.getForTypeWithDefault(
-          (data) => MsgServData.fromJson(data),
+          (data) => MsgServeData.fromJson(data),
           name: 'MsgServData',
-          defaultCreator: () => MsgServData(
+          defaultCreator: () => MsgServeData(
             deviceId: const Uuid().v4(),
             firstLaunch: clock.now().toUtc(),
             seen: [],
@@ -123,21 +123,21 @@ class MsgServClient with StreamSubscriberBase {
   }
 
   @visibleForTesting
-  MsgServApi? api;
+  MsgServeApi? api;
 
-  MsgServOpts opts;
+  MsgServeOpts opts;
 
-  final SimpleJsonPersistenceWithDefault<MsgServData> store;
+  final SimpleJsonPersistenceWithDefault<MsgServeData> store;
 
   late final _cacheDirectory = _createCacheDirectory();
 
-  Future<MsgServConfig?> _fetchConfig() async {
+  Future<MsgServeConfig?> _fetchConfig() async {
     if (opts.disableConfigFetch) {
       _logger.finer('iac message fetching disabled.');
       return opts.initialConfig;
     }
     final data = await store.load();
-    api ??= MsgServApi(
+    api ??= MsgServeApi(
       opts: opts,
       packageInfo: await opts.getPackageInfo(),
       headers: {
@@ -181,7 +181,7 @@ class MsgServClient with StreamSubscriberBase {
     }
   }
 
-  Future<MsgServData> _updateConfig(MsgServConfig config) async {
+  Future<MsgServeData> _updateConfig(MsgServeConfig config) async {
     return await store.update((data) => data!.copyWith(
           deviceId: data.deviceId,
           lastConfig: config,
@@ -189,7 +189,7 @@ class MsgServClient with StreamSubscriberBase {
         ));
   }
 
-  Future<List<MapEntry<T, io.File>>> prepareFilesFor<T extends MsgServGraphic>(
+  Future<List<MapEntry<T, io.File>>> prepareFilesFor<T extends MsgServeGraphic>(
       List<T> images) async {
     final data = await store.load();
     try {
@@ -215,7 +215,7 @@ class MsgServClient with StreamSubscriberBase {
     return fs.directory(temp);
   }
 
-  Future<File> _prefetchImage(MsgServData data, MsgServGraphic image) async {
+  Future<File> _prefetchImage(MsgServeData data, MsgServeGraphic image) async {
     _logger.fine('prefetch image $image');
     final dir = await _cacheDirectory;
     _logger.fine('into $dir');

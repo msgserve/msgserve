@@ -7,23 +7,23 @@ part 'msgserve_data.freezed.dart';
 part 'msgserve_data.g.dart';
 
 @freezed
-abstract class MsgServData with _$MsgServData implements HasToJson {
-  const factory MsgServData({
+abstract class MsgServeData with _$MsgServeData implements HasToJson {
+  const factory MsgServeData({
     required String deviceId,
     required DateTime firstLaunch,
     @Default(<String, String>{}) Map<String, String> cachedImages,
-    required List<MsgServHistory> seen,
+    required List<MsgServeHistory> seen,
     required DateTime lastConfigFetchedAt,
-    MsgServConfig? lastConfig,
-  }) = _MsgServData;
+    MsgServeConfig? lastConfig,
+  }) = _MsgServeData;
 
-  factory MsgServData.fromJson(Map<String, dynamic> json) =>
-      _$MsgServDataFromJson(json);
+  factory MsgServeData.fromJson(Map<String, dynamic> json) =>
+      _$MsgServeDataFromJson(json);
 }
 
 @freezed
-abstract class MsgServHistory with _$MsgServHistory {
-  const factory MsgServHistory({
+abstract class MsgServeHistory with _$MsgServeHistory {
+  const factory MsgServeHistory({
     // ignore: invalid_annotation_target
     @JsonKey(name: 'id') required String campaignId,
     // ignore: invalid_annotation_target
@@ -32,8 +32,8 @@ abstract class MsgServHistory with _$MsgServHistory {
 
     /// tapped action of that message.
     String? action,
-  }) = _MsgServHistory;
+  }) = _MsgServeHistory;
 
-  factory MsgServHistory.fromJson(Map<String, dynamic> json) =>
-      _$MsgServHistoryFromJson(json);
+  factory MsgServeHistory.fromJson(Map<String, dynamic> json) =>
+      _$MsgServeHistoryFromJson(json);
 }

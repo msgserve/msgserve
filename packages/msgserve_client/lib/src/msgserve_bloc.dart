@@ -29,16 +29,16 @@ class _NewData {
     required this.data,
   });
   final Set<String> closedMessages;
-  final MsgServData data;
+  final MsgServeData data;
 }
 
-class MsgServCampaignDisplay {
-  MsgServCampaignDisplay({
+class MsgServeCampaignDisplay {
+  MsgServeCampaignDisplay({
     required this.campaign,
     required this.expressionContext,
   });
 
-  final MsgServCampaign campaign;
+  final MsgServeCampaign campaign;
   final Map<String, Object> expressionContext;
 
   @override
@@ -60,19 +60,19 @@ class CampaignClosed with _$CampaignClosed {
 
 typedef ExpressionContextProvider = Future<Map<String, Object>> Function();
 
-class MsgServBloc with StreamSubscriberBase {
-  MsgServBloc({
+class MsgServeBloc with StreamSubscriberBase {
+  MsgServeBloc({
     this.contextProvider = _defaultContextProvider,
     required this.opts,
   }) {
     _logger.fine('Create new MsgServBloc.');
     handle(events.listen((event) {
       _logger.fine('handling event $event');
-      if (event is MsgServEventDismissed) {
+      if (event is MsgServeEventDismissed) {
         _logger.finer('setting ${event.campaign.id} as dismissed.');
         _client.store.update((data) => data!.copyWith(seen: [
               ...data.seen,
-              MsgServHistory(
+              MsgServeHistory(
                 campaignId: event.campaign.id,
                 campaignKey: event.campaign.key,
                 closedAt: clock.now(),
@@ -93,7 +93,7 @@ class MsgServBloc with StreamSubscriberBase {
     });
   }
 
-  late final _client = MsgServClient(opts: opts);
+  late final _client = MsgServeClient(opts: opts);
 
   late final ValueStream<_NewData> _seenMessages =
       _client.store.onValueChangedAndLoad
@@ -111,12 +111,12 @@ class MsgServBloc with StreamSubscriberBase {
         ..doOnDone(() {
           _logger.finer('Done?!');
         });
-  final Map<String, ValueStream<MsgServCampaignDisplay?>> _campaignFor = {};
+  final Map<String, ValueStream<MsgServeCampaignDisplay?>> _campaignFor = {};
 
-  final MsgServOpts opts;
+  final MsgServeOpts opts;
   final ExpressionContextProvider contextProvider;
-  final StreamController<MsgServEvent> _events = StreamController.broadcast();
-  Stream<MsgServEvent> get events => _events.stream;
+  final StreamController<MsgServeEvent> _events = StreamController.broadcast();
+  Stream<MsgServeEvent> get events => _events.stream;
   final StreamController<AppEvent> _appEvents = StreamController.broadcast();
   late final StreamConsumer<AppEvent> appEventsConsumer = _appEvents;
 
@@ -150,7 +150,7 @@ class MsgServBloc with StreamSubscriberBase {
   //   });
   // }
 
-  Stream<MsgServCampaignDisplay?> findCampaign({
+  Stream<MsgServeCampaignDisplay?> findCampaign({
     required String label,
     required CampaignType type,
   }) =>
@@ -159,7 +159,7 @@ class MsgServBloc with StreamSubscriberBase {
             _logger
                 .finer('findCampaign(label:$label,type:$type) - data: $event');
           })
-          .asyncMap<MsgServCampaignDisplay?>(
+          .asyncMap<MsgServeCampaignDisplay?>(
             (data) async => await _findNextCampaign(
               data: data.data,
               seenMessages: data.closedMessages,
@@ -172,9 +172,11 @@ class MsgServBloc with StreamSubscriberBase {
           .publishValueAsync()
           .autoConnect();
 
-  Stream<MsgServCampaignDisplay> triggeredCampaigns(
+  Stream<MsgServeCampaignDisplay> triggeredCampaigns(
       {required String label, required CampaignType type}) {
-    return events.whereType<MsgServCampaignTriggered>().asyncMap((event) async {
+    return events
+        .whereType<MsgServeCampaignTriggered>()
+        .asyncMap((event) async {
       if (!type.matches(event.campaign)) {
         return null;
       }
@@ -206,15 +208,15 @@ class MsgServBloc with StreamSubscriberBase {
         return null;
       }
       _logger.fine('TRIGGER: Found campaign. ${event.campaign.key}');
-      return MsgServCampaignDisplay(
+      return MsgServeCampaignDisplay(
         campaign: campaign,
         expressionContext: exprContext,
       );
-    }).whereType<MsgServCampaignDisplay>();
+    }).whereType<MsgServeCampaignDisplay>();
   }
 
-  Future<MsgServCampaignDisplay?> _findNextCampaign({
-    required MsgServData data,
+  Future<MsgServeCampaignDisplay?> _findNextCampaign({
+    required MsgServeData data,
     required Set<String> seenMessages,
     required String label,
     required CampaignType type,
@@ -249,7 +251,7 @@ class MsgServBloc with StreamSubscriberBase {
         continue;
       }
       _logger.fine('Found campaign. ${campaign.key}');
-      return MsgServCampaignDisplay(
+      return MsgServeCampaignDisplay(
         campaign: campaign,
         expressionContext: exprContext,
       );
@@ -259,7 +261,7 @@ class MsgServBloc with StreamSubscriberBase {
 
   Future<Object?> _evaluateCampaignExpression(
     ExpressionType type,
-    MsgServCampaign campaign, {
+    MsgServeCampaign campaign, {
     required Map<String, Object> expressionContext,
   }) async {
     final expr = campaign.getParsedExpressionType(type);
@@ -288,7 +290,7 @@ class MsgServBloc with StreamSubscriberBase {
   }
 
   Future<Map<String, Object>> _createExpressionContextForConditional(
-    MsgServData data,
+    MsgServeData data,
     Set<String> seenMessages, {
     required DateTime now,
     required CampaignType type,
@@ -310,7 +312,7 @@ class MsgServBloc with StreamSubscriberBase {
   }
 
   Future<Map<String, Object>> _createExpressionContext(
-    MsgServData data,
+    MsgServeData data,
     Set<String> seenMessages,
     Map<String, Object> context, {
     required DateTime now,
@@ -331,7 +333,7 @@ class MsgServBloc with StreamSubscriberBase {
       },
       'seen': (Object obj) {
         _logger.fine('seen($obj)? $seenMessages');
-        if (obj is MsgServCampaign) {
+        if (obj is MsgServeCampaign) {
           return seenMessages.contains(obj.key);
         } else if (obj is String) {
           return seenMessages.contains(obj);
@@ -353,18 +355,18 @@ class MsgServBloc with StreamSubscriberBase {
   }
 
   Future<void> triggerCampaignAction({
-    required MsgServCampaignDisplay campaign,
-    required final MsgServCampaignAction action,
+    required MsgServeCampaignDisplay campaign,
+    required final MsgServeCampaignAction action,
   }) async {
     Uri? uri;
-    if (action is MsgServCampaignActionWithUrl) {
-      final url = (action as MsgServCampaignActionWithUrl).url;
+    if (action is MsgServeCampaignActionWithUrl) {
+      final url = (action as MsgServeCampaignActionWithUrl).url;
       if (url != null) {
         uri = Uri.parse(url);
       }
     }
     if (uri != null) {
-      await triggerAction(MsgServEventTriggerCustom(
+      await triggerAction(MsgServeEventTriggerCustom(
         campaign: campaign.campaign,
         action: action,
         uri: uri,
@@ -372,11 +374,11 @@ class MsgServBloc with StreamSubscriberBase {
     }
 
     publishEvent(
-      MsgServEventDismissed(campaign: campaign.campaign, action: action),
+      MsgServeEventDismissed(campaign: campaign.campaign, action: action),
     );
   }
 
-  Future<void> triggerAction(MsgServEventTriggerCustom event) async {
+  Future<void> triggerAction(MsgServeEventTriggerCustom event) async {
     final uri = event.uri;
     if (uri.scheme == 'diac') {
       // TODO
@@ -404,7 +406,7 @@ class MsgServBloc with StreamSubscriberBase {
       triggered: true,
     );
     for (final campaign
-        in data.data.lastConfig?.campaigns ?? <MsgServCampaign>[]) {
+        in data.data.lastConfig?.campaigns ?? <MsgServeCampaign>[]) {
       final trigger = campaign.trigger;
       if (trigger == null) {
         continue;
@@ -419,7 +421,7 @@ class MsgServBloc with StreamSubscriberBase {
       );
       if (result is bool && result) {
         _logger.finer('campaign triggered.');
-        publishEvent(MsgServCampaignTriggered(
+        publishEvent(MsgServeCampaignTriggered(
           appEvent: event,
           campaign: campaign,
         ));
@@ -429,7 +431,7 @@ class MsgServBloc with StreamSubscriberBase {
     }
   }
 
-  Future<List<MapEntry<T, io.File>>> prepareFilesFor<T extends MsgServGraphic>(
+  Future<List<MapEntry<T, io.File>>> prepareFilesFor<T extends MsgServeGraphic>(
           List<T> images) async =>
       _client.prepareFilesFor(images);
 
@@ -449,8 +451,8 @@ class MsgServBloc with StreamSubscriberBase {
   }
 }
 
-extension DiacBlocExt on MsgServBloc {
-  void publishEvent(MsgServEvent event) {
+extension DiacBlocExt on MsgServeBloc {
+  void publishEvent(MsgServeEvent event) {
     _events.add(event);
   }
 }
@@ -465,7 +467,7 @@ enum CampaignType {
 }
 
 extension on CampaignType {
-  bool matches(MsgServCampaign campaign) {
+  bool matches(MsgServeCampaign campaign) {
     switch (this) {
       case CampaignType.interstitial:
         return campaign.interstitial != null;
@@ -502,7 +504,7 @@ enum ExpressionType {
   trigger,
 }
 
-extension on MsgServCampaign {
+extension on MsgServeCampaign {
   static final _conditionExpression = Expando<Optional<Expression>>();
   static final _triggerExpression = Expando<Optional<Expression>>();
 
