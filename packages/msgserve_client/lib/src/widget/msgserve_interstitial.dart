@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_async_utils/flutter_async_utils.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:logging/logging.dart';
-import 'package:msgserve_client/src/dto/msgserve_dto.dart';
 import 'package:msgserve_client/src/msgserve_bloc.dart';
+import 'package:msgserve_shared/msgserv_shared.dart';
 import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -158,6 +158,16 @@ class _MsgServeInterstitialState extends State<MsgServeInterstitial>
       ],
     );
   }
+}
+
+extension on MsgServeInterstitialArtifact {
+  MsgServeAction get actionOpen => this;
+
+  MsgServeAction get actionDismiss => _DismissAction();
+}
+
+class _DismissAction extends MsgServeAction {
+  _DismissAction() : super(key: 'dismiss');
 }
 
 extension on MsgServeFill {

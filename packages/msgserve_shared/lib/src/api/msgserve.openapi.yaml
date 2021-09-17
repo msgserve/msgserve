@@ -39,7 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MessageConfig'
+                $ref: '#/components/schemas/MsgServeConfig'
 components:
   schemas:
     Event:
@@ -48,64 +48,92 @@ components:
           type: string
           format: date-time
           description: 'Timestamp of the event'
-        context:
-          type: object
-          additionalProperties: true
+#        context:
+#          type: object
+#          additionalProperties: true
       required:
         - ts
-        - context
-    MessageConfig:
+#        - context
+    MsgServeConfig:
       properties:
-        messages:
+        updatedAt:
+          type: string
+          format: date-time
+        campaigns:
           type: array
           items:
-            properties:
-              type:
-                type: string
-              dialog:
-                $ref: '#/components/schemas/MessageBanner'
-              survey:
-                $ref: '#/components/schemas/MessageSurvey'
+            $ref: '#/components/schemas/MsgServeCampaign'
       required:
-        - messages
-    Message:
+        - updatedAt
+        - campaigns
+    MsgServeCampaign:
       properties:
-        uuid:
+        id:
           description: Globally unique ID.
           type: string
           format: uuid
         key:
           description: Unique, user friendly key for this message.
           type: string
-        body:
-          type: string
-        expression:
+        interstitial:
+          $ref: '#/components/schemas/MsgServeInterstitialArtifact'
+        filter:
           description: Boolean expression which evaluates whether this message should be shown.
           type: string
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-        actions:
+        trigger:
+          description: Boolean expression which evaluates whether this message should be shown.
+          type: string
+        dateStart:
+          type: string
+          format: date-time
+        dateEnd:
+          type: string
+          format: date-time
+      required:
+        - id
+        - key
+        - filter
+    MsgServeAction:
+      properties:
+        key:
+          type: string
+      required: [key]
+    MsgServeActionWithUrl:
+      allOf:
+        - $ref: '#/components/schemas/MsgServeAction'
+      properties:
+        url:
+          type: string
+    MsgServeInterstitialArtifact:
+      allOf:
+        - $ref: '#/components/schemas/MsgServeAction'
+        - $ref: '#/components/schemas/MsgServeActionWithUrl'
+      properties:
+        targetUrl:
+          type: string
+          format: url
+        graphics:
           type: array
           items:
-            $ref: '#/components/schemas/MessageAction'
-      required:
-        - uuid
-        - key
-        - body
-        - expression
-        - actions
-    MessageBanner:
-      allOf:
-        - $ref: '#/components/schemas/Message'
+            $ref: '#/components/schemas/MsgServeInterstitialGraphic'
+      required: [graphics, targetUrl]
+    MsgServeGraphic:
       properties:
-        title:
+        url:
           type: string
-    MessageSurvey:
+      required: [url]
+    MsgServeInterstitialGraphic:
       allOf:
-        - $ref: '#/components/schemas/Message'
+        - $ref: '#/components/schemas/MsgServeGraphic'
       properties:
-        question:
-          type: string
+        fill:
+          $ref: '#/components/schemas/MsgServeFill'
+      required: [fill]
+    MsgServeFill:
+      type: string
+      enum:
+        - contain
+        - cover
 
     MessageAction:
       properties:
@@ -120,13 +148,6 @@ components:
         - key
         - label
         - actionExpression
-    Campaign:
-      properties:
-        state:
-          type: object
-          additionalProperties: true
-      required:
-        - state
   securitySchemes:
     apiKey:
       type: apiKey

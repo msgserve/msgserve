@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:msgserve_client/src/dto/msgserve_dto.dart';
+import 'package:msgserve_shared/msgserv_shared.dart';
 import 'package:simple_json_persistence/simple_json_persistence.dart';
 
 part 'msgserve_data.freezed.dart';

@@ -4,7 +4,8 @@ import 'dart:io';
 import 'package:clock/clock.dart';
 import 'package:logging/logging.dart';
 import 'package:logging_appenders/logging_appenders.dart';
-import 'package:msgserve_client/src/dto/msgserve_dto.dart';
+import 'package:msgserve_shared/msgserv_shared.dart';
+import 'package:openapi_base/openapi_base.dart';
 
 final _logger = Logger('msgserve.msgserve_tool');
 
@@ -53,5 +54,31 @@ class MsgServeTool {
     }
     return MsgServeConfig.fromJson(
         json.decode(await file.readAsString()) as Map<String, dynamic>);
+  }
+}
+
+extension on MsgServeConfig {
+  MsgServeConfig copyWith({
+    DateTime? updatedAt,
+    List<MsgServeCampaign>? campaigns,
+  }) {
+    return MsgServeConfig(
+      updatedAt: updatedAt ?? this.updatedAt,
+      campaigns: campaigns ?? this.campaigns,
+    );
+  }
+}
+
+extension on MsgServeCampaign {
+  MsgServeCampaign copyWith({required ApiUuid id}) {
+    return MsgServeCampaign(
+      id: id,
+      key: key,
+      filter: filter,
+      interstitial: interstitial,
+      trigger: trigger,
+      dateStart: dateStart,
+      dateEnd: dateEnd,
+    );
   }
 }

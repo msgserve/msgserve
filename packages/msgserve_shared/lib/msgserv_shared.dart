@@ -1,4 +1,4 @@
 /// MsgServ shared models and API.
-library msgserv_shared;
+library msgserve_shared;
 
-export 'src/api/msgserv.openapi.dart';
+export 'src/api/msgserve.openapi.dart';

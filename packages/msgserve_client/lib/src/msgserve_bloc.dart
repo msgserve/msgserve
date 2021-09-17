@@ -7,11 +7,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_async_utils/flutter_async_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:logging/logging.dart';
-import 'package:msgserve_client/src/dto/msgserve_dto.dart';
 import 'package:msgserve_client/src/msgserve_client.dart';
 import 'package:msgserve_client/src/msgserve_data.dart';
 import 'package:msgserve_client/src/msgserve_event.dart';
 import 'package:msgserve_client/src/msgserve_opts.dart';
+import 'package:msgserve_shared/msgserv_shared.dart';
 import 'package:quiver/core.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -73,7 +73,7 @@ class MsgServeBloc with StreamSubscriberBase {
         _client.store.update((data) => data!.copyWith(seen: [
               ...data.seen,
               MsgServeHistory(
-                campaignId: event.campaign.id,
+                campaignId: event.campaign.id.toString(),
                 campaignKey: event.campaign.key,
                 closedAt: clock.now(),
                 action: event.action!.key,
@@ -356,11 +356,11 @@ class MsgServeBloc with StreamSubscriberBase {
 
   Future<void> triggerCampaignAction({
     required MsgServeCampaignDisplay campaign,
-    required final MsgServeCampaignAction action,
+    required final MsgServeAction action,
   }) async {
     Uri? uri;
-    if (action is MsgServeCampaignActionWithUrl) {
-      final url = (action as MsgServeCampaignActionWithUrl).url;
+    if (action is MsgServeActionWithUrl) {
+      final url = action.url;
       if (url != null) {
         uri = Uri.parse(url);
       }

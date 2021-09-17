@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:msgserve_client/src/dto/msgserve_dto.dart';
+import 'package:msgserve_shared/msgserv_shared.dart';
 import 'package:package_info/package_info.dart';
 
 class MsgServeOpts {

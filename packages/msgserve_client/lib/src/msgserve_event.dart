@@ -1,4 +1,4 @@
-import 'package:msgserve_client/src/dto/msgserve_dto.dart';
+import 'package:msgserve_shared/msgserv_shared.dart';
 
 enum MsgServeEventType {
   shown,
@@ -21,14 +21,6 @@ class MsgServeEvent {
   String toString() {
     return 'MsgServEvent{type: $type, message: $campaign}';
   }
-}
-
-abstract class MsgServeCampaignAction {
-  String get key;
-}
-
-abstract class MsgServeCampaignActionWithUrl {
-  String? get url;
 }
 
 class AppEvent {
@@ -57,7 +49,7 @@ class MsgServeCampaignTriggered extends MsgServeEvent {
 }
 
 abstract class MsgServeEventWithAction implements MsgServeEvent {
-  MsgServeCampaignAction? get action;
+  MsgServeAction? get action;
 }
 
 /// event executed when the user presses an action on a campaign.
@@ -70,7 +62,7 @@ class MsgServeEventTriggerCustom extends MsgServeEvent
   }) : super(type: MsgServeEventType.dismissed, campaign: campaign);
 
   @override
-  final MsgServeCampaignAction action;
+  final MsgServeAction action;
   final Uri uri;
 }
 
@@ -82,7 +74,7 @@ class MsgServeEventDismissed extends MsgServeEvent
   }) : super(type: MsgServeEventType.dismissed, campaign: campaign);
 
   @override
-  final MsgServeCampaignAction? action;
+  final MsgServeAction? action;
 
   @override
   String toString() {
