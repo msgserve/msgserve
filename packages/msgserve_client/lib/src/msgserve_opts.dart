@@ -53,8 +53,8 @@ class MsgServeOpts {
     }
     if (kIsWeb) {
       return const MsgServePackageInfo(
-        packageName: 'design.codeux.diac.web',
-        appName: 'Diac',
+        packageName: 'com.github.msgserve.web',
+        appName: 'MsgServe',
         version: '1.0.0',
         buildNumber: '0',
       );

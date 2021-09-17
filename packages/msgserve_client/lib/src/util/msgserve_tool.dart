@@ -6,7 +6,7 @@ import 'package:logging/logging.dart';
 import 'package:logging_appenders/logging_appenders.dart';
 import 'package:msgserve_client/src/dto/msgserve_dto.dart';
 
-final _logger = Logger('diac.diac_tool');
+final _logger = Logger('msgserve.msgserve_tool');
 
 const jsonEncoder = JsonEncoder.withIndent('  ');
 

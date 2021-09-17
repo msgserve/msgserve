@@ -380,7 +380,7 @@ class MsgServeBloc with StreamSubscriberBase {
 
   Future<void> triggerAction(MsgServeEventTriggerCustom event) async {
     final uri = event.uri;
-    if (uri.scheme == 'diac') {
+    if (uri.scheme == 'msgserve') {
       // TODO
     } else {
       if (!await launch(
@@ -451,7 +451,7 @@ class MsgServeBloc with StreamSubscriberBase {
   }
 }
 
-extension DiacBlocExt on MsgServeBloc {
+extension MsgServeBlocExt on MsgServeBloc {
   void publishEvent(MsgServeEvent event) {
     _events.add(event);
   }

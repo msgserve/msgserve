@@ -52,7 +52,7 @@ class MsgServeApi {
   }
 
   String _toUserAgent(MsgServePackageInfo packageInfo) {
-    return 'diac (${_operatingSystem()}, '
+    return 'MsgServe (${_operatingSystem()}, '
         '${packageInfo.packageName}'
         '@${packageInfo.version}+${packageInfo.buildNumber})';
   }
@@ -70,8 +70,8 @@ class MsgServeApi {
       final type = response.statusCode ~/ 100;
       final body = utf8.decode(response.bodyBytes);
       if (type != 2) {
-        _logger.fine('Error while loading diac config. ${response.statusCode}'
-            ' - $body');
+        _logger.fine('Error while loading MsgServe config.'
+            '${response.statusCode} - $body');
         return null;
       }
       _logger.finest('Got response ${response.statusCode},'
