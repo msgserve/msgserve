@@ -13,9 +13,7 @@ class DatabaseAccess
   DatabaseAccess({
     required CryptoService cryptoService,
     required DatabaseConfig config,
-  })  : assert(config != null),
-        assert(cryptoService != null),
-        super(
+  }) : super(
           config: config,
           tables: AuthPassTables(cryptoService: cryptoService),
           migrations: AuthPassMigrationsProvider(),
