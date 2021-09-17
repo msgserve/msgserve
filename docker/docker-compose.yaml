@@ -31,7 +31,7 @@ services:
         constraints: [node.role == manager]
     stop_grace_period: 60s
   backend:
-    image: docker.pkg.github.com/msgsrv/msgserv/msgserv-backend
+    image: docker.pkg.github.com/msgserve/msgserve/msgserve-backend
     #image: hpoul/authpass-backend-test
     build:
       context: ..
@@ -40,7 +40,7 @@ services:
         - buildnumber
         - hostinfo=${USER}@${HOST}
     ports:
-      - 9560:8080
+      - '9560:8080'
     command: /msgserv_backend.exe serve -c config/prod.yaml
     volumes:
       - ./config:/config
