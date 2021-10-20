@@ -25,7 +25,7 @@ services:
       restart_policy:
         condition: any
         delay: 5s
-        max_attempts: 30
+        #max_attempts: 30
         window: 120s
       placement:
         constraints: [node.role == manager]
@@ -41,7 +41,7 @@ services:
         - hostinfo=${USER}@${HOST}
     ports:
       - '9560:8080'
-    command: /msgserv_backend.exe serve -c config/prod.yaml
+    command: /msgserve_backend.exe serve -c config/prod.yaml
     volumes:
       - ./config:/config
     depends_on:
@@ -50,7 +50,7 @@ services:
       restart_policy:
         condition: any
         delay: 5s
-        max_attempts: 3000
+        #max_attempts: 3000
         window: 120s
       update_config:
         delay: 30s
