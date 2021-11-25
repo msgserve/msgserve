@@ -6,6 +6,7 @@ secrets:
   recaptchaSecretKey: '6LfZ6agZAAAAAEZBTV_rwrEyhWQpvG5BB0qQ49fE'
   recaptchaSiteKey: '6LfZ6agZAAAAAHc6c2nKX92mx8YZZKWIrhXUID6y'
   emailReceiveToken: 'QeoygpKYjqi133t0VpcJ'
+  exampleToken: ''
 
 email:
   fromAddress: 'hello@authpass.app'

@@ -12,7 +12,9 @@ class DummyTable extends TableBase with TableConstants {
   final CryptoService cryptoService;
 
   @override
-  List<String> get tables => throw UnimplementedError();
+  List<String> get tables {
+    return [_TABLE_DUMMY];
+  }
 
   Future<void> createTables(DatabaseTransaction db) async {
     await db.execute('''
