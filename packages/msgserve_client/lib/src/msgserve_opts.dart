@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:msgserve_shared/msgserv_shared.dart';
@@ -7,15 +8,16 @@ class MsgServeOpts {
   ///
   /// [initialConfig]: initial config used before first http request,
   /// or if config fetching is disabled.
-  MsgServeOpts({
-    required this.endpointUrl,
-    MsgServeConfig? initialConfig,
-    this.disableConfigFetch = false,
-    this.refetchInterval = const Duration(hours: 1),
-    this.refetchIntervalCold = const Duration(hours: 1),
-    this.httpClient = createClient,
-    this.packageInfo,
-  })  : assert(!endpointUrl.endsWith('/')),
+  MsgServeOpts(
+      {required this.endpointUrl,
+      MsgServeConfig? initialConfig,
+      this.disableConfigFetch = false,
+      this.refetchInterval = const Duration(hours: 1),
+      this.refetchIntervalCold = const Duration(hours: 1),
+      this.httpClient = createClient,
+      this.packageInfo,
+      this.analytics})
+      : assert(!endpointUrl.endsWith('/')),
         initialConfig = initialConfig ??
             MsgServeConfig(
               updatedAt: DateTime.fromMicrosecondsSinceEpoch(0).toUtc(),
@@ -26,6 +28,7 @@ class MsgServeOpts {
   /// Must not end in '/'
   final String endpointUrl;
   final MsgServeConfig initialConfig;
+  final FirebaseAnalytics? analytics;
 
   /// Do not fetch configuration. This can be useful if you want to allow
   /// users to opt out of in app communications.

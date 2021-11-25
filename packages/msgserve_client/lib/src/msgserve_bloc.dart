@@ -358,6 +358,7 @@ class MsgServeBloc with StreamSubscriberBase {
     required MsgServeCampaignDisplay campaign,
     required final MsgServeAction action,
   }) async {
+    _logger.fine('triggering campaign action');
     Uri? uri;
     if (action is MsgServeActionWithUrl) {
       final url = action.url;

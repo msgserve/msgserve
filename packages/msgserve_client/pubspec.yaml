@@ -25,6 +25,7 @@ dependencies:
   url_launcher: ^6.0.9
   flutter_hooks: ^0.18.0
   provider: ^5.0.0
+  firebase_analytics: ^8.1.2
 
 
 dev_dependencies:
