@@ -71,7 +71,7 @@ class MsgServeBloc with StreamSubscriberBase {
       _logger.fine('handling event $event');
       if (event is MsgServeEventDismissed) {
         _logger.finer('setting ${event.campaign.id} as dismissed.');
-        _client.store.update((data) => data!.copyWith(seen: [
+        _client.store.update((data) => data.copyWith(seen: [
               ...data.seen,
               MsgServeHistory(
                 campaignId: event.campaign.id.toString(),
@@ -385,10 +385,9 @@ class MsgServeBloc with StreamSubscriberBase {
     if (uri.scheme == 'msgserve') {
       // TODO
     } else {
-      if (!await launch(
-        uri.toString(),
-        forceSafariVC: false,
-        forceWebView: false,
+      if (!await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
       )) {
         _logger.warning('Unable to launch url $uri');
       }

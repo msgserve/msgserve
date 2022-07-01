@@ -182,7 +182,7 @@ class MsgServeClient with StreamSubscriberBase {
   }
 
   Future<MsgServeData> _updateConfig(MsgServeConfig config) async {
-    return await store.update((data) => data!.copyWith(
+    return await store.update((data) => data.copyWith(
           deviceId: data.deviceId,
           lastConfig: config,
           lastConfigFetchedAt: clock.now().toUtc(),
@@ -235,7 +235,7 @@ class MsgServeClient with StreamSubscriberBase {
     final cacheFile = dir.childFile(cacheFileName);
     await cacheFile.writeAsBytes(response.bodyBytes, flush: true);
     await store.update(
-      (data) => data!.copyWith(
+      (data) => data.copyWith(
         cachedImages: {
           ...data.cachedImages,
           image.url: cacheFileName,
