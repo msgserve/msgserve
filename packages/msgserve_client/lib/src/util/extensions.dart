@@ -26,7 +26,7 @@ extension BoolThen on bool {
 extension UriTrailingSlashExt on Uri {
   Uri ensureTrailingSlash() {
     if (!path.endsWith('/')) {
-      return replace(path: path + '/');
+      return replace(path: '$path/');
     }
     return this;
   }

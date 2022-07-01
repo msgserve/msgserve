@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'msgserve_data.dart';
@@ -11,40 +12,11 @@ part of 'msgserve_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MsgServeData _$MsgServeDataFromJson(Map<String, dynamic> json) {
   return _MsgServeData.fromJson(json);
 }
-
-/// @nodoc
-class _$MsgServeDataTearOff {
-  const _$MsgServeDataTearOff();
-
-  _MsgServeData call(
-      {required String deviceId,
-      required DateTime firstLaunch,
-      Map<String, String> cachedImages = const <String, String>{},
-      required List<MsgServeHistory> seen,
-      required DateTime lastConfigFetchedAt,
-      MsgServeConfig? lastConfig}) {
-    return _MsgServeData(
-      deviceId: deviceId,
-      firstLaunch: firstLaunch,
-      cachedImages: cachedImages,
-      seen: seen,
-      lastConfigFetchedAt: lastConfigFetchedAt,
-      lastConfig: lastConfig,
-    );
-  }
-
-  MsgServeData fromJson(Map<String, Object> json) {
-    return MsgServeData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MsgServeData = _$MsgServeDataTearOff();
 
 /// @nodoc
 mixin _$MsgServeData {
@@ -122,11 +94,11 @@ class _$MsgServeDataCopyWithImpl<$Res> implements $MsgServeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MsgServeDataCopyWith<$Res>
+abstract class _$$_MsgServeDataCopyWith<$Res>
     implements $MsgServeDataCopyWith<$Res> {
-  factory _$MsgServeDataCopyWith(
-          _MsgServeData value, $Res Function(_MsgServeData) then) =
-      __$MsgServeDataCopyWithImpl<$Res>;
+  factory _$$_MsgServeDataCopyWith(
+          _$_MsgServeData value, $Res Function(_$_MsgServeData) then) =
+      __$$_MsgServeDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {String deviceId,
@@ -138,14 +110,15 @@ abstract class _$MsgServeDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MsgServeDataCopyWithImpl<$Res> extends _$MsgServeDataCopyWithImpl<$Res>
-    implements _$MsgServeDataCopyWith<$Res> {
-  __$MsgServeDataCopyWithImpl(
-      _MsgServeData _value, $Res Function(_MsgServeData) _then)
-      : super(_value, (v) => _then(v as _MsgServeData));
+class __$$_MsgServeDataCopyWithImpl<$Res>
+    extends _$MsgServeDataCopyWithImpl<$Res>
+    implements _$$_MsgServeDataCopyWith<$Res> {
+  __$$_MsgServeDataCopyWithImpl(
+      _$_MsgServeData _value, $Res Function(_$_MsgServeData) _then)
+      : super(_value, (v) => _then(v as _$_MsgServeData));
 
   @override
-  _MsgServeData get _value => super._value as _MsgServeData;
+  _$_MsgServeData get _value => super._value as _$_MsgServeData;
 
   @override
   $Res call({
@@ -156,7 +129,7 @@ class __$MsgServeDataCopyWithImpl<$Res> extends _$MsgServeDataCopyWithImpl<$Res>
     Object? lastConfigFetchedAt = freezed,
     Object? lastConfig = freezed,
   }) {
-    return _then(_MsgServeData(
+    return _then(_$_MsgServeData(
       deviceId: deviceId == freezed
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
@@ -166,11 +139,11 @@ class __$MsgServeDataCopyWithImpl<$Res> extends _$MsgServeDataCopyWithImpl<$Res>
           : firstLaunch // ignore: cast_nullable_to_non_nullable
               as DateTime,
       cachedImages: cachedImages == freezed
-          ? _value.cachedImages
+          ? _value._cachedImages
           : cachedImages // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
       seen: seen == freezed
-          ? _value.seen
+          ? _value._seen
           : seen // ignore: cast_nullable_to_non_nullable
               as List<MsgServeHistory>,
       lastConfigFetchedAt: lastConfigFetchedAt == freezed
@@ -191,10 +164,12 @@ class _$_MsgServeData with DiagnosticableTreeMixin implements _MsgServeData {
   const _$_MsgServeData(
       {required this.deviceId,
       required this.firstLaunch,
-      this.cachedImages = const <String, String>{},
-      required this.seen,
+      final Map<String, String> cachedImages = const <String, String>{},
+      required final List<MsgServeHistory> seen,
       required this.lastConfigFetchedAt,
-      this.lastConfig});
+      this.lastConfig})
+      : _cachedImages = cachedImages,
+        _seen = seen;
 
   factory _$_MsgServeData.fromJson(Map<String, dynamic> json) =>
       _$$_MsgServeDataFromJson(json);
@@ -203,11 +178,21 @@ class _$_MsgServeData with DiagnosticableTreeMixin implements _MsgServeData {
   final String deviceId;
   @override
   final DateTime firstLaunch;
-  @JsonKey(defaultValue: const <String, String>{})
+  final Map<String, String> _cachedImages;
   @override
-  final Map<String, String> cachedImages;
+  @JsonKey()
+  Map<String, String> get cachedImages {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_cachedImages);
+  }
+
+  final List<MsgServeHistory> _seen;
   @override
-  final List<MsgServeHistory> seen;
+  List<MsgServeHistory> get seen {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_seen);
+  }
+
   @override
   final DateTime lastConfigFetchedAt;
   @override
@@ -234,40 +219,35 @@ class _$_MsgServeData with DiagnosticableTreeMixin implements _MsgServeData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MsgServeData &&
-            (identical(other.deviceId, deviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.deviceId, deviceId)) &&
-            (identical(other.firstLaunch, firstLaunch) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstLaunch, firstLaunch)) &&
-            (identical(other.cachedImages, cachedImages) ||
-                const DeepCollectionEquality()
-                    .equals(other.cachedImages, cachedImages)) &&
-            (identical(other.seen, seen) ||
-                const DeepCollectionEquality().equals(other.seen, seen)) &&
-            (identical(other.lastConfigFetchedAt, lastConfigFetchedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastConfigFetchedAt, lastConfigFetchedAt)) &&
-            (identical(other.lastConfig, lastConfig) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastConfig, lastConfig)));
+        (other.runtimeType == runtimeType &&
+            other is _$_MsgServeData &&
+            const DeepCollectionEquality().equals(other.deviceId, deviceId) &&
+            const DeepCollectionEquality()
+                .equals(other.firstLaunch, firstLaunch) &&
+            const DeepCollectionEquality()
+                .equals(other._cachedImages, _cachedImages) &&
+            const DeepCollectionEquality().equals(other._seen, _seen) &&
+            const DeepCollectionEquality()
+                .equals(other.lastConfigFetchedAt, lastConfigFetchedAt) &&
+            const DeepCollectionEquality()
+                .equals(other.lastConfig, lastConfig));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(deviceId) ^
-      const DeepCollectionEquality().hash(firstLaunch) ^
-      const DeepCollectionEquality().hash(cachedImages) ^
-      const DeepCollectionEquality().hash(seen) ^
-      const DeepCollectionEquality().hash(lastConfigFetchedAt) ^
-      const DeepCollectionEquality().hash(lastConfig);
 
   @JsonKey(ignore: true)
   @override
-  _$MsgServeDataCopyWith<_MsgServeData> get copyWith =>
-      __$MsgServeDataCopyWithImpl<_MsgServeData>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(deviceId),
+      const DeepCollectionEquality().hash(firstLaunch),
+      const DeepCollectionEquality().hash(_cachedImages),
+      const DeepCollectionEquality().hash(_seen),
+      const DeepCollectionEquality().hash(lastConfigFetchedAt),
+      const DeepCollectionEquality().hash(lastConfig));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_MsgServeDataCopyWith<_$_MsgServeData> get copyWith =>
+      __$$_MsgServeDataCopyWithImpl<_$_MsgServeData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -277,12 +257,12 @@ class _$_MsgServeData with DiagnosticableTreeMixin implements _MsgServeData {
 
 abstract class _MsgServeData implements MsgServeData {
   const factory _MsgServeData(
-      {required String deviceId,
-      required DateTime firstLaunch,
-      Map<String, String> cachedImages,
-      required List<MsgServeHistory> seen,
-      required DateTime lastConfigFetchedAt,
-      MsgServeConfig? lastConfig}) = _$_MsgServeData;
+      {required final String deviceId,
+      required final DateTime firstLaunch,
+      final Map<String, String> cachedImages,
+      required final List<MsgServeHistory> seen,
+      required final DateTime lastConfigFetchedAt,
+      final MsgServeConfig? lastConfig}) = _$_MsgServeData;
 
   factory _MsgServeData.fromJson(Map<String, dynamic> json) =
       _$_MsgServeData.fromJson;
@@ -301,38 +281,13 @@ abstract class _MsgServeData implements MsgServeData {
   MsgServeConfig? get lastConfig => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MsgServeDataCopyWith<_MsgServeData> get copyWith =>
+  _$$_MsgServeDataCopyWith<_$_MsgServeData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 MsgServeHistory _$MsgServeHistoryFromJson(Map<String, dynamic> json) {
   return _MsgServeHistory.fromJson(json);
 }
-
-/// @nodoc
-class _$MsgServeHistoryTearOff {
-  const _$MsgServeHistoryTearOff();
-
-  _MsgServeHistory call(
-      {@JsonKey(name: 'id') required String campaignId,
-      @JsonKey(name: 'key') required String campaignKey,
-      DateTime? closedAt,
-      String? action}) {
-    return _MsgServeHistory(
-      campaignId: campaignId,
-      campaignKey: campaignKey,
-      closedAt: closedAt,
-      action: action,
-    );
-  }
-
-  MsgServeHistory fromJson(Map<String, Object> json) {
-    return MsgServeHistory.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MsgServeHistory = _$MsgServeHistoryTearOff();
 
 /// @nodoc
 mixin _$MsgServeHistory {
@@ -403,11 +358,11 @@ class _$MsgServeHistoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MsgServeHistoryCopyWith<$Res>
+abstract class _$$_MsgServeHistoryCopyWith<$Res>
     implements $MsgServeHistoryCopyWith<$Res> {
-  factory _$MsgServeHistoryCopyWith(
-          _MsgServeHistory value, $Res Function(_MsgServeHistory) then) =
-      __$MsgServeHistoryCopyWithImpl<$Res>;
+  factory _$$_MsgServeHistoryCopyWith(
+          _$_MsgServeHistory value, $Res Function(_$_MsgServeHistory) then) =
+      __$$_MsgServeHistoryCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'id') String campaignId,
@@ -417,15 +372,15 @@ abstract class _$MsgServeHistoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MsgServeHistoryCopyWithImpl<$Res>
+class __$$_MsgServeHistoryCopyWithImpl<$Res>
     extends _$MsgServeHistoryCopyWithImpl<$Res>
-    implements _$MsgServeHistoryCopyWith<$Res> {
-  __$MsgServeHistoryCopyWithImpl(
-      _MsgServeHistory _value, $Res Function(_MsgServeHistory) _then)
-      : super(_value, (v) => _then(v as _MsgServeHistory));
+    implements _$$_MsgServeHistoryCopyWith<$Res> {
+  __$$_MsgServeHistoryCopyWithImpl(
+      _$_MsgServeHistory _value, $Res Function(_$_MsgServeHistory) _then)
+      : super(_value, (v) => _then(v as _$_MsgServeHistory));
 
   @override
-  _MsgServeHistory get _value => super._value as _MsgServeHistory;
+  _$_MsgServeHistory get _value => super._value as _$_MsgServeHistory;
 
   @override
   $Res call({
@@ -434,7 +389,7 @@ class __$MsgServeHistoryCopyWithImpl<$Res>
     Object? closedAt = freezed,
     Object? action = freezed,
   }) {
-    return _then(_MsgServeHistory(
+    return _then(_$_MsgServeHistory(
       campaignId: campaignId == freezed
           ? _value.campaignId
           : campaignId // ignore: cast_nullable_to_non_nullable
@@ -469,17 +424,19 @@ class _$_MsgServeHistory
   factory _$_MsgServeHistory.fromJson(Map<String, dynamic> json) =>
       _$$_MsgServeHistoryFromJson(json);
 
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: 'id')
   final String campaignId;
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(name: 'key')
   final String campaignKey;
   @override
   final DateTime? closedAt;
-  @override
 
   /// tapped action of that message.
+  @override
   final String? action;
 
   @override
@@ -501,32 +458,29 @@ class _$_MsgServeHistory
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MsgServeHistory &&
-            (identical(other.campaignId, campaignId) ||
-                const DeepCollectionEquality()
-                    .equals(other.campaignId, campaignId)) &&
-            (identical(other.campaignKey, campaignKey) ||
-                const DeepCollectionEquality()
-                    .equals(other.campaignKey, campaignKey)) &&
-            (identical(other.closedAt, closedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.closedAt, closedAt)) &&
-            (identical(other.action, action) ||
-                const DeepCollectionEquality().equals(other.action, action)));
+        (other.runtimeType == runtimeType &&
+            other is _$_MsgServeHistory &&
+            const DeepCollectionEquality()
+                .equals(other.campaignId, campaignId) &&
+            const DeepCollectionEquality()
+                .equals(other.campaignKey, campaignKey) &&
+            const DeepCollectionEquality().equals(other.closedAt, closedAt) &&
+            const DeepCollectionEquality().equals(other.action, action));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(campaignId) ^
-      const DeepCollectionEquality().hash(campaignKey) ^
-      const DeepCollectionEquality().hash(closedAt) ^
-      const DeepCollectionEquality().hash(action);
 
   @JsonKey(ignore: true)
   @override
-  _$MsgServeHistoryCopyWith<_MsgServeHistory> get copyWith =>
-      __$MsgServeHistoryCopyWithImpl<_MsgServeHistory>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(campaignId),
+      const DeepCollectionEquality().hash(campaignKey),
+      const DeepCollectionEquality().hash(closedAt),
+      const DeepCollectionEquality().hash(action));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_MsgServeHistoryCopyWith<_$_MsgServeHistory> get copyWith =>
+      __$$_MsgServeHistoryCopyWithImpl<_$_MsgServeHistory>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -536,10 +490,10 @@ class _$_MsgServeHistory
 
 abstract class _MsgServeHistory implements MsgServeHistory {
   const factory _MsgServeHistory(
-      {@JsonKey(name: 'id') required String campaignId,
-      @JsonKey(name: 'key') required String campaignKey,
-      DateTime? closedAt,
-      String? action}) = _$_MsgServeHistory;
+      {@JsonKey(name: 'id') required final String campaignId,
+      @JsonKey(name: 'key') required final String campaignKey,
+      final DateTime? closedAt,
+      final String? action}) = _$_MsgServeHistory;
 
   factory _MsgServeHistory.fromJson(Map<String, dynamic> json) =
       _$_MsgServeHistory.fromJson;
@@ -558,6 +512,6 @@ abstract class _MsgServeHistory implements MsgServeHistory {
   String? get action => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MsgServeHistoryCopyWith<_MsgServeHistory> get copyWith =>
+  _$$_MsgServeHistoryCopyWith<_$_MsgServeHistory> get copyWith =>
       throw _privateConstructorUsedError;
 }

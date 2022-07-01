@@ -36,7 +36,7 @@ class MsgServeTool {
                       orElse: () => msg)
                   .id))
           .toList();
-      final MsgServeConfig? newConfig = config.copyWith(
+      final newConfig = config.copyWith(
         updatedAt: clock.now().toUtc(),
         campaigns: newMessages,
       );

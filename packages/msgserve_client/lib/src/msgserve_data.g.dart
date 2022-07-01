@@ -13,7 +13,7 @@ _$_MsgServeData _$$_MsgServeDataFromJson(Map<String, dynamic> json) =>
       cachedImages: (json['cachedImages'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
           ) ??
-          {},
+          const <String, String>{},
       seen: (json['seen'] as List<dynamic>)
           .map((e) => MsgServeHistory.fromJson(e as Map<String, dynamic>))
           .toList(),

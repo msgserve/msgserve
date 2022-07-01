@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io' as io;
 
 import 'package:clock/clock.dart';
+import 'package:collection/collection.dart';
 import 'package:expressions/expressions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_async_utils/flutter_async_utils.dart';

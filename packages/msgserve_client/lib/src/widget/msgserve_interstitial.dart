@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_async_utils/flutter_async_utils.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:logging/logging.dart';
@@ -21,7 +20,7 @@ class MsgServeInterstitial extends StatefulWidget {
   final Widget child;
 
   @override
-  _MsgServeInterstitialState createState() => _MsgServeInterstitialState();
+  State<MsgServeInterstitial> createState() => _MsgServeInterstitialState();
 }
 
 class _MsgServeInterstitialState extends State<MsgServeInterstitial>
