@@ -230,8 +230,8 @@ class _InterstitialWidget extends HookWidget {
                 // splashColor: Colors.white,
                 onTap: () {
                   // _logger.info('blubb');
-                  msgServBloc.opts.analytics!
-                      .logEvent(name: 'msgserve_interstitial_tap');
+                  msgServBloc.opts.analyticsLogEvent
+                      ?.call(name: 'msgserve_interstitial_tap');
                   onTap();
                 },
               ),
@@ -247,8 +247,8 @@ class _InterstitialWidget extends HookWidget {
               child: IconButton(
                 // color: Colors.white24,
                 onPressed: () {
-                  msgServBloc.opts.analytics!
-                      .logEvent(name: 'msgserve_interstitial_close');
+                  msgServBloc.opts.analyticsLogEvent
+                      ?.call(name: 'msgserve_interstitial_close');
                   onClose();
                 },
                 icon: const Icon(Icons.close),
