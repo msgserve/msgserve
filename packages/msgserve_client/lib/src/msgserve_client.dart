@@ -63,7 +63,7 @@ class MsgServeApi {
     try {
       final client = _getClient();
       _logger.finest('loading $uri with $client');
-      final response = await client.post(uri, headers: {
+      final response = await client.get(uri, headers: {
         'User-Agent': _toUserAgent(packageInfo),
         ...?headers,
       });
