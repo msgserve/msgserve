@@ -38,10 +38,9 @@ class AppEvent {
 class MsgServeCampaignTriggered extends MsgServeEvent {
   MsgServeCampaignTriggered({
     required this.appEvent,
-    required MsgServeCampaign campaign,
+    required super.campaign,
   }) : super(
           type: MsgServeEventType.campaignTrigger,
-          campaign: campaign,
         );
 
   final AppEvent appEvent;
@@ -56,10 +55,10 @@ abstract class MsgServeEventWithAction implements MsgServeEvent {
 class MsgServeEventTriggerCustom extends MsgServeEvent
     implements MsgServeEventWithAction {
   MsgServeEventTriggerCustom({
-    required MsgServeCampaign campaign,
+    required super.campaign,
     required this.action,
     required this.uri,
-  }) : super(type: MsgServeEventType.dismissed, campaign: campaign);
+  }) : super(type: MsgServeEventType.dismissed);
 
   @override
   final MsgServeAction action;
@@ -69,9 +68,9 @@ class MsgServeEventTriggerCustom extends MsgServeEvent
 class MsgServeEventDismissed extends MsgServeEvent
     implements MsgServeEventWithAction {
   MsgServeEventDismissed({
-    required MsgServeCampaign campaign,
+    required super.campaign,
     this.action,
-  }) : super(type: MsgServeEventType.dismissed, campaign: campaign);
+  }) : super(type: MsgServeEventType.dismissed);
 
   @override
   final MsgServeAction? action;

@@ -11,10 +11,10 @@ final _logger = Logger('msgserv_interstitial');
 
 class MsgServeInterstitial extends StatefulWidget {
   const MsgServeInterstitial({
-    Key? key,
+    super.key,
     required this.label,
     required this.child,
-  }) : super(key: key);
+  });
 
   final String label;
   final Widget child;
@@ -182,11 +182,11 @@ extension on MsgServeFill {
 
 class _InterstitialWidget extends HookWidget {
   const _InterstitialWidget({
-    Key? key,
+    // super.key,
     required this.artifact,
     required this.onTap,
     required this.onClose,
-  }) : super(key: key);
+  });
 
   final MsgServeInterstitialArtifact artifact;
   final VoidCallback onTap;

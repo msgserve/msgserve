@@ -32,11 +32,20 @@ MsgServeActionWithUrl _$MsgServeActionWithUrlFromJson(
     );
 
 Map<String, dynamic> _$MsgServeActionWithUrlToJson(
-        MsgServeActionWithUrl instance) =>
-    <String, dynamic>{
-      'key': instance.key,
-      'url': instance.url,
-    };
+    MsgServeActionWithUrl instance) {
+  final val = <String, dynamic>{
+    'key': instance.key,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('url', instance.url);
+  return val;
+}
 
 MsgServeGraphic _$MsgServeGraphicFromJson(Map<String, dynamic> json) =>
     MsgServeGraphic(
@@ -52,41 +61,15 @@ MsgServeInterstitialGraphic _$MsgServeInterstitialGraphicFromJson(
         Map<String, dynamic> json) =>
     MsgServeInterstitialGraphic(
       url: json['url'] as String,
-      fill: _$enumDecode(_$MsgServeFillEnumMap, json['fill']),
+      fill: $enumDecode(_$MsgServeFillEnumMap, json['fill']),
     );
 
 Map<String, dynamic> _$MsgServeInterstitialGraphicToJson(
         MsgServeInterstitialGraphic instance) =>
     <String, dynamic>{
       'url': instance.url,
-      'fill': _$MsgServeFillEnumMap[instance.fill],
+      'fill': _$MsgServeFillEnumMap[instance.fill]!,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$MsgServeFillEnumMap = {
   MsgServeFill.contain: 'contain',
@@ -106,13 +89,21 @@ MsgServeInterstitialArtifact _$MsgServeInterstitialArtifactFromJson(
     );
 
 Map<String, dynamic> _$MsgServeInterstitialArtifactToJson(
-        MsgServeInterstitialArtifact instance) =>
-    <String, dynamic>{
-      'url': instance.url,
-      'key': instance.key,
-      'targetUrl': instance.targetUrl,
-      'graphics': instance.graphics,
-    };
+    MsgServeInterstitialArtifact instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('url', instance.url);
+  val['key'] = instance.key;
+  val['targetUrl'] = instance.targetUrl;
+  val['graphics'] = instance.graphics;
+  return val;
+}
 
 MsgServeCampaign _$MsgServeCampaignFromJson(Map<String, dynamic> json) =>
     MsgServeCampaign(
@@ -132,16 +123,25 @@ MsgServeCampaign _$MsgServeCampaignFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['dateEnd'] as String),
     );
 
-Map<String, dynamic> _$MsgServeCampaignToJson(MsgServeCampaign instance) =>
-    <String, dynamic>{
-      'id': const ApiUuidJsonConverter().toJson(instance.id),
-      'key': instance.key,
-      'interstitial': instance.interstitial,
-      'filter': instance.filter,
-      'trigger': instance.trigger,
-      'dateStart': instance.dateStart?.toIso8601String(),
-      'dateEnd': instance.dateEnd?.toIso8601String(),
-    };
+Map<String, dynamic> _$MsgServeCampaignToJson(MsgServeCampaign instance) {
+  final val = <String, dynamic>{
+    'id': const ApiUuidJsonConverter().toJson(instance.id),
+    'key': instance.key,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('interstitial', instance.interstitial);
+  val['filter'] = instance.filter;
+  writeNotNull('trigger', instance.trigger);
+  writeNotNull('dateStart', instance.dateStart?.toIso8601String());
+  writeNotNull('dateEnd', instance.dateEnd?.toIso8601String());
+  return val;
+}
 
 MsgServeConfig _$MsgServeConfigFromJson(Map<String, dynamic> json) =>
     MsgServeConfig(
@@ -178,7 +178,15 @@ CheckGetResponseBody200 _$CheckGetResponseBody200FromJson(
     );
 
 Map<String, dynamic> _$CheckGetResponseBody200ToJson(
-        CheckGetResponseBody200 instance) =>
-    <String, dynamic>{
-      'dbVersion': instance.dbVersion,
-    };
+    CheckGetResponseBody200 instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('dbVersion', instance.dbVersion);
+  return val;
+}
