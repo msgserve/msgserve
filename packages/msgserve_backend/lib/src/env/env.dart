@@ -4,12 +4,6 @@ import 'package:msgserve_backend/src/server.dart';
 import 'package:postgres_utils/postgres_utils.dart';
 
 final _logger = Logger('env');
-//
-//abstract class EnvSecrets {
-//  String get recaptchaSiteKey;
-//  String get recaptchaSecretKey;
-//  String get emailReceiveToken;
-//}
 
 class EmptySecrets implements SecretsConfig {
   @override

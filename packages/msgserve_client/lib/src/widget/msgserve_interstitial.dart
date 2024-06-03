@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_async_utils/flutter_async_utils.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:msgserve_client/src/msgserve_bloc.dart';
 import 'package:msgserve_shared/msgserv_shared.dart';
-import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 final _logger = Logger('msgserv_interstitial');
 
-class MsgServeInterstitial extends StatefulWidget {
+class MsgServeInterstitial extends ConsumerStatefulWidget {
   const MsgServeInterstitial({
     super.key,
     required this.label,
@@ -20,10 +20,11 @@ class MsgServeInterstitial extends StatefulWidget {
   final Widget child;
 
   @override
-  State<MsgServeInterstitial> createState() => _MsgServeInterstitialState();
+  ConsumerState<MsgServeInterstitial> createState() =>
+      _MsgServeInterstitialState();
 }
 
-class _MsgServeInterstitialState extends State<MsgServeInterstitial>
+class _MsgServeInterstitialState extends ConsumerState<MsgServeInterstitial>
     with SingleTickerProviderStateMixin, StreamSubscriberMixin {
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: 400),
@@ -36,24 +37,18 @@ class _MsgServeInterstitialState extends State<MsgServeInterstitial>
 
   MsgServeCampaignDisplay? _campaignDisplay;
   bool _showInterstitial = false;
-  late MsgServeBloc _msgServBloc;
+  late final MsgServeBloc _msgServBloc = ref.read(msgServeProvider);
 
   @override
   void initState() {
     super.initState();
+    _updateCampaign();
   }
 
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _msgServBloc = context.watch<MsgServeBloc>();
-    _updateCampaign();
   }
 
   @override
@@ -180,7 +175,7 @@ extension on MsgServeFill {
   }
 }
 
-class _InterstitialWidget extends HookWidget {
+class _InterstitialWidget extends HookConsumerWidget {
   const _InterstitialWidget({
     // super.key,
     required this.artifact,
@@ -193,9 +188,9 @@ class _InterstitialWidget extends HookWidget {
   final VoidCallback onClose;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final mq = MediaQuery.of(context);
-    final msgServBloc = context.watch<MsgServeBloc>();
+    final msgServBloc = ref.watch(msgServeProvider);
     final future = useMemoized(
         () => msgServBloc.prepareFilesFor(artifact.graphics), [artifact]);
     final graphicsSnapshot = useFuture(future);

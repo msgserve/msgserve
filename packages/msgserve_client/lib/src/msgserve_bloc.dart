@@ -7,6 +7,7 @@ import 'package:expressions/expressions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_async_utils/flutter_async_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:msgserve_client/src/msgserve_client.dart';
 import 'package:msgserve_client/src/msgserve_data.dart';
@@ -60,6 +61,9 @@ class CampaignClosed with _$CampaignClosed {
 }
 
 typedef ExpressionContextProvider = Future<Map<String, Object>> Function();
+
+final msgServeProvider = Provider<MsgServeBloc>(
+    (ref) => throw Exception('must be overloaded by app.'));
 
 class MsgServeBloc with StreamSubscriberBase {
   MsgServeBloc({
