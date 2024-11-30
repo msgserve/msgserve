@@ -76,6 +76,7 @@ extension on MsgServeCampaign {
       key: key,
       filter: filter,
       interstitial: interstitial,
+      banner: banner,
       trigger: trigger,
       dateStart: dateStart,
       dateEnd: dateEnd,

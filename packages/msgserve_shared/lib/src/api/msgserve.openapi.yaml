@@ -77,6 +77,8 @@ components:
           type: string
         interstitial:
           $ref: '#/components/schemas/MsgServeInterstitialArtifact'
+        banner:
+          $ref: '#/components/schemas/MsgServeBannerArtifact'
         filter:
           description: Boolean expression which evaluates whether this message should be shown.
           type: string
@@ -120,11 +122,9 @@ components:
         - $ref: '#/components/schemas/MsgServeAction'
         - $ref: '#/components/schemas/MsgServeActionWithUrl'
       properties:
-        graphics:
-          type: array
-          items:
-            $ref: '#/components/schemas/MsgServeInterstitialGraphic'
-      required: [graphics]
+        graphic:
+          $ref: '#/components/schemas/MsgServeGraphic'
+      required: [graphic]
     MsgServeGraphic:
       properties:
         url:

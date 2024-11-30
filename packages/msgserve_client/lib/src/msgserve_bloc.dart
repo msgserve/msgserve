@@ -117,6 +117,8 @@ class MsgServeBloc with StreamSubscriberBase {
           _logger.finer('Done?!');
         });
   final Map<String, ValueStream<MsgServeCampaignDisplay?>> _campaignFor = {};
+  final Map<String, ValueStream<List<MsgServeCampaignDisplay>>> _campaignsFor =
+      {};
 
   final MsgServeOpts opts;
   final ExpressionContextProvider contextProvider;
@@ -177,6 +179,28 @@ class MsgServeBloc with StreamSubscriberBase {
           .publishValueAsync()
           .autoConnect();
 
+  Stream<List<MsgServeCampaignDisplay>> findAllCampaigns({
+    required String label,
+    required CampaignType type,
+  }) =>
+      _campaignsFor['t$type:$label'] ??= _seenMessages
+          .doOnData((event) {
+            _logger
+                .finer('findCampaign(label:$label,type:$type) - data: $event');
+          })
+          .asyncMap<List<MsgServeCampaignDisplay>>(
+            (data) async => await _findCampaigns(
+              data: data.data,
+              seenMessages: data.closedMessages,
+              label: label,
+              type: type,
+            ).toList(),
+          )
+          // .where((event) => event != null)
+          // .cast<MsgServCampaignDisplay>()
+          .publishValueAsync()
+          .autoConnect();
+
   Stream<MsgServeCampaignDisplay> triggeredCampaigns(
       {required String label, required CampaignType type}) {
     return events
@@ -220,15 +244,15 @@ class MsgServeBloc with StreamSubscriberBase {
     }).whereType<MsgServeCampaignDisplay>();
   }
 
-  Future<MsgServeCampaignDisplay?> _findNextCampaign({
+  Stream<MsgServeCampaignDisplay> _findCampaigns({
     required MsgServeData data,
     required Set<String> seenMessages,
     required String label,
     required CampaignType type,
-  }) async {
+  }) async* {
     final campaigns = data.lastConfig?.campaigns;
     if (campaigns == null) {
-      return null;
+      return;
     }
     final now = clock.now().toUtc();
     final exprContext = await _createExpressionContextForConditional(
@@ -256,12 +280,22 @@ class MsgServeBloc with StreamSubscriberBase {
         continue;
       }
       _logger.fine('Found campaign. ${campaign.key}');
-      return MsgServeCampaignDisplay(
+      yield MsgServeCampaignDisplay(
         campaign: campaign,
         expressionContext: exprContext,
       );
     }
-    return null;
+  }
+
+  Future<MsgServeCampaignDisplay?> _findNextCampaign({
+    required MsgServeData data,
+    required Set<String> seenMessages,
+    required String label,
+    required CampaignType type,
+  }) async {
+    return _findCampaigns(
+            data: data, seenMessages: seenMessages, label: label, type: type)
+        .first;
   }
 
   Future<Object?> _evaluateCampaignExpression(
@@ -469,15 +503,14 @@ extension on DateTime {
 
 enum CampaignType {
   interstitial,
+  banner,
 }
 
 extension on CampaignType {
-  bool matches(MsgServeCampaign campaign) {
-    switch (this) {
-      case CampaignType.interstitial:
-        return campaign.interstitial != null;
-    }
-  }
+  bool matches(MsgServeCampaign campaign) => switch (this) {
+        CampaignType.interstitial => campaign.interstitial != null,
+        CampaignType.banner => campaign.banner != null,
+      };
 }
 
 class MapAwareEvaluator extends ExpressionEvaluator {

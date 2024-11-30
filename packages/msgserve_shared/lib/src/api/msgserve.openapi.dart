@@ -10,7 +10,7 @@ part 'msgserve.openapi.g.dart';
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class Event implements OpenApiContent {
-  Event({required this.ts});
+  const Event({required this.ts});
 
   factory Event.fromJson(Map<String, dynamic> jsonMap) =>
       _$EventFromJson(jsonMap);
@@ -31,7 +31,7 @@ class Event implements OpenApiContent {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class MsgServeAction implements OpenApiContent {
-  MsgServeAction({required this.key});
+  const MsgServeAction({required this.key});
 
   factory MsgServeAction.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeActionFromJson(jsonMap);
@@ -52,7 +52,7 @@ class MsgServeAction implements OpenApiContent {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class MsgServeActionWithUrl implements OpenApiContent, MsgServeAction {
-  MsgServeActionWithUrl({
+  const MsgServeActionWithUrl({
     required this.key,
     this.url,
   });
@@ -84,7 +84,7 @@ class MsgServeActionWithUrl implements OpenApiContent, MsgServeAction {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class MsgServeGraphic implements OpenApiContent {
-  MsgServeGraphic({required this.url});
+  const MsgServeGraphic({required this.url});
 
   factory MsgServeGraphic.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeGraphicFromJson(jsonMap);
@@ -122,7 +122,7 @@ extension MsgServeFillExt on MsgServeFill {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class MsgServeInterstitialGraphic implements OpenApiContent, MsgServeGraphic {
-  MsgServeInterstitialGraphic({
+  const MsgServeInterstitialGraphic({
     required this.url,
     required this.fill,
   });
@@ -154,7 +154,7 @@ class MsgServeInterstitialGraphic implements OpenApiContent, MsgServeGraphic {
 @ApiUuidJsonConverter()
 class MsgServeInterstitialArtifact
     implements OpenApiContent, MsgServeAction, MsgServeActionWithUrl {
-  MsgServeInterstitialArtifact({
+  const MsgServeInterstitialArtifact({
     this.url,
     required this.key,
     required this.graphics,
@@ -193,11 +193,53 @@ class MsgServeInterstitialArtifact
 
 @JsonSerializable()
 @ApiUuidJsonConverter()
+class MsgServeBannerArtifact
+    implements OpenApiContent, MsgServeAction, MsgServeActionWithUrl {
+  const MsgServeBannerArtifact({
+    this.url,
+    required this.key,
+    required this.graphic,
+  });
+
+  factory MsgServeBannerArtifact.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MsgServeBannerArtifactFromJson(jsonMap);
+
+  @JsonKey(
+    name: 'url',
+    includeIfNull: false,
+  )
+  @override
+  final String? url;
+
+  /// HP (2024-11-30): imho this is only used for analytics/tracking.
+  @JsonKey(
+    name: 'key',
+    includeIfNull: false,
+  )
+  @override
+  final String key;
+
+  @JsonKey(
+    name: 'graphic',
+    includeIfNull: false,
+  )
+  final MsgServeGraphic graphic;
+
+  @override
+  Map<String, dynamic> toJson() => _$MsgServeBannerArtifactToJson(this);
+
+  @override
+  String toString() => toJson().toString();
+}
+
+@JsonSerializable()
+@ApiUuidJsonConverter()
 class MsgServeCampaign implements OpenApiContent {
-  MsgServeCampaign({
+  const MsgServeCampaign({
     required this.id,
     required this.key,
     this.interstitial,
+    this.banner,
     required this.filter,
     this.trigger,
     this.dateStart,
@@ -227,6 +269,12 @@ class MsgServeCampaign implements OpenApiContent {
     includeIfNull: false,
   )
   final MsgServeInterstitialArtifact? interstitial;
+
+  @JsonKey(
+    name: 'banner',
+    includeIfNull: false,
+  )
+  final MsgServeBannerArtifact? banner;
 
   /// Boolean expression which evaluates whether this message should be shown.
   @JsonKey(
@@ -263,7 +311,7 @@ class MsgServeCampaign implements OpenApiContent {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class MsgServeConfig implements OpenApiContent {
-  MsgServeConfig({
+  const MsgServeConfig({
     required this.updatedAt,
     required this.campaigns,
   });
@@ -291,49 +339,8 @@ class MsgServeConfig implements OpenApiContent {
 
 @JsonSerializable()
 @ApiUuidJsonConverter()
-class MsgServeBannerArtifact
-    implements OpenApiContent, MsgServeAction, MsgServeActionWithUrl {
-  MsgServeBannerArtifact({
-    this.url,
-    required this.key,
-    required this.graphics,
-  });
-
-  factory MsgServeBannerArtifact.fromJson(Map<String, dynamic> jsonMap) =>
-      _$MsgServeBannerArtifactFromJson(jsonMap);
-
-  @JsonKey(
-    name: 'url',
-    includeIfNull: false,
-  )
-  @override
-  final String? url;
-
-  /// HP (2024-11-30): imho this is only used for analytics/tracking.
-  @JsonKey(
-    name: 'key',
-    includeIfNull: false,
-  )
-  @override
-  final String key;
-
-  @JsonKey(
-    name: 'graphics',
-    includeIfNull: false,
-  )
-  final List<MsgServeInterstitialGraphic> graphics;
-
-  @override
-  Map<String, dynamic> toJson() => _$MsgServeBannerArtifactToJson(this);
-
-  @override
-  String toString() => toJson().toString();
-}
-
-@JsonSerializable()
-@ApiUuidJsonConverter()
 class MessageAction implements OpenApiContent {
-  MessageAction({
+  const MessageAction({
     required this.key,
     required this.label,
     required this.actionExpression,
@@ -370,7 +377,7 @@ class MessageAction implements OpenApiContent {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class CheckGetResponseBody200 implements OpenApiContent {
-  CheckGetResponseBody200({this.dbVersion});
+  const CheckGetResponseBody200({this.dbVersion});
 
   factory CheckGetResponseBody200.fromJson(Map<String, dynamic> jsonMap) =>
       _$CheckGetResponseBody200FromJson(jsonMap);
