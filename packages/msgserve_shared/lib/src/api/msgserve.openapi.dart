@@ -36,6 +36,7 @@ class MsgServeAction implements OpenApiContent {
   factory MsgServeAction.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeActionFromJson(jsonMap);
 
+  /// HP (2024-11-30): imho this is only used for analytics/tracking.
   @JsonKey(
     name: 'key',
     includeIfNull: false,
@@ -59,6 +60,7 @@ class MsgServeActionWithUrl implements OpenApiContent, MsgServeAction {
   factory MsgServeActionWithUrl.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeActionWithUrlFromJson(jsonMap);
 
+  /// HP (2024-11-30): imho this is only used for analytics/tracking.
   @JsonKey(
     name: 'key',
     includeIfNull: false,
@@ -155,7 +157,6 @@ class MsgServeInterstitialArtifact
   MsgServeInterstitialArtifact({
     this.url,
     required this.key,
-    required this.targetUrl,
     required this.graphics,
   });
 
@@ -169,18 +170,13 @@ class MsgServeInterstitialArtifact
   @override
   final String? url;
 
+  /// HP (2024-11-30): imho this is only used for analytics/tracking.
   @JsonKey(
     name: 'key',
     includeIfNull: false,
   )
   @override
   final String key;
-
-  @JsonKey(
-    name: 'targetUrl',
-    includeIfNull: false,
-  )
-  final String targetUrl;
 
   @JsonKey(
     name: 'graphics',
@@ -288,6 +284,47 @@ class MsgServeConfig implements OpenApiContent {
   final List<MsgServeCampaign> campaigns;
 
   Map<String, dynamic> toJson() => _$MsgServeConfigToJson(this);
+
+  @override
+  String toString() => toJson().toString();
+}
+
+@JsonSerializable()
+@ApiUuidJsonConverter()
+class MsgServeBannerArtifact
+    implements OpenApiContent, MsgServeAction, MsgServeActionWithUrl {
+  MsgServeBannerArtifact({
+    this.url,
+    required this.key,
+    required this.graphics,
+  });
+
+  factory MsgServeBannerArtifact.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MsgServeBannerArtifactFromJson(jsonMap);
+
+  @JsonKey(
+    name: 'url',
+    includeIfNull: false,
+  )
+  @override
+  final String? url;
+
+  /// HP (2024-11-30): imho this is only used for analytics/tracking.
+  @JsonKey(
+    name: 'key',
+    includeIfNull: false,
+  )
+  @override
+  final String key;
+
+  @JsonKey(
+    name: 'graphics',
+    includeIfNull: false,
+  )
+  final List<MsgServeInterstitialGraphic> graphics;
+
+  @override
+  Map<String, dynamic> toJson() => _$MsgServeBannerArtifactToJson(this);
 
   @override
   String toString() => toJson().toString();

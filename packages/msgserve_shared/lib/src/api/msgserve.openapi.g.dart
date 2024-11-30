@@ -32,20 +32,11 @@ MsgServeActionWithUrl _$MsgServeActionWithUrlFromJson(
     );
 
 Map<String, dynamic> _$MsgServeActionWithUrlToJson(
-    MsgServeActionWithUrl instance) {
-  final val = <String, dynamic>{
-    'key': instance.key,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('url', instance.url);
-  return val;
-}
+        MsgServeActionWithUrl instance) =>
+    <String, dynamic>{
+      'key': instance.key,
+      if (instance.url case final value?) 'url': value,
+    };
 
 MsgServeGraphic _$MsgServeGraphicFromJson(Map<String, dynamic> json) =>
     MsgServeGraphic(
@@ -81,7 +72,6 @@ MsgServeInterstitialArtifact _$MsgServeInterstitialArtifactFromJson(
     MsgServeInterstitialArtifact(
       url: json['url'] as String?,
       key: json['key'] as String,
-      targetUrl: json['targetUrl'] as String,
       graphics: (json['graphics'] as List<dynamic>)
           .map((e) =>
               MsgServeInterstitialGraphic.fromJson(e as Map<String, dynamic>))
@@ -89,21 +79,12 @@ MsgServeInterstitialArtifact _$MsgServeInterstitialArtifactFromJson(
     );
 
 Map<String, dynamic> _$MsgServeInterstitialArtifactToJson(
-    MsgServeInterstitialArtifact instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('url', instance.url);
-  val['key'] = instance.key;
-  val['targetUrl'] = instance.targetUrl;
-  val['graphics'] = instance.graphics;
-  return val;
-}
+        MsgServeInterstitialArtifact instance) =>
+    <String, dynamic>{
+      if (instance.url case final value?) 'url': value,
+      'key': instance.key,
+      'graphics': instance.graphics,
+    };
 
 MsgServeCampaign _$MsgServeCampaignFromJson(Map<String, dynamic> json) =>
     MsgServeCampaign(
@@ -123,25 +104,18 @@ MsgServeCampaign _$MsgServeCampaignFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['dateEnd'] as String),
     );
 
-Map<String, dynamic> _$MsgServeCampaignToJson(MsgServeCampaign instance) {
-  final val = <String, dynamic>{
-    'id': const ApiUuidJsonConverter().toJson(instance.id),
-    'key': instance.key,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('interstitial', instance.interstitial);
-  val['filter'] = instance.filter;
-  writeNotNull('trigger', instance.trigger);
-  writeNotNull('dateStart', instance.dateStart?.toIso8601String());
-  writeNotNull('dateEnd', instance.dateEnd?.toIso8601String());
-  return val;
-}
+Map<String, dynamic> _$MsgServeCampaignToJson(MsgServeCampaign instance) =>
+    <String, dynamic>{
+      'id': const ApiUuidJsonConverter().toJson(instance.id),
+      'key': instance.key,
+      if (instance.interstitial case final value?) 'interstitial': value,
+      'filter': instance.filter,
+      if (instance.trigger case final value?) 'trigger': value,
+      if (instance.dateStart?.toIso8601String() case final value?)
+        'dateStart': value,
+      if (instance.dateEnd?.toIso8601String() case final value?)
+        'dateEnd': value,
+    };
 
 MsgServeConfig _$MsgServeConfigFromJson(Map<String, dynamic> json) =>
     MsgServeConfig(
@@ -155,6 +129,25 @@ Map<String, dynamic> _$MsgServeConfigToJson(MsgServeConfig instance) =>
     <String, dynamic>{
       'updatedAt': instance.updatedAt.toIso8601String(),
       'campaigns': instance.campaigns,
+    };
+
+MsgServeBannerArtifact _$MsgServeBannerArtifactFromJson(
+        Map<String, dynamic> json) =>
+    MsgServeBannerArtifact(
+      url: json['url'] as String?,
+      key: json['key'] as String,
+      graphics: (json['graphics'] as List<dynamic>)
+          .map((e) =>
+              MsgServeInterstitialGraphic.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$MsgServeBannerArtifactToJson(
+        MsgServeBannerArtifact instance) =>
+    <String, dynamic>{
+      if (instance.url case final value?) 'url': value,
+      'key': instance.key,
+      'graphics': instance.graphics,
     };
 
 MessageAction _$MessageActionFromJson(Map<String, dynamic> json) =>
@@ -174,19 +167,11 @@ Map<String, dynamic> _$MessageActionToJson(MessageAction instance) =>
 CheckGetResponseBody200 _$CheckGetResponseBody200FromJson(
         Map<String, dynamic> json) =>
     CheckGetResponseBody200(
-      dbVersion: json['dbVersion'] as int?,
+      dbVersion: (json['dbVersion'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$CheckGetResponseBody200ToJson(
-    CheckGetResponseBody200 instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('dbVersion', instance.dbVersion);
-  return val;
-}
+        CheckGetResponseBody200 instance) =>
+    <String, dynamic>{
+      if (instance.dbVersion case final value?) 'dbVersion': value,
+    };

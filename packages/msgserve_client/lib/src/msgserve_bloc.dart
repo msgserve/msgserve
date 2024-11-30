@@ -81,7 +81,7 @@ class MsgServeBloc with StreamSubscriberBase {
                 campaignId: event.campaign.id.toString(),
                 campaignKey: event.campaign.key,
                 closedAt: clock.now(),
-                action: event.action!.key,
+                action: event.action.key,
               ),
             ]));
       }

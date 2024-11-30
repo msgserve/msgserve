@@ -97,6 +97,7 @@ components:
       properties:
         key:
           type: string
+          description: "HP (2024-11-30): imho this is only used for analytics/tracking."
       required: [key]
     MsgServeActionWithUrl:
       allOf:
@@ -109,14 +110,21 @@ components:
         - $ref: '#/components/schemas/MsgServeAction'
         - $ref: '#/components/schemas/MsgServeActionWithUrl'
       properties:
-        targetUrl:
-          type: string
-          format: url
         graphics:
           type: array
           items:
             $ref: '#/components/schemas/MsgServeInterstitialGraphic'
-      required: [graphics, targetUrl]
+      required: [graphics]
+    MsgServeBannerArtifact:
+      allOf:
+        - $ref: '#/components/schemas/MsgServeAction'
+        - $ref: '#/components/schemas/MsgServeActionWithUrl'
+      properties:
+        graphics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MsgServeInterstitialGraphic'
+      required: [graphics]
     MsgServeGraphic:
       properties:
         url:

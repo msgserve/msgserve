@@ -69,11 +69,11 @@ class MsgServeEventDismissed extends MsgServeEvent
     implements MsgServeEventWithAction {
   MsgServeEventDismissed({
     required super.campaign,
-    this.action,
+    required this.action,
   }) : super(type: MsgServeEventType.dismissed);
 
   @override
-  final MsgServeAction? action;
+  final MsgServeAction action;
 
   @override
   String toString() {
