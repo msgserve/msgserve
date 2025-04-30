@@ -97,15 +97,17 @@ class _MsgServeBannerCarouselState extends ConsumerState<MsgServeBannerCarousel>
       aspectRatio: 4 / 3,
       child: Stack(
         children: [
-          Positioned(
-            bottom: 16,
-            child: PageViewDotIndicator(
-              currentItem: _displayedCampaign,
-              count: campaigns.length,
-              unselectedColor: Colors.black26,
-              selectedColor: Colors.blue,
+          if (campaigns.length > 1) ...[
+            Positioned(
+              bottom: 16,
+              child: PageViewDotIndicator(
+                currentItem: _displayedCampaign,
+                count: campaigns.length,
+                unselectedColor: Colors.black26,
+                selectedColor: Colors.blue,
+              ),
             ),
-          ),
+          ],
           PageView(
             controller: _pageController,
             onPageChanged: (page) {
