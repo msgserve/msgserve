@@ -162,16 +162,20 @@ class MsgServeClient with StreamSubscriberBase {
       }
       final data = await _updateConfig(config);
 
-      _logger.finest('fetched msgserv config. prefetching images.');
-      final campaigns = config.campaigns;
-      for (final campaign in campaigns) {
-        await campaign.interstitial?.let((it) async {
-          for (final graphic in it.graphics) {
-            await _prefetchImage(data, graphic);
-          }
-        });
+      if (kIsWeb) {
+        // Web doesn't need any prefetching.
+      } else {
+        _logger.finest('fetched msgserv config. prefetching images.');
+        final campaigns = config.campaigns;
+        for (final campaign in campaigns) {
+          await campaign.interstitial?.let((it) async {
+            for (final graphic in it.graphics) {
+              await _prefetchImage(data, graphic);
+            }
+          });
+        }
+        _logger.finest('done prefetching images.');
       }
-      _logger.finest('done prefetching images.');
     } catch (error, stackTrace) {
       _logger.warning(
         'Error while loading config. Silently ignore it.',
@@ -191,6 +195,10 @@ class MsgServeClient with StreamSubscriberBase {
 
   Future<List<MapEntry<T, io.File>>> prepareFilesFor<T extends MsgServeGraphic>(
       List<T> images) async {
+    if (kIsWeb) {
+      _logger.severe('Currently msgserve does not support web.');
+      return [];
+    }
     final data = await store.load();
     try {
       return [

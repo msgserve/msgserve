@@ -68,6 +68,9 @@ class _MsgServeBannerCarouselState extends ConsumerState<MsgServeBannerCarousel>
               // seems another event got already loaded.
               return;
             }
+            if (result.isEmpty) {
+              return;
+            }
             campaignDisplay.add((e, result.first.value, banner));
             if (!mounted) {
               return;

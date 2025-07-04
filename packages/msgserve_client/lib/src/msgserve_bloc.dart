@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io' as io;
 
+import 'package:async/async.dart';
 import 'package:clock/clock.dart';
 import 'package:collection/collection.dart';
 import 'package:expressions/expressions.dart';
@@ -295,7 +296,7 @@ class MsgServeBloc with StreamSubscriberBase {
   }) async {
     return _findCampaigns(
             data: data, seenMessages: seenMessages, label: label, type: type)
-        .first;
+        .firstOrNull;
   }
 
   Future<Object?> _evaluateCampaignExpression(
