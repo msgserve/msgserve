@@ -1,7 +1,7 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library msgserv_backend;
+library;
 
 export 'src/msgserv_backend_base.dart';
 

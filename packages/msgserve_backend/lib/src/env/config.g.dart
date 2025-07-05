@@ -62,7 +62,7 @@ HttpConfig _$HttpConfigFromJson(Map json) => $checkedCreate(
       ($checkedConvert) {
         final val = HttpConfig(
           host: $checkedConvert('host', (v) => v as String? ?? 'localhost'),
-          port: $checkedConvert('port', (v) => v as int? ?? 8080),
+          port: $checkedConvert('port', (v) => (v as num?)?.toInt() ?? 8080),
         );
         return val;
       },
@@ -109,7 +109,7 @@ EmailSmtpConfig _$EmailSmtpConfigFromJson(Map json) => $checkedCreate(
         );
         final val = EmailSmtpConfig(
           host: $checkedConvert('host', (v) => v as String),
-          port: $checkedConvert('port', (v) => v as int? ?? 25),
+          port: $checkedConvert('port', (v) => (v as num?)?.toInt() ?? 25),
           ssl: $checkedConvert('ssl', (v) => v as bool? ?? false),
           username: $checkedConvert('username', (v) => v as String?),
           password: $checkedConvert('password', (v) => v as String?),

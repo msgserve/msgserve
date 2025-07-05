@@ -2,8 +2,9 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:uuid/data.dart';
+import 'package:uuid/rng.dart';
 import 'package:uuid/uuid.dart';
-import 'package:uuid/uuid_util.dart';
 
 enum TokenType {
   emailConfirm,
@@ -12,8 +13,7 @@ enum TokenType {
 
 class CryptoService {
   final Random _random = Random.secure();
-  final Uuid _uuid =
-      const Uuid(options: <String, dynamic>{'grng': UuidUtil.cryptoRNG});
+  final Uuid _uuid = Uuid(goptions: GlobalOptions(CryptoRNG()));
 
   static const _ADDRESS_LENGTH = 32;
 //  static const _ADDRESS_CHARACTERS = 'abcdefghijklmnopqrstuvwxyz0123456789._-+';
@@ -22,7 +22,6 @@ class CryptoService {
   String createSecureUuid() => _uuid.v4();
 
   String createSecureToken({int length = 32, required TokenType type}) {
-    assert(length != null);
     final byteLength = length ~/ 4 * 3;
     final list = Uint8List(byteLength);
     for (var i = 0; i < byteLength; i++) {
