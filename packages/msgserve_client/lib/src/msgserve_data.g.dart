@@ -6,8 +6,8 @@ part of 'msgserve_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MsgServeData _$$_MsgServeDataFromJson(Map<String, dynamic> json) =>
-    _$_MsgServeData(
+_MsgServeData _$MsgServeDataFromJson(Map<String, dynamic> json) =>
+    _MsgServeData(
       deviceId: json['deviceId'] as String,
       firstLaunch: DateTime.parse(json['firstLaunch'] as String),
       cachedImages: (json['cachedImages'] as Map<String, dynamic>?)?.map(
@@ -24,7 +24,7 @@ _$_MsgServeData _$$_MsgServeDataFromJson(Map<String, dynamic> json) =>
           : MsgServeConfig.fromJson(json['lastConfig'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MsgServeDataToJson(_$_MsgServeData instance) =>
+Map<String, dynamic> _$MsgServeDataToJson(_MsgServeData instance) =>
     <String, dynamic>{
       'deviceId': instance.deviceId,
       'firstLaunch': instance.firstLaunch.toIso8601String(),
@@ -34,8 +34,8 @@ Map<String, dynamic> _$$_MsgServeDataToJson(_$_MsgServeData instance) =>
       'lastConfig': instance.lastConfig,
     };
 
-_$_MsgServeHistory _$$_MsgServeHistoryFromJson(Map<String, dynamic> json) =>
-    _$_MsgServeHistory(
+_MsgServeHistory _$MsgServeHistoryFromJson(Map<String, dynamic> json) =>
+    _MsgServeHistory(
       campaignId: json['id'] as String,
       campaignKey: json['key'] as String,
       closedAt: json['closedAt'] == null
@@ -44,7 +44,7 @@ _$_MsgServeHistory _$$_MsgServeHistoryFromJson(Map<String, dynamic> json) =>
       action: json['action'] as String?,
     );
 
-Map<String, dynamic> _$$_MsgServeHistoryToJson(_$_MsgServeHistory instance) =>
+Map<String, dynamic> _$MsgServeHistoryToJson(_MsgServeHistory instance) =>
     <String, dynamic>{
       'id': instance.campaignId,
       'key': instance.campaignKey,

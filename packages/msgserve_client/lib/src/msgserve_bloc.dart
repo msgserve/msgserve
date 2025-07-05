@@ -51,7 +51,7 @@ class MsgServeCampaignDisplay {
 }
 
 @freezed
-class CampaignClosed with _$CampaignClosed {
+sealed class CampaignClosed with _$CampaignClosed {
   const factory CampaignClosed({
     required DateTime date,
     required String action,

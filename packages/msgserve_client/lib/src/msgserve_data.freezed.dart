@@ -1,7 +1,7 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'msgserve_data.dart';
 
@@ -9,203 +9,31 @@ part of 'msgserve_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-MsgServeData _$MsgServeDataFromJson(Map<String, dynamic> json) {
-  return _MsgServeData.fromJson(json);
-}
-
 /// @nodoc
-mixin _$MsgServeData {
-  String get deviceId => throw _privateConstructorUsedError;
-  DateTime get firstLaunch => throw _privateConstructorUsedError;
-  Map<String, String> get cachedImages => throw _privateConstructorUsedError;
-  List<MsgServeHistory> get seen => throw _privateConstructorUsedError;
-  DateTime get lastConfigFetchedAt => throw _privateConstructorUsedError;
-  MsgServeConfig? get lastConfig => throw _privateConstructorUsedError;
+mixin _$MsgServeData implements DiagnosticableTreeMixin {
+  String get deviceId;
+  DateTime get firstLaunch;
+  Map<String, String> get cachedImages;
+  List<MsgServeHistory> get seen;
+  DateTime get lastConfigFetchedAt;
+  MsgServeConfig? get lastConfig;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of MsgServeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $MsgServeDataCopyWith<MsgServeData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$MsgServeDataCopyWithImpl<MsgServeData>(
+          this as MsgServeData, _$identity);
 
-/// @nodoc
-abstract class $MsgServeDataCopyWith<$Res> {
-  factory $MsgServeDataCopyWith(
-          MsgServeData value, $Res Function(MsgServeData) then) =
-      _$MsgServeDataCopyWithImpl<$Res>;
-  $Res call(
-      {String deviceId,
-      DateTime firstLaunch,
-      Map<String, String> cachedImages,
-      List<MsgServeHistory> seen,
-      DateTime lastConfigFetchedAt,
-      MsgServeConfig? lastConfig});
-}
-
-/// @nodoc
-class _$MsgServeDataCopyWithImpl<$Res> implements $MsgServeDataCopyWith<$Res> {
-  _$MsgServeDataCopyWithImpl(this._value, this._then);
-
-  final MsgServeData _value;
-  // ignore: unused_field
-  final $Res Function(MsgServeData) _then;
-
-  @override
-  $Res call({
-    Object? deviceId = freezed,
-    Object? firstLaunch = freezed,
-    Object? cachedImages = freezed,
-    Object? seen = freezed,
-    Object? lastConfigFetchedAt = freezed,
-    Object? lastConfig = freezed,
-  }) {
-    return _then(_value.copyWith(
-      deviceId: deviceId == freezed
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstLaunch: firstLaunch == freezed
-          ? _value.firstLaunch
-          : firstLaunch // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      cachedImages: cachedImages == freezed
-          ? _value.cachedImages
-          : cachedImages // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      seen: seen == freezed
-          ? _value.seen
-          : seen // ignore: cast_nullable_to_non_nullable
-              as List<MsgServeHistory>,
-      lastConfigFetchedAt: lastConfigFetchedAt == freezed
-          ? _value.lastConfigFetchedAt
-          : lastConfigFetchedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      lastConfig: lastConfig == freezed
-          ? _value.lastConfig
-          : lastConfig // ignore: cast_nullable_to_non_nullable
-              as MsgServeConfig?,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_MsgServeDataCopyWith<$Res>
-    implements $MsgServeDataCopyWith<$Res> {
-  factory _$$_MsgServeDataCopyWith(
-          _$_MsgServeData value, $Res Function(_$_MsgServeData) then) =
-      __$$_MsgServeDataCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String deviceId,
-      DateTime firstLaunch,
-      Map<String, String> cachedImages,
-      List<MsgServeHistory> seen,
-      DateTime lastConfigFetchedAt,
-      MsgServeConfig? lastConfig});
-}
-
-/// @nodoc
-class __$$_MsgServeDataCopyWithImpl<$Res>
-    extends _$MsgServeDataCopyWithImpl<$Res>
-    implements _$$_MsgServeDataCopyWith<$Res> {
-  __$$_MsgServeDataCopyWithImpl(
-      _$_MsgServeData _value, $Res Function(_$_MsgServeData) _then)
-      : super(_value, (v) => _then(v as _$_MsgServeData));
-
-  @override
-  _$_MsgServeData get _value => super._value as _$_MsgServeData;
-
-  @override
-  $Res call({
-    Object? deviceId = freezed,
-    Object? firstLaunch = freezed,
-    Object? cachedImages = freezed,
-    Object? seen = freezed,
-    Object? lastConfigFetchedAt = freezed,
-    Object? lastConfig = freezed,
-  }) {
-    return _then(_$_MsgServeData(
-      deviceId: deviceId == freezed
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstLaunch: firstLaunch == freezed
-          ? _value.firstLaunch
-          : firstLaunch // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      cachedImages: cachedImages == freezed
-          ? _value._cachedImages
-          : cachedImages // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      seen: seen == freezed
-          ? _value._seen
-          : seen // ignore: cast_nullable_to_non_nullable
-              as List<MsgServeHistory>,
-      lastConfigFetchedAt: lastConfigFetchedAt == freezed
-          ? _value.lastConfigFetchedAt
-          : lastConfigFetchedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      lastConfig: lastConfig == freezed
-          ? _value.lastConfig
-          : lastConfig // ignore: cast_nullable_to_non_nullable
-              as MsgServeConfig?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_MsgServeData with DiagnosticableTreeMixin implements _MsgServeData {
-  const _$_MsgServeData(
-      {required this.deviceId,
-      required this.firstLaunch,
-      final Map<String, String> cachedImages = const <String, String>{},
-      required final List<MsgServeHistory> seen,
-      required this.lastConfigFetchedAt,
-      this.lastConfig})
-      : _cachedImages = cachedImages,
-        _seen = seen;
-
-  factory _$_MsgServeData.fromJson(Map<String, dynamic> json) =>
-      _$$_MsgServeDataFromJson(json);
-
-  @override
-  final String deviceId;
-  @override
-  final DateTime firstLaunch;
-  final Map<String, String> _cachedImages;
-  @override
-  @JsonKey()
-  Map<String, String> get cachedImages {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_cachedImages);
-  }
-
-  final List<MsgServeHistory> _seen;
-  @override
-  List<MsgServeHistory> get seen {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_seen);
-  }
-
-  @override
-  final DateTime lastConfigFetchedAt;
-  @override
-  final MsgServeConfig? lastConfig;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MsgServeData(deviceId: $deviceId, firstLaunch: $firstLaunch, cachedImages: $cachedImages, seen: $seen, lastConfigFetchedAt: $lastConfigFetchedAt, lastConfig: $lastConfig)';
-  }
+  /// Serializes this MsgServeData to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'MsgServeData'))
       ..add(DiagnosticsProperty('deviceId', deviceId))
@@ -217,102 +45,517 @@ class _$_MsgServeData with DiagnosticableTreeMixin implements _MsgServeData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MsgServeData &&
-            const DeepCollectionEquality().equals(other.deviceId, deviceId) &&
+            other is MsgServeData &&
+            (identical(other.deviceId, deviceId) ||
+                other.deviceId == deviceId) &&
+            (identical(other.firstLaunch, firstLaunch) ||
+                other.firstLaunch == firstLaunch) &&
             const DeepCollectionEquality()
-                .equals(other.firstLaunch, firstLaunch) &&
-            const DeepCollectionEquality()
-                .equals(other._cachedImages, _cachedImages) &&
-            const DeepCollectionEquality().equals(other._seen, _seen) &&
-            const DeepCollectionEquality()
-                .equals(other.lastConfigFetchedAt, lastConfigFetchedAt) &&
-            const DeepCollectionEquality()
-                .equals(other.lastConfig, lastConfig));
+                .equals(other.cachedImages, cachedImages) &&
+            const DeepCollectionEquality().equals(other.seen, seen) &&
+            (identical(other.lastConfigFetchedAt, lastConfigFetchedAt) ||
+                other.lastConfigFetchedAt == lastConfigFetchedAt) &&
+            (identical(other.lastConfig, lastConfig) ||
+                other.lastConfig == lastConfig));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(deviceId),
-      const DeepCollectionEquality().hash(firstLaunch),
-      const DeepCollectionEquality().hash(_cachedImages),
-      const DeepCollectionEquality().hash(_seen),
-      const DeepCollectionEquality().hash(lastConfigFetchedAt),
-      const DeepCollectionEquality().hash(lastConfig));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_MsgServeDataCopyWith<_$_MsgServeData> get copyWith =>
-      __$$_MsgServeDataCopyWithImpl<_$_MsgServeData>(this, _$identity);
+      deviceId,
+      firstLaunch,
+      const DeepCollectionEquality().hash(cachedImages),
+      const DeepCollectionEquality().hash(seen),
+      lastConfigFetchedAt,
+      lastConfig);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$_MsgServeDataToJson(this);
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MsgServeData(deviceId: $deviceId, firstLaunch: $firstLaunch, cachedImages: $cachedImages, seen: $seen, lastConfigFetchedAt: $lastConfigFetchedAt, lastConfig: $lastConfig)';
   }
 }
 
-abstract class _MsgServeData implements MsgServeData {
-  const factory _MsgServeData(
-      {required final String deviceId,
-      required final DateTime firstLaunch,
-      final Map<String, String> cachedImages,
-      required final List<MsgServeHistory> seen,
-      required final DateTime lastConfigFetchedAt,
-      final MsgServeConfig? lastConfig}) = _$_MsgServeData;
-
-  factory _MsgServeData.fromJson(Map<String, dynamic> json) =
-      _$_MsgServeData.fromJson;
-
-  @override
-  String get deviceId => throw _privateConstructorUsedError;
-  @override
-  DateTime get firstLaunch => throw _privateConstructorUsedError;
-  @override
-  Map<String, String> get cachedImages => throw _privateConstructorUsedError;
-  @override
-  List<MsgServeHistory> get seen => throw _privateConstructorUsedError;
-  @override
-  DateTime get lastConfigFetchedAt => throw _privateConstructorUsedError;
-  @override
-  MsgServeConfig? get lastConfig => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$$_MsgServeDataCopyWith<_$_MsgServeData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-MsgServeHistory _$MsgServeHistoryFromJson(Map<String, dynamic> json) {
-  return _MsgServeHistory.fromJson(json);
+/// @nodoc
+abstract mixin class $MsgServeDataCopyWith<$Res> {
+  factory $MsgServeDataCopyWith(
+          MsgServeData value, $Res Function(MsgServeData) _then) =
+      _$MsgServeDataCopyWithImpl;
+  @useResult
+  $Res call(
+      {String deviceId,
+      DateTime firstLaunch,
+      Map<String, String> cachedImages,
+      List<MsgServeHistory> seen,
+      DateTime lastConfigFetchedAt,
+      MsgServeConfig? lastConfig});
 }
 
 /// @nodoc
-mixin _$MsgServeHistory {
+class _$MsgServeDataCopyWithImpl<$Res> implements $MsgServeDataCopyWith<$Res> {
+  _$MsgServeDataCopyWithImpl(this._self, this._then);
+
+  final MsgServeData _self;
+  final $Res Function(MsgServeData) _then;
+
+  /// Create a copy of MsgServeData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? deviceId = null,
+    Object? firstLaunch = null,
+    Object? cachedImages = null,
+    Object? seen = null,
+    Object? lastConfigFetchedAt = null,
+    Object? lastConfig = freezed,
+  }) {
+    return _then(_self.copyWith(
+      deviceId: null == deviceId
+          ? _self.deviceId
+          : deviceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstLaunch: null == firstLaunch
+          ? _self.firstLaunch
+          : firstLaunch // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      cachedImages: null == cachedImages
+          ? _self.cachedImages
+          : cachedImages // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+      seen: null == seen
+          ? _self.seen
+          : seen // ignore: cast_nullable_to_non_nullable
+              as List<MsgServeHistory>,
+      lastConfigFetchedAt: null == lastConfigFetchedAt
+          ? _self.lastConfigFetchedAt
+          : lastConfigFetchedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastConfig: freezed == lastConfig
+          ? _self.lastConfig
+          : lastConfig // ignore: cast_nullable_to_non_nullable
+              as MsgServeConfig?,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [MsgServeData].
+extension MsgServeDataPatterns on MsgServeData {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_MsgServeData value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeData() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_MsgServeData value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeData():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_MsgServeData value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeData() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String deviceId,
+            DateTime firstLaunch,
+            Map<String, String> cachedImages,
+            List<MsgServeHistory> seen,
+            DateTime lastConfigFetchedAt,
+            MsgServeConfig? lastConfig)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeData() when $default != null:
+        return $default(_that.deviceId, _that.firstLaunch, _that.cachedImages,
+            _that.seen, _that.lastConfigFetchedAt, _that.lastConfig);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String deviceId,
+            DateTime firstLaunch,
+            Map<String, String> cachedImages,
+            List<MsgServeHistory> seen,
+            DateTime lastConfigFetchedAt,
+            MsgServeConfig? lastConfig)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeData():
+        return $default(_that.deviceId, _that.firstLaunch, _that.cachedImages,
+            _that.seen, _that.lastConfigFetchedAt, _that.lastConfig);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String deviceId,
+            DateTime firstLaunch,
+            Map<String, String> cachedImages,
+            List<MsgServeHistory> seen,
+            DateTime lastConfigFetchedAt,
+            MsgServeConfig? lastConfig)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeData() when $default != null:
+        return $default(_that.deviceId, _that.firstLaunch, _that.cachedImages,
+            _that.seen, _that.lastConfigFetchedAt, _that.lastConfig);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _MsgServeData with DiagnosticableTreeMixin implements MsgServeData {
+  const _MsgServeData(
+      {required this.deviceId,
+      required this.firstLaunch,
+      final Map<String, String> cachedImages = const <String, String>{},
+      required final List<MsgServeHistory> seen,
+      required this.lastConfigFetchedAt,
+      this.lastConfig})
+      : _cachedImages = cachedImages,
+        _seen = seen;
+  factory _MsgServeData.fromJson(Map<String, dynamic> json) =>
+      _$MsgServeDataFromJson(json);
+
+  @override
+  final String deviceId;
+  @override
+  final DateTime firstLaunch;
+  final Map<String, String> _cachedImages;
+  @override
+  @JsonKey()
+  Map<String, String> get cachedImages {
+    if (_cachedImages is EqualUnmodifiableMapView) return _cachedImages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_cachedImages);
+  }
+
+  final List<MsgServeHistory> _seen;
+  @override
+  List<MsgServeHistory> get seen {
+    if (_seen is EqualUnmodifiableListView) return _seen;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_seen);
+  }
+
+  @override
+  final DateTime lastConfigFetchedAt;
+  @override
+  final MsgServeConfig? lastConfig;
+
+  /// Create a copy of MsgServeData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MsgServeDataCopyWith<_MsgServeData> get copyWith =>
+      __$MsgServeDataCopyWithImpl<_MsgServeData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MsgServeDataToJson(
+      this,
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties
+      ..add(DiagnosticsProperty('type', 'MsgServeData'))
+      ..add(DiagnosticsProperty('deviceId', deviceId))
+      ..add(DiagnosticsProperty('firstLaunch', firstLaunch))
+      ..add(DiagnosticsProperty('cachedImages', cachedImages))
+      ..add(DiagnosticsProperty('seen', seen))
+      ..add(DiagnosticsProperty('lastConfigFetchedAt', lastConfigFetchedAt))
+      ..add(DiagnosticsProperty('lastConfig', lastConfig));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MsgServeData &&
+            (identical(other.deviceId, deviceId) ||
+                other.deviceId == deviceId) &&
+            (identical(other.firstLaunch, firstLaunch) ||
+                other.firstLaunch == firstLaunch) &&
+            const DeepCollectionEquality()
+                .equals(other._cachedImages, _cachedImages) &&
+            const DeepCollectionEquality().equals(other._seen, _seen) &&
+            (identical(other.lastConfigFetchedAt, lastConfigFetchedAt) ||
+                other.lastConfigFetchedAt == lastConfigFetchedAt) &&
+            (identical(other.lastConfig, lastConfig) ||
+                other.lastConfig == lastConfig));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      deviceId,
+      firstLaunch,
+      const DeepCollectionEquality().hash(_cachedImages),
+      const DeepCollectionEquality().hash(_seen),
+      lastConfigFetchedAt,
+      lastConfig);
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MsgServeData(deviceId: $deviceId, firstLaunch: $firstLaunch, cachedImages: $cachedImages, seen: $seen, lastConfigFetchedAt: $lastConfigFetchedAt, lastConfig: $lastConfig)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$MsgServeDataCopyWith<$Res>
+    implements $MsgServeDataCopyWith<$Res> {
+  factory _$MsgServeDataCopyWith(
+          _MsgServeData value, $Res Function(_MsgServeData) _then) =
+      __$MsgServeDataCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String deviceId,
+      DateTime firstLaunch,
+      Map<String, String> cachedImages,
+      List<MsgServeHistory> seen,
+      DateTime lastConfigFetchedAt,
+      MsgServeConfig? lastConfig});
+}
+
+/// @nodoc
+class __$MsgServeDataCopyWithImpl<$Res>
+    implements _$MsgServeDataCopyWith<$Res> {
+  __$MsgServeDataCopyWithImpl(this._self, this._then);
+
+  final _MsgServeData _self;
+  final $Res Function(_MsgServeData) _then;
+
+  /// Create a copy of MsgServeData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? deviceId = null,
+    Object? firstLaunch = null,
+    Object? cachedImages = null,
+    Object? seen = null,
+    Object? lastConfigFetchedAt = null,
+    Object? lastConfig = freezed,
+  }) {
+    return _then(_MsgServeData(
+      deviceId: null == deviceId
+          ? _self.deviceId
+          : deviceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstLaunch: null == firstLaunch
+          ? _self.firstLaunch
+          : firstLaunch // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      cachedImages: null == cachedImages
+          ? _self._cachedImages
+          : cachedImages // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+      seen: null == seen
+          ? _self._seen
+          : seen // ignore: cast_nullable_to_non_nullable
+              as List<MsgServeHistory>,
+      lastConfigFetchedAt: null == lastConfigFetchedAt
+          ? _self.lastConfigFetchedAt
+          : lastConfigFetchedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastConfig: freezed == lastConfig
+          ? _self.lastConfig
+          : lastConfig // ignore: cast_nullable_to_non_nullable
+              as MsgServeConfig?,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$MsgServeHistory implements DiagnosticableTreeMixin {
 // ignore: invalid_annotation_target
   @JsonKey(name: 'id')
-  String get campaignId =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String get campaignId; // ignore: invalid_annotation_target
   @JsonKey(name: 'key')
-  String get campaignKey => throw _privateConstructorUsedError;
-  DateTime? get closedAt => throw _privateConstructorUsedError;
+  String get campaignKey;
+  DateTime? get closedAt;
 
   /// tapped action of that message.
-  String? get action => throw _privateConstructorUsedError;
+  String? get action;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of MsgServeHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $MsgServeHistoryCopyWith<MsgServeHistory> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$MsgServeHistoryCopyWithImpl<MsgServeHistory>(
+          this as MsgServeHistory, _$identity);
+
+  /// Serializes this MsgServeHistory to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties
+      ..add(DiagnosticsProperty('type', 'MsgServeHistory'))
+      ..add(DiagnosticsProperty('campaignId', campaignId))
+      ..add(DiagnosticsProperty('campaignKey', campaignKey))
+      ..add(DiagnosticsProperty('closedAt', closedAt))
+      ..add(DiagnosticsProperty('action', action));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MsgServeHistory &&
+            (identical(other.campaignId, campaignId) ||
+                other.campaignId == campaignId) &&
+            (identical(other.campaignKey, campaignKey) ||
+                other.campaignKey == campaignKey) &&
+            (identical(other.closedAt, closedAt) ||
+                other.closedAt == closedAt) &&
+            (identical(other.action, action) || other.action == action));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, campaignId, campaignKey, closedAt, action);
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MsgServeHistory(campaignId: $campaignId, campaignKey: $campaignKey, closedAt: $closedAt, action: $action)';
+  }
 }
 
 /// @nodoc
-abstract class $MsgServeHistoryCopyWith<$Res> {
+abstract mixin class $MsgServeHistoryCopyWith<$Res> {
   factory $MsgServeHistoryCopyWith(
-          MsgServeHistory value, $Res Function(MsgServeHistory) then) =
-      _$MsgServeHistoryCopyWithImpl<$Res>;
+          MsgServeHistory value, $Res Function(MsgServeHistory) _then) =
+      _$MsgServeHistoryCopyWithImpl;
+  @useResult
   $Res call(
       {@JsonKey(name: 'id') String campaignId,
       @JsonKey(name: 'key') String campaignKey,
@@ -323,106 +566,227 @@ abstract class $MsgServeHistoryCopyWith<$Res> {
 /// @nodoc
 class _$MsgServeHistoryCopyWithImpl<$Res>
     implements $MsgServeHistoryCopyWith<$Res> {
-  _$MsgServeHistoryCopyWithImpl(this._value, this._then);
+  _$MsgServeHistoryCopyWithImpl(this._self, this._then);
 
-  final MsgServeHistory _value;
-  // ignore: unused_field
+  final MsgServeHistory _self;
   final $Res Function(MsgServeHistory) _then;
 
+  /// Create a copy of MsgServeHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? campaignId = freezed,
-    Object? campaignKey = freezed,
+    Object? campaignId = null,
+    Object? campaignKey = null,
     Object? closedAt = freezed,
     Object? action = freezed,
   }) {
-    return _then(_value.copyWith(
-      campaignId: campaignId == freezed
-          ? _value.campaignId
+    return _then(_self.copyWith(
+      campaignId: null == campaignId
+          ? _self.campaignId
           : campaignId // ignore: cast_nullable_to_non_nullable
               as String,
-      campaignKey: campaignKey == freezed
-          ? _value.campaignKey
+      campaignKey: null == campaignKey
+          ? _self.campaignKey
           : campaignKey // ignore: cast_nullable_to_non_nullable
               as String,
-      closedAt: closedAt == freezed
-          ? _value.closedAt
+      closedAt: freezed == closedAt
+          ? _self.closedAt
           : closedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      action: action == freezed
-          ? _value.action
+      action: freezed == action
+          ? _self.action
           : action // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
 }
 
-/// @nodoc
-abstract class _$$_MsgServeHistoryCopyWith<$Res>
-    implements $MsgServeHistoryCopyWith<$Res> {
-  factory _$$_MsgServeHistoryCopyWith(
-          _$_MsgServeHistory value, $Res Function(_$_MsgServeHistory) then) =
-      __$$_MsgServeHistoryCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {@JsonKey(name: 'id') String campaignId,
-      @JsonKey(name: 'key') String campaignKey,
-      DateTime? closedAt,
-      String? action});
-}
+/// Adds pattern-matching-related methods to [MsgServeHistory].
+extension MsgServeHistoryPatterns on MsgServeHistory {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-/// @nodoc
-class __$$_MsgServeHistoryCopyWithImpl<$Res>
-    extends _$MsgServeHistoryCopyWithImpl<$Res>
-    implements _$$_MsgServeHistoryCopyWith<$Res> {
-  __$$_MsgServeHistoryCopyWithImpl(
-      _$_MsgServeHistory _value, $Res Function(_$_MsgServeHistory) _then)
-      : super(_value, (v) => _then(v as _$_MsgServeHistory));
-
-  @override
-  _$_MsgServeHistory get _value => super._value as _$_MsgServeHistory;
-
-  @override
-  $Res call({
-    Object? campaignId = freezed,
-    Object? campaignKey = freezed,
-    Object? closedAt = freezed,
-    Object? action = freezed,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_MsgServeHistory value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$_MsgServeHistory(
-      campaignId: campaignId == freezed
-          ? _value.campaignId
-          : campaignId // ignore: cast_nullable_to_non_nullable
-              as String,
-      campaignKey: campaignKey == freezed
-          ? _value.campaignKey
-          : campaignKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      closedAt: closedAt == freezed
-          ? _value.closedAt
-          : closedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      action: action == freezed
-          ? _value.action
-          : action // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _MsgServeHistory() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_MsgServeHistory value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeHistory():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_MsgServeHistory value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeHistory() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'id') String campaignId,
+            @JsonKey(name: 'key') String campaignKey,
+            DateTime? closedAt,
+            String? action)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeHistory() when $default != null:
+        return $default(
+            _that.campaignId, _that.campaignKey, _that.closedAt, _that.action);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'id') String campaignId,
+            @JsonKey(name: 'key') String campaignKey,
+            DateTime? closedAt,
+            String? action)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeHistory():
+        return $default(
+            _that.campaignId, _that.campaignKey, _that.closedAt, _that.action);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'id') String campaignId,
+            @JsonKey(name: 'key') String campaignKey,
+            DateTime? closedAt,
+            String? action)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MsgServeHistory() when $default != null:
+        return $default(
+            _that.campaignId, _that.campaignKey, _that.closedAt, _that.action);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MsgServeHistory
-    with DiagnosticableTreeMixin
-    implements _MsgServeHistory {
-  const _$_MsgServeHistory(
+class _MsgServeHistory with DiagnosticableTreeMixin implements MsgServeHistory {
+  const _MsgServeHistory(
       {@JsonKey(name: 'id') required this.campaignId,
       @JsonKey(name: 'key') required this.campaignKey,
       this.closedAt,
       this.action});
-
-  factory _$_MsgServeHistory.fromJson(Map<String, dynamic> json) =>
-      _$$_MsgServeHistoryFromJson(json);
+  factory _MsgServeHistory.fromJson(Map<String, dynamic> json) =>
+      _$MsgServeHistoryFromJson(json);
 
 // ignore: invalid_annotation_target
   @override
@@ -439,14 +803,23 @@ class _$_MsgServeHistory
   @override
   final String? action;
 
+  /// Create a copy of MsgServeHistory
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MsgServeHistory(campaignId: $campaignId, campaignKey: $campaignKey, closedAt: $closedAt, action: $action)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MsgServeHistoryCopyWith<_MsgServeHistory> get copyWith =>
+      __$MsgServeHistoryCopyWithImpl<_MsgServeHistory>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MsgServeHistoryToJson(
+      this,
+    );
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'MsgServeHistory'))
       ..add(DiagnosticsProperty('campaignId', campaignId))
@@ -456,62 +829,82 @@ class _$_MsgServeHistory
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MsgServeHistory &&
-            const DeepCollectionEquality()
-                .equals(other.campaignId, campaignId) &&
-            const DeepCollectionEquality()
-                .equals(other.campaignKey, campaignKey) &&
-            const DeepCollectionEquality().equals(other.closedAt, closedAt) &&
-            const DeepCollectionEquality().equals(other.action, action));
+            other is _MsgServeHistory &&
+            (identical(other.campaignId, campaignId) ||
+                other.campaignId == campaignId) &&
+            (identical(other.campaignKey, campaignKey) ||
+                other.campaignKey == campaignKey) &&
+            (identical(other.closedAt, closedAt) ||
+                other.closedAt == closedAt) &&
+            (identical(other.action, action) || other.action == action));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(campaignId),
-      const DeepCollectionEquality().hash(campaignKey),
-      const DeepCollectionEquality().hash(closedAt),
-      const DeepCollectionEquality().hash(action));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_MsgServeHistoryCopyWith<_$_MsgServeHistory> get copyWith =>
-      __$$_MsgServeHistoryCopyWithImpl<_$_MsgServeHistory>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, campaignId, campaignKey, closedAt, action);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$_MsgServeHistoryToJson(this);
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MsgServeHistory(campaignId: $campaignId, campaignKey: $campaignKey, closedAt: $closedAt, action: $action)';
   }
 }
 
-abstract class _MsgServeHistory implements MsgServeHistory {
-  const factory _MsgServeHistory(
-      {@JsonKey(name: 'id') required final String campaignId,
-      @JsonKey(name: 'key') required final String campaignKey,
-      final DateTime? closedAt,
-      final String? action}) = _$_MsgServeHistory;
-
-  factory _MsgServeHistory.fromJson(Map<String, dynamic> json) =
-      _$_MsgServeHistory.fromJson;
-
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: 'id')
-  String get campaignId => throw _privateConstructorUsedError;
-  @override // ignore: invalid_annotation_target
-  @JsonKey(name: 'key')
-  String get campaignKey => throw _privateConstructorUsedError;
+/// @nodoc
+abstract mixin class _$MsgServeHistoryCopyWith<$Res>
+    implements $MsgServeHistoryCopyWith<$Res> {
+  factory _$MsgServeHistoryCopyWith(
+          _MsgServeHistory value, $Res Function(_MsgServeHistory) _then) =
+      __$MsgServeHistoryCopyWithImpl;
   @override
-  DateTime? get closedAt => throw _privateConstructorUsedError;
-  @override
-
-  /// tapped action of that message.
-  String? get action => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$$_MsgServeHistoryCopyWith<_$_MsgServeHistory> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id') String campaignId,
+      @JsonKey(name: 'key') String campaignKey,
+      DateTime? closedAt,
+      String? action});
 }
+
+/// @nodoc
+class __$MsgServeHistoryCopyWithImpl<$Res>
+    implements _$MsgServeHistoryCopyWith<$Res> {
+  __$MsgServeHistoryCopyWithImpl(this._self, this._then);
+
+  final _MsgServeHistory _self;
+  final $Res Function(_MsgServeHistory) _then;
+
+  /// Create a copy of MsgServeHistory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? campaignId = null,
+    Object? campaignKey = null,
+    Object? closedAt = freezed,
+    Object? action = freezed,
+  }) {
+    return _then(_MsgServeHistory(
+      campaignId: null == campaignId
+          ? _self.campaignId
+          : campaignId // ignore: cast_nullable_to_non_nullable
+              as String,
+      campaignKey: null == campaignKey
+          ? _self.campaignKey
+          : campaignKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      closedAt: freezed == closedAt
+          ? _self.closedAt
+          : closedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      action: freezed == action
+          ? _self.action
+          : action // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on
