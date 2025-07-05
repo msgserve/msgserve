@@ -35,7 +35,7 @@ jobs:
         image=$( docker create docker.pkg.github.com/msgserve/msgserve/msgserve-backend )
         docker cp ${image}:/msgserve_backend.exe .
         docker rm ${image}
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: msgserve_backend_${{ steps.buildnumber.outputs.buildnumber }}
         path: msgserve_backend.exe
