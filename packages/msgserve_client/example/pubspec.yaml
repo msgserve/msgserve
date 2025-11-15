@@ -25,6 +25,9 @@ dependencies:
     sdk: flutter
   msgserve_client:
     path: ../
+  flutter_hooks: ^0.21.3+1
+  hooks_riverpod: ">=2.5.0 <3.0.0"
+  logging_appenders: ^1.4.0+1
 
 
 dev_dependencies:
