@@ -79,6 +79,8 @@ components:
           $ref: '#/components/schemas/MsgServeInterstitialArtifact'
         banner:
           $ref: '#/components/schemas/MsgServeBannerArtifact'
+        textDialog:
+          $ref: '#/components/schemas/MsgServeTextDialog'
         filter:
           description: Boolean expression which evaluates whether this message should be shown.
           type: string
@@ -125,6 +127,24 @@ components:
         graphic:
           $ref: '#/components/schemas/MsgServeGraphic'
       required: [graphic]
+    MsgServeTextDialog:
+#      allOf:
+#        - $ref: '#/components/schemas/MsgServeAction'
+#        - $ref: '#/components/schemas/MsgServeActionWithUrl'
+      properties:
+        title: { type: string }
+        body: { type: string }
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MsgServeActionWithLabel'
+      required: [title, body, actions]
+    MsgServeActionWithLabel:
+      allOf:
+        - $ref: '#/components/schemas/MsgServeAction'
+        - $ref: '#/components/schemas/MsgServeActionWithUrl'
+      properties:
+        label: { type: string }
     MsgServeGraphic:
       properties:
         url:

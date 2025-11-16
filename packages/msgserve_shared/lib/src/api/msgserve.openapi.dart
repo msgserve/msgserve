@@ -16,10 +16,7 @@ class Event implements OpenApiContent {
       _$EventFromJson(jsonMap);
 
   /// Timestamp of the event
-  @JsonKey(
-    name: 'ts',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'ts', includeIfNull: false)
   final DateTime ts;
 
   Map<String, dynamic> toJson() => _$EventToJson(this);
@@ -37,10 +34,7 @@ class MsgServeAction implements OpenApiContent {
       _$MsgServeActionFromJson(jsonMap);
 
   /// HP (2024-11-30): imho this is only used for analytics/tracking.
-  @JsonKey(
-    name: 'key',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'key', includeIfNull: false)
   final String key;
 
   Map<String, dynamic> toJson() => _$MsgServeActionToJson(this);
@@ -52,26 +46,17 @@ class MsgServeAction implements OpenApiContent {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class MsgServeActionWithUrl implements OpenApiContent, MsgServeAction {
-  const MsgServeActionWithUrl({
-    required this.key,
-    this.url,
-  });
+  const MsgServeActionWithUrl({required this.key, this.url});
 
   factory MsgServeActionWithUrl.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeActionWithUrlFromJson(jsonMap);
 
   /// HP (2024-11-30): imho this is only used for analytics/tracking.
-  @JsonKey(
-    name: 'key',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'key', includeIfNull: false)
   @override
   final String key;
 
-  @JsonKey(
-    name: 'url',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'url', includeIfNull: false)
   final String? url;
 
   @override
@@ -89,10 +74,7 @@ class MsgServeGraphic implements OpenApiContent {
   factory MsgServeGraphic.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeGraphicFromJson(jsonMap);
 
-  @JsonKey(
-    name: 'url',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'url', includeIfNull: false)
   final String url;
 
   Map<String, dynamic> toJson() => _$MsgServeGraphicToJson(this);
@@ -122,25 +104,16 @@ extension MsgServeFillExt on MsgServeFill {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class MsgServeInterstitialGraphic implements OpenApiContent, MsgServeGraphic {
-  const MsgServeInterstitialGraphic({
-    required this.url,
-    required this.fill,
-  });
+  const MsgServeInterstitialGraphic({required this.url, required this.fill});
 
   factory MsgServeInterstitialGraphic.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeInterstitialGraphicFromJson(jsonMap);
 
-  @JsonKey(
-    name: 'url',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'url', includeIfNull: false)
   @override
   final String url;
 
-  @JsonKey(
-    name: 'fill',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'fill', includeIfNull: false)
   final MsgServeFill fill;
 
   @override
@@ -163,25 +136,16 @@ class MsgServeInterstitialArtifact
   factory MsgServeInterstitialArtifact.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeInterstitialArtifactFromJson(jsonMap);
 
-  @JsonKey(
-    name: 'url',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'url', includeIfNull: false)
   @override
   final String? url;
 
   /// HP (2024-11-30): imho this is only used for analytics/tracking.
-  @JsonKey(
-    name: 'key',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'key', includeIfNull: false)
   @override
   final String key;
 
-  @JsonKey(
-    name: 'graphics',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'graphics', includeIfNull: false)
   final List<MsgServeInterstitialGraphic> graphics;
 
   @override
@@ -204,29 +168,75 @@ class MsgServeBannerArtifact
   factory MsgServeBannerArtifact.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeBannerArtifactFromJson(jsonMap);
 
-  @JsonKey(
-    name: 'url',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'url', includeIfNull: false)
   @override
   final String? url;
 
   /// HP (2024-11-30): imho this is only used for analytics/tracking.
-  @JsonKey(
-    name: 'key',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'key', includeIfNull: false)
   @override
   final String key;
 
-  @JsonKey(
-    name: 'graphic',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'graphic', includeIfNull: false)
   final MsgServeGraphic graphic;
 
   @override
   Map<String, dynamic> toJson() => _$MsgServeBannerArtifactToJson(this);
+
+  @override
+  String toString() => toJson().toString();
+}
+
+@JsonSerializable()
+@ApiUuidJsonConverter()
+class MsgServeActionWithLabel
+    implements OpenApiContent, MsgServeAction, MsgServeActionWithUrl {
+  const MsgServeActionWithLabel({this.url, required this.key, this.label});
+
+  factory MsgServeActionWithLabel.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MsgServeActionWithLabelFromJson(jsonMap);
+
+  @JsonKey(name: 'url', includeIfNull: false)
+  @override
+  final String? url;
+
+  /// HP (2024-11-30): imho this is only used for analytics/tracking.
+  @JsonKey(name: 'key', includeIfNull: false)
+  @override
+  final String key;
+
+  @JsonKey(name: 'label', includeIfNull: false)
+  final String? label;
+
+  @override
+  Map<String, dynamic> toJson() => _$MsgServeActionWithLabelToJson(this);
+
+  @override
+  String toString() => toJson().toString();
+}
+
+@JsonSerializable()
+@ApiUuidJsonConverter()
+class MsgServeTextDialog implements OpenApiContent {
+  const MsgServeTextDialog({
+    required this.title,
+    required this.body,
+    required this.actions,
+  });
+
+  factory MsgServeTextDialog.fromJson(Map<String, dynamic> jsonMap) =>
+      _$MsgServeTextDialogFromJson(jsonMap);
+
+  @JsonKey(name: 'title', includeIfNull: false)
+  final String title;
+
+  @JsonKey(name: 'body', includeIfNull: false)
+  final String body;
+
+  @JsonKey(name: 'actions', includeIfNull: false)
+  final List<MsgServeActionWithLabel> actions;
+
+  Map<String, dynamic> toJson() => _$MsgServeTextDialogToJson(this);
 
   @override
   String toString() => toJson().toString();
@@ -240,6 +250,7 @@ class MsgServeCampaign implements OpenApiContent {
     required this.key,
     this.interstitial,
     this.banner,
+    this.textDialog,
     required this.filter,
     this.trigger,
     this.dateStart,
@@ -250,56 +261,35 @@ class MsgServeCampaign implements OpenApiContent {
       _$MsgServeCampaignFromJson(jsonMap);
 
   /// Globally unique ID.
-  @JsonKey(
-    name: 'id',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'id', includeIfNull: false)
   @ApiUuidJsonConverter()
   final ApiUuid id;
 
   /// Unique, user friendly key for this message.
-  @JsonKey(
-    name: 'key',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'key', includeIfNull: false)
   final String key;
 
-  @JsonKey(
-    name: 'interstitial',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'interstitial', includeIfNull: false)
   final MsgServeInterstitialArtifact? interstitial;
 
-  @JsonKey(
-    name: 'banner',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'banner', includeIfNull: false)
   final MsgServeBannerArtifact? banner;
 
+  @JsonKey(name: 'textDialog', includeIfNull: false)
+  final MsgServeTextDialog? textDialog;
+
   /// Boolean expression which evaluates whether this message should be shown.
-  @JsonKey(
-    name: 'filter',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'filter', includeIfNull: false)
   final String filter;
 
   /// Boolean expression which evaluates whether this message should be shown.
-  @JsonKey(
-    name: 'trigger',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'trigger', includeIfNull: false)
   final String? trigger;
 
-  @JsonKey(
-    name: 'dateStart',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'dateStart', includeIfNull: false)
   final DateTime? dateStart;
 
-  @JsonKey(
-    name: 'dateEnd',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'dateEnd', includeIfNull: false)
   final DateTime? dateEnd;
 
   Map<String, dynamic> toJson() => _$MsgServeCampaignToJson(this);
@@ -311,24 +301,15 @@ class MsgServeCampaign implements OpenApiContent {
 @JsonSerializable()
 @ApiUuidJsonConverter()
 class MsgServeConfig implements OpenApiContent {
-  const MsgServeConfig({
-    required this.updatedAt,
-    required this.campaigns,
-  });
+  const MsgServeConfig({required this.updatedAt, required this.campaigns});
 
   factory MsgServeConfig.fromJson(Map<String, dynamic> jsonMap) =>
       _$MsgServeConfigFromJson(jsonMap);
 
-  @JsonKey(
-    name: 'updatedAt',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'updatedAt', includeIfNull: false)
   final DateTime updatedAt;
 
-  @JsonKey(
-    name: 'campaigns',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'campaigns', includeIfNull: false)
   final List<MsgServeCampaign> campaigns;
 
   Map<String, dynamic> toJson() => _$MsgServeConfigToJson(this);
@@ -349,23 +330,14 @@ class MessageAction implements OpenApiContent {
   factory MessageAction.fromJson(Map<String, dynamic> jsonMap) =>
       _$MessageActionFromJson(jsonMap);
 
-  @JsonKey(
-    name: 'key',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'key', includeIfNull: false)
   final String key;
 
-  @JsonKey(
-    name: 'label',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'label', includeIfNull: false)
   final String label;
 
   /// Expression which is evaluated when the action is activted/pressed.
-  @JsonKey(
-    name: 'actionExpression',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'actionExpression', includeIfNull: false)
   final String actionExpression;
 
   Map<String, dynamic> toJson() => _$MessageActionToJson(this);
@@ -382,10 +354,7 @@ class CheckGetResponseBody200 implements OpenApiContent {
   factory CheckGetResponseBody200.fromJson(Map<String, dynamic> jsonMap) =>
       _$CheckGetResponseBody200FromJson(jsonMap);
 
-  @JsonKey(
-    name: 'dbVersion',
-    includeIfNull: false,
-  )
+  @JsonKey(name: 'dbVersion', includeIfNull: false)
   final int? dbVersion;
 
   Map<String, dynamic> toJson() => _$CheckGetResponseBody200ToJson(this);
@@ -398,8 +367,8 @@ class CheckGetResponse200 extends CheckGetResponse
     implements OpenApiResponseBodyJson {
   /// Everything OK
   CheckGetResponse200.response200(this.body)
-      : status = 200,
-        bodyJson = body.toJson();
+    : status = 200,
+      bodyJson = body.toJson();
 
   @override
   final int status;
@@ -410,16 +379,17 @@ class CheckGetResponse200 extends CheckGetResponse
   final Map<String, dynamic> bodyJson;
 
   @override
-  final OpenApiContentType contentType =
-      OpenApiContentType.parse('application/json');
+  final OpenApiContentType contentType = OpenApiContentType.parse(
+    'application/json',
+  );
 
   @override
   Map<String, Object?> propertiesToString() => {
-        'status': status,
-        'body': body,
-        'bodyJson': bodyJson,
-        'contentType': contentType,
-      };
+    'status': status,
+    'body': body,
+    'bodyJson': bodyJson,
+    'contentType': contentType,
+  };
 }
 
 sealed class CheckGetResponse extends OpenApiResponse
@@ -458,8 +428,8 @@ class EventPostResponse200 extends EventPostResponse
     implements OpenApiResponseBodyJson {
   /// Configuration update
   EventPostResponse200.response200(this.body)
-      : status = 200,
-        bodyJson = body.toJson();
+    : status = 200,
+      bodyJson = body.toJson();
 
   @override
   final int status;
@@ -470,16 +440,17 @@ class EventPostResponse200 extends EventPostResponse
   final Map<String, dynamic> bodyJson;
 
   @override
-  final OpenApiContentType contentType =
-      OpenApiContentType.parse('application/json');
+  final OpenApiContentType contentType = OpenApiContentType.parse(
+    'application/json',
+  );
 
   @override
   Map<String, Object?> propertiesToString() => {
-        'status': status,
-        'body': body,
-        'bodyJson': bodyJson,
-        'contentType': contentType,
-      };
+    'status': status,
+    'body': body,
+    'bodyJson': bodyJson,
+    'contentType': contentType,
+  };
 }
 
 sealed class EventPostResponse extends OpenApiResponse
@@ -529,11 +500,7 @@ abstract class MsgServBackendClient implements OpenApiClient {
   factory MsgServBackendClient(
     Uri baseUri,
     OpenApiRequestSender requestSender,
-  ) =>
-      _MsgServBackendClientImpl._(
-        baseUri,
-        requestSender,
-      );
+  ) => _MsgServBackendClientImpl._(baseUri, requestSender);
 
   /// Health check.
   /// Health check of endpoint data
@@ -549,10 +516,7 @@ abstract class MsgServBackendClient implements OpenApiClient {
 
 class _MsgServBackendClientImpl extends OpenApiClientBase
     implements MsgServBackendClient {
-  _MsgServBackendClientImpl._(
-    this.baseUri,
-    this.requestSender,
-  );
+  _MsgServBackendClientImpl._(this.baseUri, this.requestSender);
 
   @override
   final Uri baseUri;
@@ -566,19 +530,13 @@ class _MsgServBackendClientImpl extends OpenApiClientBase
   ///
   @override
   Future<CheckGetResponse> checkGet() async {
-    final request = OpenApiClientRequest(
-      'get',
-      '/check',
-      [],
-    );
-    return await sendRequest(
-      request,
-      {
-        '200': (OpenApiClientResponse response) async =>
-            CheckGetResponse200.response200(CheckGetResponseBody200.fromJson(
-                await response.responseBodyJson()))
-      },
-    );
+    final request = OpenApiClientRequest('get', '/check', []);
+    return await sendRequest(request, {
+      '200': (OpenApiClientResponse response) async =>
+          CheckGetResponse200.response200(
+            CheckGetResponseBody200.fromJson(await response.responseBodyJson()),
+          ),
+    });
   }
 
   /// Report event, or fetch config.
@@ -586,31 +544,21 @@ class _MsgServBackendClientImpl extends OpenApiClientBase
   ///
   @override
   Future<EventPostResponse> eventPost(Event body) async {
-    final request = OpenApiClientRequest(
-      'post',
-      '/event',
-      [
-        SecurityRequirement(schemes: [
-          SecurityRequirementScheme(
-            scheme: SecuritySchemes.apiKey,
-            scopes: [],
-          )
-        ])
-      ],
-    );
-    request.setHeader(
-      'content-type',
-      'application/json',
-    );
+    final request = OpenApiClientRequest('post', '/event', [
+      SecurityRequirement(
+        schemes: [
+          SecurityRequirementScheme(scheme: SecuritySchemes.apiKey, scopes: []),
+        ],
+      ),
+    ]);
+    request.setHeader('content-type', 'application/json');
     request.setBody(OpenApiClientRequestBodyJson(body.toJson()));
-    return await sendRequest(
-      request,
-      {
-        '200': (OpenApiClientResponse response) async =>
-            EventPostResponse200.response200(
-                MsgServeConfig.fromJson(await response.responseBodyJson()))
-      },
-    );
+    return await sendRequest(request, {
+      '200': (OpenApiClientResponse response) async =>
+          EventPostResponse200.response200(
+            MsgServeConfig.fromJson(await response.responseBodyJson()),
+          ),
+    });
   }
 }
 
@@ -620,11 +568,7 @@ class MsgServBackendUrlResolve with OpenApiUrlEncodeMixin {
   /// get: /check
   ///
   OpenApiClientRequest checkGet() {
-    final request = OpenApiClientRequest(
-      'get',
-      '/check',
-      [],
-    );
+    final request = OpenApiClientRequest('get', '/check', []);
     return request;
   }
 
@@ -632,18 +576,13 @@ class MsgServBackendUrlResolve with OpenApiUrlEncodeMixin {
   /// post: /event
   ///
   OpenApiClientRequest eventPost() {
-    final request = OpenApiClientRequest(
-      'post',
-      '/event',
-      [
-        SecurityRequirement(schemes: [
-          SecurityRequirementScheme(
-            scheme: SecuritySchemes.apiKey,
-            scopes: [],
-          )
-        ])
-      ],
-    );
+    final request = OpenApiClientRequest('post', '/event', [
+      SecurityRequirement(
+        schemes: [
+          SecurityRequirementScheme(scheme: SecuritySchemes.apiKey, scopes: []),
+        ],
+      ),
+    ]);
     return request;
   }
 }
@@ -655,17 +594,12 @@ class MsgServBackendRouter extends OpenApiServerRouterBase {
 
   @override
   void configure() {
-    addRoute(
-      '/check',
-      'get',
-      (OpenApiRequest request) async {
-        return await impl.invoke(
-          request,
-          (MsgServBackend impl) async => impl.checkGet(),
-        );
-      },
-      security: [],
-    );
+    addRoute('/check', 'get', (OpenApiRequest request) async {
+      return await impl.invoke(
+        request,
+        (MsgServBackend impl) async => impl.checkGet(),
+      );
+    }, security: []);
     addRoute(
       '/event',
       'post',
@@ -677,12 +611,14 @@ class MsgServBackendRouter extends OpenApiServerRouterBase {
         );
       },
       security: [
-        SecurityRequirement(schemes: [
-          SecurityRequirementScheme(
-            scheme: SecuritySchemes.apiKey,
-            scopes: [],
-          )
-        ])
+        SecurityRequirement(
+          schemes: [
+            SecurityRequirementScheme(
+              scheme: SecuritySchemes.apiKey,
+              scopes: [],
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -693,14 +629,8 @@ class SecuritySchemes {
     name: 'X-API-KEY',
     readFromRequest: (OpenApiRequest request) =>
         request.headerParameter('X-API-KEY'),
-    writeToRequest: (
-      OpenApiClientRequest request,
-      String value,
-    ) =>
-        request.addHeaderParameter(
-      'X-API-KEY',
-      [value],
-    ),
+    writeToRequest: (OpenApiClientRequest request, String value) =>
+        request.addHeaderParameter('X-API-KEY', [value]),
   );
 }
 
