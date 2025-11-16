@@ -72,12 +72,12 @@ class _MsgServeBannerCarouselState extends ConsumerState<MsgServeBannerCarousel>
               return;
             }
             campaignDisplay.add((e, result.first.value, banner));
-            if (!mounted) {
-              return;
-            }
-            setState(() {});
           }
         }
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
         // _msgServBloc.prepareFilesFor(event
         //     .map((e) => e.campaign.banner?.graphic)
         //     .whereNotNull()

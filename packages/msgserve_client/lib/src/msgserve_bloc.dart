@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io' as io;
+import 'dart:math';
 
 import 'package:async/async.dart';
 import 'package:clock/clock.dart';
@@ -527,6 +528,8 @@ class MapAwareEvaluator extends ExpressionEvaluator {
       return object[expression.property.name];
     } else if (object is AppEvent) {
       return object[expression.property.name];
+    } else if (object is MsgServeCampaign) {
+      return object.toJson()[expression.property.name];
     } else {
       throw UnsupportedError('Member expressions not supported for '
           '${object.runtimeType} $object');

@@ -15,11 +15,15 @@ void main() {
         campaigns: [
           MsgServeCampaign(
             id: ApiUuid.secure(),
-            key: 'example',
+            key: 'example6',
             textDialog: MsgServeTextDialog(
               title: 'Lorem ipsum',
               body: 'Lorem ipsum asdf asdf asdf asdf asdfa dsaf',
               actions: [
+                MsgServeActionWithLabel(
+                  key: 'not now',
+                  label: 'Nicht jetzt',
+                ),
                 MsgServeActionWithLabel(
                   key: 'openUrl',
                   url: 'https://austrianapps.com',
@@ -38,7 +42,7 @@ void main() {
             //     ),
             //   ],
             // ),
-            filter: 'true',
+            filter: 'action(this.key) == null',
             // trigger: 'event.name == "increment" && event.count > 2',
           ),
         ],

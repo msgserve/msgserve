@@ -3,7 +3,6 @@ import 'package:flutter_async_utils/flutter_async_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:msgserve_client/msgserve_client.dart';
-import 'package:msgserve_shared/msgserv_shared.dart';
 
 import '../msgserve_bloc.dart';
 
@@ -60,12 +59,12 @@ class _MsgserveMaterialBannerState extends ConsumerState<MsgserveMaterialBanner>
         for (final e in event) {
           if (e.campaign.textDialog case final textDialog?) {
             campaignDisplay.add((e, textDialog));
-            if (!mounted) {
-              return;
-            }
-            setState(() {});
           }
         }
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
         // _msgServBloc.prepareFilesFor(event
         //     .map((e) => e.campaign.banner?.graphic)
         //     .whereNotNull()
