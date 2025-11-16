@@ -505,12 +505,14 @@ extension on DateTime {
 enum CampaignType {
   interstitial,
   banner,
+  textDialog,
 }
 
 extension on CampaignType {
   bool matches(MsgServeCampaign campaign) => switch (this) {
         CampaignType.interstitial => campaign.interstitial != null,
         CampaignType.banner => campaign.banner != null,
+        CampaignType.textDialog => campaign.textDialog != null,
       };
 }
 

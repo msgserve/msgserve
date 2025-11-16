@@ -42,7 +42,7 @@ class _MsgserveMaterialBannerState extends ConsumerState<MsgserveMaterialBanner>
       _msgServBloc
           .findAllCampaigns(
         label: widget.label,
-        type: CampaignType.banner,
+        type: CampaignType.textDialog,
       )
           .listen((event) async {
         _logger.fine('got campaign info $event');
