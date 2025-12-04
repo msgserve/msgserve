@@ -89,14 +89,14 @@ class _MsgserveMaterialBannerState extends ConsumerState<MsgserveMaterialBanner>
       content: Column(
         children: [
           Text(
-            'Deine Meinung ist uns wichtig!',
+            dialog.title,
             style: Theme.of(
               context,
             ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
-            'Bitte nimm dir ein paar Minuten Zeit für unsere Umfrage zum Thema Fahrtenbuch. Deine Meinung hilft uns, die App zu verbessern!',
+            dialog.body,
           ),
         ],
       ),
